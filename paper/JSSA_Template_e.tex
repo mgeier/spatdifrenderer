@@ -1,0 +1,217 @@
+% JSSA Report Template for English ver.200908
+% By Daichi Ando
+% based on ICMC2005
+
+\documentclass{jsarticle}
+\renewcommand{\baselinestretch}{0.9}
+\usepackage{jssa_e,amsmath}
+\usepackage{mediabb}
+\usepackage{graphicx}
+
+% Title.
+% ------
+\title{English title}
+
+% Paper Category
+\category{Category}
+
+% Single address
+% To use with only one author or several with the same address
+% ---------------
+%\oneauthor
+%  {Author Name} {Faculty of Fine
+%  Arts, Tokyo University of the Arts}
+
+% Two addresses
+% --------------
+\twoauthors
+  {First Author} {Department \\ School}
+  {Second Author} {Company \\ City}
+
+% Three addresses
+% --------------
+%\threeauthors
+%  {First author} {School \\ Department}
+%  {Second author} {Company \\ Address}
+%  {Third author} {Company \\ Address}
+
+\begin{document}
+%
+%%% -- Page Number Designation
+% Ignore when submitting
+
+\makeatletter 
+\def\ps@myheadings{% 
+\let\ps@jpl@in\ps@plain% 
+\def\@evenhead{\reset@font\hfil\leftmark\hfil}% 
+\def\@oddhead{\reset@font\hfil\rightmark\hfil}% 
+\let\@mkboth\@gobbletwo% 
+\let\sectionmark\@gobble% 
+\let\subsectionmark\@gobble% 
+% 
+\def\@oddfoot{\reset@font\hfil-- \thepage --\hfil}% 
+\let\@evenfoot\@oddfoot 
+} 
+\makeatother 
+%%% 
+%%% Designation of starting page number
+% Ignore when submitting
+\setcounter{page}{17} 
+\pagestyle{myheadings} 
+%%%
+% Designation of header
+% Ignore when submitting
+\markright{\footnotesize \sl Journal of the Japanese Society for Sonic Arts, Vol.1 No.1 pp.17--21} 
+%%% 
+%%% \maketitleの直後の行に \thispagestyle{myheadings} を挿入する。 
+\maketitle
+\thispagestyle{myheadings}
+
+\begin{abstract}
+
+English Abstract, English Abstract. English Abstract, English
+ Abstract.English Abstract, English Abstract.English Abstract, English
+ Abstract.English Abstract, English Abstract.English Abstract, English
+ Abstract.English Abstract, English Abstract.English Abstract, English
+ Abstract.English Abstract, English Abstract.English Abstract, English
+ Abstract.English Abstract, English Abstract.English Abstract, English
+ Abstract.
+
+\end{abstract}
+
+\section{Introduction}
+
+Use basic \LaTeX commands.
+
+Headings are as follows:
+
+\subsection{subsection}
+
+This is \verb|\subsection{}|.
+
+\subsubsection{subsubsection}
+
+This is \verb|\subsubsection{}|.
+
+\section{Include Figures}
+
+The way to insert figures is as follows:
+
+\begin{figure}[h]
+\centerline{
+	\includegraphics[mediaboxonly,width=\columnwidth]{figure.pdf}}
+\caption{English Caption.}
+\label{fig:figure}
+\end{figure}
+
+Giving [h] option, insert a figure at the specified position.
+
+\section{Foot Note}
+
+The way to insert footnote is as follows\footnote{This is foot note}.
+
+\section{Citiation}
+
+This is citiation\cite{Author1:08}.
+
+Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
+
+\section{For Count Number of Characters}
+
+English Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body
+Text. EngEnglish Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. 
+lish Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body Text. 
+
+lish Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body Text. 
+
+lish Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body Text. 
+
+English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text. English Body
+Text. English Body Text. English Body Text. English Body Text. English
+Body Text. English Body Text. English Body Text.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{citations}
+\bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
+	Mingmei Publishing, 2008.
+\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+	Computer Music'', {\it Comtemporary Computer Music Society},
+	Vol.2 No.4, pp22-26, 2009.
+\end{thebibliography}
+
+\section{Author's Profile}
+
+
+\subsection*{Author's Name}
+
+Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. Author's Profile. Author's Profile. Author's Profile. Author's
+Profile. 
+
+
+
+\end{document}
+
