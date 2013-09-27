@@ -2,7 +2,7 @@
 % By Daichi Ando
 % based on ICMC2005
 
-\documentclass{jsarticle}
+\documentclass{article}
 \renewcommand{\baselinestretch}{0.9}
 \usepackage{jssa_e,amsmath}
 \usepackage{mediabb}
@@ -13,7 +13,7 @@
 \title{English title}
 
 % Paper Category
-\category{Category}
+\category{Short Paper}
 
 % Single address
 % To use with only one author or several with the same address
@@ -25,8 +25,8 @@
 % Two addresses
 % --------------
 \twoauthors
-  {First Author} {Department \\ School}
-  {Second Author} {Company \\ City}
+  {Chikashi Myama} {Department \\ School}
+  {Jan C. Schacher} {Zurich University of the Arts \\ Institute for Computer Music and Sound Technology\\Baslerstrasse 30, Zurich, Switzerland\\jan.schacher@zhdk.ch}
 
 % Three addresses
 % --------------
@@ -69,17 +69,94 @@
 
 \begin{abstract}
 
-English Abstract, English Abstract. English Abstract, English
- Abstract.English Abstract, English Abstract.English Abstract, English
- Abstract.English Abstract, English Abstract.English Abstract, English
- Abstract.English Abstract, English Abstract.English Abstract, English
- Abstract.English Abstract, English Abstract.English Abstract, English
- Abstract.English Abstract, English Abstract.English Abstract, English
- Abstract.
+Here we have an abstract
 
 \end{abstract}
 
 \section{Introduction}
+
+
+\section{history of the project} %assigned to Jasch
+
+\section{conceptual explanation / structure} %assigned to Jasch/Trond/Nils
+
+what is SpatDIF?
+
+score-example in XML / JSON
+
+format of SpatDIF `bundle'
+
+\section{current activities} %assigned to Jasch/Trond/Chikashi
+
+\section{library details/structure} %assigned to Chikashi
+
+definition/features/tasks of the lib
+
+interfaces in/out $\rightarrow$ (native C/C++ / OSC)
+
+class structure
+
+
+fileparsing XML/JSON
+
+OSC 1.0
+
+how to query in 3 lines (C++ code snippet)
+
+\section{reference renderer }% Jasch
+
+(rough sketch....)
+
+app scope / what does it do
+
+app interfaces to lib $\rightarrow$ task distribution between app and lib
+
+i.e. scheduler
+
+or sockets / file-IO
+
+% presentatio structure:
+
+% motivation
+% syntax/coneptual development
+% the lib / actual implementation
+% demo
+
+\bibliographystyle{plain}
+\begin{thebibliography}{citations}
+\bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
+	Mingmei Publishing, 2008.
+\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+	Computer Music'', {\it Comtemporary Computer Music Society},
+	Vol.2 No.4, pp22-26, 2009.
+\end{thebibliography}
+
+\section{Author's Profile}
+
+
+\subsection*{Author's Name}
+
+\end{document}
+
+% TODO spatfdif-lib paper
+% TODO spatfdif-lib paper
+% 
+% - history  of the project Jasch
+% - conceptual explanation / structure Jasch/Trond/Nils
+% - current activities Jasch/Trond/Chikashi
+% - library details/structure Chikashi
+% - reference renderer (rough sketch....) Jasch
+% 
+% JSSA presentation dec 7. 
+% paper deadline nov 7.
+% 
+% paper finished nov 4.
+% 
+% milestones:
+% 7. october first sketches structure, (blocks of text)
+% 21. october finished textblocks
+% 4. november finished with all the refs. corrected submittable
+% 
 
 Use basic \LaTeX commands.
 
