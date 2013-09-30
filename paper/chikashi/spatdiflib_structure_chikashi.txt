@@ -1,0 +1,46 @@
+
+#overview
+
+Spatdiflib is a open source C/C++ multi-platform library, which offers the following functionalities to the developers of SpatDIF compatible softwares.
+
+- loading and storing scenes from/to XML, JSON or YMAL formatted string
+- addition, deletion, and modification of entities in SpatDIF scenes
+- addition, deletion, and modification of events and associate them to the existing entities in a scene
+- activation and deactiovation of extensions
+- answering queries about the data stored in a scene
+- realtime data handling from a remote host via OSC protocol
+
+In order to maintain platform independency and provide client applications with maximum flexibility,
+1. spatdiflib does not handle XML, JSON or YAML files directly; it interpret XML, JSON or YAML formatted string
+2. spatdiflib does not has scheduler or timer, all these functionalities should be implemented in the client application
+3. spatdiflib does not handle network sockets for OSC communication. The client application should handle them and forward incoming OSC messages to the library as character strings. 
+
+The library will be completed by the end of 2014 and released under MIT or similar license.
+
+# C++ class structure
+
+Figure XXX shows simplified class hierarchy of the library. 
+
+
+## sdScene
+A instances of class sdScene has three functionalities:
+1. adding, removing and modifying entities in its scene
+2. activation and deactivation of extensions
+3. editing meta data of the scene
+
+The client can instantiate sdScene directly or by converting a XML, JSON, or YAML string employing class sdLoader.
+
+## sdLoader/sdSaver
+These two classes provide several utility functions and enable clients to easily convert a XML, JSON, or YAML string to a sdScene and vice versa,
+
+## sdEntityCore
+An instance of this class maintains all associated events with SpatDIF core descriptors and keep a vector to hold instances of SpatDIF extensions.
+
+## sdEntityExtension
+This is a pure abstract class of extensions. The subclasses of this class. e.g. sdEntityExtensionMedia handle the events with extended descriptors.
+
+# Code Example
+The following example code shows how to load a XML formatted string to a sdScene and query a event stored in it.
+
+How to query.cpp
+

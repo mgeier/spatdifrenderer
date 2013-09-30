@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>686</x>
+      <y>336</y>
+      <w>97</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>21;21;84;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>448</x>
+      <y>294</y>
+      <w>259</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>sdEntityCore
+--
+-name:std::str
+-extensionVector:std::vector&lt;sdEntityExtension&gt;
+--
++sdEntityCore(std::string)
++getName
++getValue(EDescriptor,float,void*):void*
++addExtension(sdEntityExtension)
++removeExtension(EExtension)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>665</x>
+      <y>35</y>
+      <w>210</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>sdSaver
+--
+
+_+XMLFromScene(scene: sdScene*):string_
+_+JSONFromScene(scene: sdScene*):string_
+_+YAMLFromScene(scene: sdScene*):string_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>630</x>
+      <y>231</y>
+      <w>272</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;42;259;42;259;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>777</x>
+      <y>399</y>
+      <w>231</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>sdEntityExtensionMedia
+--
++ directivity:f
+--
++ getValue(EDescriptor,float,void*):void*
+--
+related descriptors:
+SD_DIRECTIVITY_DIRECTIVITY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>350</x>
+      <y>63</y>
+      <w>83</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>21;203;21;21;70;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>105</x>
+      <y>266</y>
+      <w>301</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>sdScene
+--
++ entityVector (std::vector&lt;sdEntityCore&gt;)
++ validExtensionVector (std::vector&lt;enum EExtension&gt;)
++ info:sdInfo
+--
+
++ getValue(std::string, EDescriptor, float, void*):void*
++ getEntity(std::string):sdEntityCore*
++ getNumberOfEntities():unsigned int
++ addEntity(sdEntity*)
++ removeEntity(string)
++ removeEntity(sdEntityCore*)
++ addExtension(EExtension)
++ removeExtension(enum EExtension)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>189</x>
+      <y>189</y>
+      <w>34</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>21;77;21;21;21;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>420</x>
+      <y>35</y>
+      <w>238</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>sdLoader
+--
+_+sceneFromXML(xmlString: string):sdScene*_
+_+sceneFromJSON(jsonString: string):sdScene*_
+_+sceneFromYAML(yamlString: string):sdScene*_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>483</x>
+      <y>252</y>
+      <w>181</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>168;21;21;21;21;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>385</x>
+      <y>336</y>
+      <w>76</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>21;21;63;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>98</x>
+      <y>154</y>
+      <w>217</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>sdOSCResponder
+--
++ scene: *sdScene
+--
++ sdOSCResponder(sdScene *scene)
++ forwardOSCMessage(string oscMessage)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>364</x>
+      <y>70</y>
+      <w>433</w>
+      <h>209</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>21;196;21;35;420;35;420;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>476</x>
+      <y>119</y>
+      <w>266</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>sdEntity
+--
+＃ eventSet:std::set
+--
++ getValue(EDescriptor,float,void*):void* =0
++ getEvent(EDescriptor, float): sdEvent*
++ getNumberOfEvents():unsigned int
++ addEvent(sdEvent)
++ addEvent(EDescriptor, float, void*)
++ removeEvent(sdEvent*)
++ removeEvent(EDescriptor, float)
++ removeEvent(EDescriptor, float float)
++ removeAllEvents()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>770</x>
+      <y>301</y>
+      <w>287</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>sdEntityExtension
+--
+- extensionType: EExtension
+- descriptors:std::vector&lt;EDescriptor&gt;
+--
+_+ getRelavantDescriptors(): std::vector&lt;enum descirptor&gt;_
++ getValue(enum EDescriptor,float,void*):void* =0
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>868</x>
+      <y>343</y>
+      <w>34</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;56;21;21</additional_attributes>
+  </element>
+</diagram>
