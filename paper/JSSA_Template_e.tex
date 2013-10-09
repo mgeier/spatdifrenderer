@@ -66,7 +66,7 @@
 % Ignore when submitting
 \markright{\footnotesize \sl Journal of the Japanese Society for Sonic Arts, Vol.1 No.1 pp.17--21} 
 %%% 
-%%% \maketitleの直後の行に \thispagestyle{myheadings} を挿入する。 
+%%% \maketitle?????????????????? \thispagestyle{myheadings} ?????????????????? 
 \maketitle
 \thispagestyle{myheadings}
 
@@ -117,7 +117,59 @@ format of SpatDIF `bundle'
 \section{current activities} %assigned to Jasch/Trond/Chikashi
 
 \section{library details/structure} %assigned to Chikashi
+1. Overview
 
+Spatdiflib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
+
+- loading and storing scenes from/to XML, JSON or YMAL formatted string
+- addition, deletion, and modification of entities in SpatDIF scenes
+- addition, deletion, and modification of events and associate them to the existing entities in a scene
+- activation and deactiovation of extensions
+- answering queries about the data stored in a scene
+- realtime data handling from a remote host via OSC protocol
+
+In order to maintain platform independency and provide client applications with maximum flexibility, the library does not handle XML, JSON or YAML files directly. Instead, it interprets provideded XML, JSON or YAML formatted string.  SpatDIFLib does not has scheduler or timer, all these functionalities should be implemented in the client application. Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands to the library.  The client application should prepare the appropriate sockets for OSC communication.
+
+
+2. C++ Class Structure
+
+
+
+Figure XXX shows simplified class hierarchy of the library. The following is the description of the most essential classes in the structure.
+
+a. sdScene
+
+sdScene maintains all data associated to a certain SpatDIF scene. This class offers clients the following three functionalities
+
+1. adding, removing and modifying entities in its scene
+2. activation and deactivation of the extensions
+3. editing meta data associated to the scene
+
+Once the client activate an extension in a scene, sdScene automatically add extended functionality and storage to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionality and previously allocated storage of all existing sdEntities. Subsequently, all the extended data will be discarded.
+The only way to instantiate sdEntityCore for the clients is to invoke sdScene::addEntity member function. The instances created through this function will be registerd in an internal vector
+of sdScene and  can be reffered by name of the entity, employing sdEntity::getEntity member function. An instance of sdScene can be converted to XML, JSON, or YAML storable string, using sdSaver and vice versa using sdLoader.
+
+b. sdLoader/sdSaver
+These two classes provide several utility functions and enable clients to easily convert a XML, JSON, or YAML string to a sdScene and vice versa,
+
+c. sdEntityCore
+An instance of sdEntityCore maintains events with SpatDIF core descriptors and keep a vector to hold instances of SpatDIF extensions. This class is also responsible for answering query from the client about events. For example, if a client asks an entity a value of a certain descriptor at a specific time, the sdEntity returns value to the client. The client is able to request multiple events within a certain time frame and filter events by descriptor. If the client request values of extended desciriptors, the sdEntityCore forwards the query to the attached extension.
+
+d. sdEntityExtension
+This is a pure abstract class of extensions. The subclasses of this class. e.g. sdEntityExtensionMedia handle the events with extended descriptors. If the cleint activates an extension in a scene, all existing sdEntityCore create an instance of designated subclass of sdEntityExtension and register it to the internal vector.
+
+3. Simple Example
+The following example code shows how to load a XML formatted string to a sdScene and query a event stored in it.
+
+How to query.cpp
+
+
+
+
+
+4. Future plan
+
+The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to furhter improve flexibility and practicality.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under MIT or similar license.
 definition/features/tasks of the lib
 
 interfaces in/out $\rightarrow$ (native C/C++ / OSC)
@@ -157,7 +209,7 @@ or sockets / file-IO
 % \begin{thebibliography}{citations}
 % \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
 % 	Mingmei Publishing, 2008.
-% \bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+% \bibitem{Author2:09} Harahoro???Hirehare ``The Abstract of The Book of
 % 	Computer Music'', {\it Comtemporary Computer Music Society},
 % 	Vol.2 No.4, pp22-26, 2009.
 % \end{thebibliography}
@@ -233,7 +285,7 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 \begin{thebibliography}{citations}
 \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
 	Mingmei Publishing, 2008.
-\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+\bibitem{Author2:09} Harahoro???Hirehare ``The Abstract of The Book of
 	Computer Music'', {\it Comtemporary Computer Music Society},
 	Vol.2 No.4, pp22-26, 2009.
 \end{thebibliography}
