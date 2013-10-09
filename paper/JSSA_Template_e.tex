@@ -13,7 +13,7 @@
 
 % Title.
 % ------
-\title{Implementing the SpatDIF Library}
+\title{Implementing the Spatial Sound Descriptor Interchange Format SpatDIF}
 
 % Paper Category
 \category{Short Paper}
@@ -76,6 +76,8 @@ Here we have an abstract
 
 \end{abstract}
 
+% keywords ?
+
 \section{Introduction}
 
 In this article we present the development of a tool for easy integration of SpatDIF into existing software.
@@ -99,7 +101,6 @@ After a long and thoughtful process, the SpatDIF specification was informally pr
 The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification \cite{scheirer1999audiobifs}.  
 In addition, many features necessary to make this lightweight standard functional were put forward, for example the capability of dealing with temporal interpolation of scene descriptors. 
 
-
 \section{conceptual explanation / structure} %assigned to Jasch/Trond/Nils
 
 One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound might occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
@@ -109,12 +110,11 @@ It describes only the aspects required for the storage and transmission of \emph
 A complete work typically contains additional dimensions that lie outside the scope of SpatDIF. 
 These are only addressed to the extent necessary for linking the elements to the descriptions of the spatial dimension (i.e. the Media extension).
 
+explaining the library idea: WHY a library
 
-score-example in XML / JSON
+score-example in XML / JSON -> turenas xml score
 
 format of SpatDIF `bundle'
-
-\section{current activities} %assigned to Jasch/Trond/Chikashi
 
 \section{library details/structure} %assigned to Chikashi
 1. Overview
@@ -130,10 +130,7 @@ Spatdiflib is an open source C/C++ multi-platform library, that offers the follo
 
 In order to maintain platform independency and provide client applications with maximum flexibility, the library does not handle XML, JSON or YAML files directly. Instead, it interprets provideded XML, JSON or YAML formatted string.  SpatDIFLib does not has scheduler or timer, all these functionalities should be implemented in the client application. Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands to the library.  The client application should prepare the appropriate sockets for OSC communication.
 
-
 2. C++ Class Structure
-
-
 
 Figure XXX shows simplified class hierarchy of the library. The following is the description of the most essential classes in the structure.
 
@@ -162,9 +159,7 @@ This is a pure abstract class of extensions. The subclasses of this class. e.g. 
 The following example code shows how to load a XML formatted string to a sdScene and query a event stored in it.
 
 How to query.cpp
-
-
-
+$\rightarrow$ turenas xml score C++ example
 
 
 4. Future plan
@@ -176,7 +171,6 @@ interfaces in/out $\rightarrow$ (native C/C++ / OSC)
 
 class structure
 
-
 fileparsing XML/JSON
 
 OSC 1.0
@@ -184,6 +178,11 @@ OSC 1.0
 how to query in 3 lines (C++ code snippet)
 
 \section{reference renderer }% Jasch
+
+
+ref openFrameworks
+ref libsndfile
+
 
 (rough sketch....)
 
@@ -195,37 +194,21 @@ i.e. scheduler
 
 or sockets / file-IO
 
-% presentatio structure:
-
-% motivation
-% syntax/coneptual development
-% the lib / actual implementation
-% demo
-
-
 \printbibliography
 
-% \bibliographystyle{plain}
-% \begin{thebibliography}{citations}
-% \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
-% 	Mingmei Publishing, 2008.
-% \bibitem{Author2:09} Harahoro???Hirehare ``The Abstract of The Book of
-% 	Computer Music'', {\it Comtemporary Computer Music Society},
-% 	Vol.2 No.4, pp22-26, 2009.
-% \end{thebibliography}
 
 \section{Author's Profile}
-
 
 \subsection*{Author's Name}
 
 \end{document}
 
+
+
 % TODO spatfdif-lib paper
 % 
 % - history  of the project Jasch
 % - conceptual explanation / structure Jasch/Trond/Nils
-% - current activities Jasch/Trond/Chikashi
 % - library details/structure Chikashi
 % - reference renderer (rough sketch....) Jasch
 % 
@@ -291,7 +274,6 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 \end{thebibliography}
 
 \section{Author's Profile}
-
 
 \subsection*{Author's Name}
 
