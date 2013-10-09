@@ -8,6 +8,10 @@
 \usepackage{mediabb}
 \usepackage{graphicx}
 
+% \usepackage[style=authoryear,firstinits=true]{biblatex}
+\usepackage[]{biblatex}
+\addbibresource{SpatDIF.bib}
+
 % Title.
 % ------
 \title{Implementing the SpatDIF Library}
@@ -84,7 +88,6 @@ After a long and thoughtful process, the SpatDIF specification was informally pr
 The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification \cite{scheirer1999audiobifs}.  
 In addition, many features necessary to make this lightweight standard functional were put forward, for example the capability of dealing with temporal interpolation of scene descriptors. 
 
-
 \section{conceptual explanation / structure} %assigned to Jasch/Trond/Nils
 
 what is SpatDIF?
@@ -112,7 +115,8 @@ how to query in 3 lines (C++ code snippet)
 
 \section{reference renderer }% Jasch
 
-(rough sketch....)
+The SpatDIF library is complemented with an Application that serves as a reference implementation and test-platform or a real-world usage of spatDIF files. It can validate spatdif-files in XML and JSON formats and be used to check OSC-formatted network streams of SpatDIF statements.
+The
 
 app scope / what does it do
 
@@ -129,14 +133,16 @@ or sockets / file-IO
 % the lib / actual implementation
 % demo
 
-\bibliographystyle{plain}
-\begin{thebibliography}{citations}
-\bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
-	Mingmei Publishing, 2008.
-\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
-	Computer Music'', {\it Comtemporary Computer Music Society},
-	Vol.2 No.4, pp22-26, 2009.
-\end{thebibliography}
+\printbibliography
+
+% \bibliographystyle{plain}
+% \begin{thebibliography}{citations}
+% \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
+% 	Mingmei Publishing, 2008.
+% \bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+% 	Computer Music'', {\it Comtemporary Computer Music Society},
+% 	Vol.2 No.4, pp22-26, 2009.
+% \end{thebibliography}
 
 \section{Author's Profile}
 
@@ -205,14 +211,17 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 \section{For Count Number of Characters}
 
 
-\bibliographystyle{plain}
-\begin{thebibliography}{citations}
-\bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
-	Mingmei Publishing, 2008.
-\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
-	Computer Music'', {\it Comtemporary Computer Music Society},
-	Vol.2 No.4, pp22-26, 2009.
-\end{thebibliography}
+	
+\printbibliography
+
+% \bibliographystyle{plain}
+% \begin{thebibliography}{citations}
+% \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
+% 	Mingmei Publishing, 2008.
+% \bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+% 	Computer Music'', {\it Comtemporary Computer Music Society},
+% 	Vol.2 No.4, pp22-26, 2009.
+% \end{thebibliography}
 
 \section{Author's Profile}
 
