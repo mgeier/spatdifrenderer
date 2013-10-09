@@ -28,7 +28,7 @@
 % Two addresses
 % --------------
 \twoauthors
-  {Chikashi Miyama} {College of Music Cologne\\Studio for Elektronic Music \\ Unter Krahnenb?umen 87, K?ln, Germany\\ me@chikashi.net }
+  {Chikashi Miyama} {College of Music Cologne\\Studio for Electronic Music \\ Unter Krahnenb\"{a}umen 87, Cologne, Germany\\ me@chikashi.net }
   {Jan C. Schacher} {Zurich University of the Arts\\Institute for Computer Music and Sound Technology\\Baslerstrasse 30, Zurich, Switzerland\\jan.schacher@zhdk.ch}
 
 % Three addresses
@@ -116,44 +116,35 @@ score-example in XML / JSON -> turenas xml score
 
 format of SpatDIF `bundle'
 
-<<<<<<< Updated upstream
-=======
-\section{current activities} %assigned to Jasch/Trond/Chikashi
 
-
->>>>>>> Stashed changes
 \section{library details/structure} %assigned to Chikashi
 
 \subsection{Overview}
 
 Spatdiflib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
-
-- loading and storing scenes from/to XML, JSON or YMAL formatted string
-- addition, deletion, and modification of entities in SpatDIF scenes
-- addition, deletion, and modification of events and associate them to the existing entities in a scene
-- activation and deactiovation of extensions
-- answering queries about the data stored in a scene
-- realtime data handling from a remote host via OSC protocol
+\begin{itemize}
+\item loading and storing scenes from/to XML\footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013 }, JSON\footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013} or YMAL formatted string
+\item addition, deletion, and modification of entities in SpatDIF scenes
+\item addition, deletion, and modification of events and associate them to the existing entities in a scene
+\item activation and deactiovation of extensions
+\item answering queries about the data stored in a scene
+\item realtime data handling from a remote host via OSC protocol
+\end{itemize}
 
 In order to maintain platform independency and provide client applications with maximum flexibility, the library does not handle XML, JSON or YAML files directly. Instead, it interprets provideded XML, JSON or YAML formatted string.  SpatDIFLib does not has scheduler or timer, all these functionalities should be implemented in the client application. Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands to the library.  The client application should prepare the appropriate sockets for OSC communication.
 
-<<<<<<< Updated upstream
-2. C++ Class Structure
-=======
-
 \subsection{C++ Class Structure}
-
->>>>>>> Stashed changes
-
 Figure XXX shows simplified class hierarchy of the library. The following is the description of the most essential classes in the structure.
 
 \subsubsection{sdScene}
 
 sdScene maintains all data associated to a certain SpatDIF scene. This class offers clients the following three functionalities
 
-1. adding, removing and modifying entities in its scene
-2. activation and deactivation of the extensions
-3. editing meta data associated to the scene
+\begin{enumerate}
+\item adding, removing and modifying entities in its scene
+\item activation and deactivation of the extensions
+\item editing meta data associated to the scene
+\end{enumerate}
 
 Once the client activate an extension in a scene, sdScene automatically add extended functionality and storage to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionality and previously allocated storage of all existing sdEntities. Subsequently, all the extended data will be discarded.
 The only way to instantiate sdEntityCore for the clients is to invoke sdScene::addEntity member function. The instances created through this function will be registerd in an internal vector
@@ -172,32 +163,20 @@ This is a pure abstract class of extensions. The subclasses of this class. e.g. 
 The following example code shows how to load a XML formatted string to a sdScene and query a event stored in it.
 
 How to query.cpp
-<<<<<<< Updated upstream
 $\rightarrow$ turenas xml score C++ example
 
-
-4. Future plan
-=======
-
-
 \subsection{Future plan}
->>>>>>> Stashed changes
 
 The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to furhter improve flexibility and practicality.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under MIT or similar license.
 definition/features/tasks of the lib
 
-interfaces in/out $\rightarrow$ (native C/C++ / OSC)
-
-class structure
-
-fileparsing XML/JSON
-
-OSC 1.0
-
-how to query in 3 lines (C++ code snippet)
+%interfaces in/out $\rightarrow$ (native C/C++ / OSC)
+%class structure
+%fileparsing XML/JSON
+%OSC 1.0
+%how to query in 3 lines (C++ code snippet)
 
 \section{reference renderer }% Jasch
-
 
 ref openFrameworks
 ref libsndfile
@@ -217,8 +196,12 @@ or sockets / file-IO
 
 
 \section{Author's Profile}
+\subsection*{Chikashi Miyama}
+Chikashi Miyama is a composer, video artist, interface designer, performer, and author. He received a MA (Sonology/2004) from Kunitachi College of Music, Tokyo, Japan, a Nachdiplom (Komposition im Elektronischen Studio/2007) from Music academy of Basel, Switzerland, and a Ph.D (Composition/2011) from University at Buffalo, New york, USA. His compositions have received an ICMA award (2011/UK) from the International Computer Music Association, a second prize in SEAMUS commission competition (2010/St. Cloud, USA), a special prize in Destellos Competition (2009/Argentina), and a honorable mention in the Bourges Electroacoustic Music Competition (2002/France). Several works of him are included on the DVD of the Computer Music Journal Vol.28 by MIT press, and ICMC official CD/DVD(2005/2011). In 2011, he received a research grant from DAAD (German Academic Exchange Service) and worked as a visiting researcher at ZKM, Karlsruhe, Germany. He has taught computer music at  University at Buffalo, USA,  Music Academy Basel, and College of Arts Bern, Switzerland. He is currently teaching at College of Music and Dance, Cologne, Germany. 
 
-\subsection*{Author's Name}
+\subsection*{Jan C. Schacher}
+A doublebass-player, composer and digital artist, Jan Schacher is active in electronic and exploratory music, in jazz, contemporary music, performance and installation art as well as writing music for chamber-ensembles, theatre and film. His main focus is on works combining digital sound and images, abstract graphics and experimental video in the field of electro-acoustic music and in mixed-media projects for the stage and in installations. Jan Schacher has been invited as artist and lecturer to numerous cultural and academic institutions and has presented installations in galleries and performances in clubs and at festivals such as R?sonance Festival (Paris), Sonar Festival (Barcelona), Transmediale Festival (Berlin), the Holland Festival (Amsterdam) and many other venues throughout Europe, North America, Australia and Asia.
+
 
 \end{document}
 
@@ -291,22 +274,6 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 	Computer Music'', {\it Comtemporary Computer Music Society},
 	Vol.2 No.4, pp22-26, 2009.
 \end{thebibliography}
-
-\section{Author's Profile}
-\subsection*{Chikashi Miyama}
-
-\subsection*{Author's Name}
-
-Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. Author's Profile. Author's Profile. Author's Profile. Author's
-Profile. 
-
 
 
 \end{document}
