@@ -8,6 +8,9 @@
 \usepackage{mediabb}
 \usepackage{graphicx}
 
+\usepackage[]{biblatex}
+\addbibresource{SpatDIF.bib}
+
 % Title.
 % ------
 \title{Implementing the SpatDIF Library}
@@ -75,6 +78,18 @@ Here we have an abstract
 
 \section{Introduction}
 
+In this article we present the development of a tool for easy integration of SpatDIF into existing software.
+The concepts and guidelines are implemented in a C-Library and applied in an example surround-playback application.
+
+SpatDIF, the Spatial Sound Description Interchange Format, presents a structured approach for working with spatial sound information, addressing the different tasks involved in creating and performing spatial sound.
+
+The goal of SpatDIF is to simplify and enhance the methods of working with spatial sound content. 
+SpatDIF proposes a simple, minimal, and extensible format as well as best-practice implementations for storing and transmitting spatial sound scene descriptions. 
+It encourages portability and the exchange of compositions between venues with different surround sound infrastructures. 
+SpatDIF also fosters collaboration between artists such as composers, musicians, sound installation artists, and sound designers, as well as researchers in the fields of acoustics, musicology, sound engineering and virtual reality.
+
+SpatDIF is developed as a collaborative effort and has evolved over a number of years. 
+The community and all related information can be found at \url{www.spatdif.org}.
 
 \section{history of the project} %assigned to Jasch
 SpatDIF was coined in \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since at that time the available spatial rendering systems all used self-contained syntax and data-formats. 
@@ -87,7 +102,13 @@ In addition, many features necessary to make this lightweight standard functiona
 
 \section{conceptual explanation / structure} %assigned to Jasch/Trond/Nils
 
-what is SpatDIF?
+One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound might occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
+It formulates a concise semantic structure that is capable of carrying the necessary information, without being tied to a specific implementation, thought-model or technical method. 
+SpatDIF is a syntax rather than a programming interface or file-format and may be represented in any of the structured mark-up languages or message systems that are in use today or in the future. 
+It describes only the aspects required for the storage and transmission of \emph{spatial information}.
+A complete work typically contains additional dimensions that lie outside the scope of SpatDIF. 
+These are only addressed to the extent necessary for linking the elements to the descriptions of the spatial dimension (i.e. the Media extension).
+
 
 score-example in XML / JSON
 
@@ -129,14 +150,17 @@ or sockets / file-IO
 % the lib / actual implementation
 % demo
 
-\bibliographystyle{plain}
-\begin{thebibliography}{citations}
-\bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
-	Mingmei Publishing, 2008.
-\bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
-	Computer Music'', {\it Comtemporary Computer Music Society},
-	Vol.2 No.4, pp22-26, 2009.
-\end{thebibliography}
+
+\printbibliography
+
+% \bibliographystyle{plain}
+% \begin{thebibliography}{citations}
+% \bibitem{Author1:08} Henoheno Moheji {\it The Book of Computer Music},
+% 	Mingmei Publishing, 2008.
+% \bibitem{Author2:09} Harahoro　Hirehare ``The Abstract of The Book of
+% 	Computer Music'', {\it Comtemporary Computer Music Society},
+% 	Vol.2 No.4, pp22-26, 2009.
+% \end{thebibliography}
 
 \section{Author's Profile}
 
