@@ -119,25 +119,27 @@ format of SpatDIF `bundle'
 
 \section{library details/structure} %assigned to Chikashi
 
-\subsection{Overview}
-
-Spatdiflib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
+\subsection{Features}
+SpatdifLib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
 \begin{itemize}
-\item loading and storing scenes from/to XML\footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013 }, JSON\footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013} or YMAL formatted string
+\item loading and storing SpatDIF scenes from/to a XML, JSON formatted string.
 \item addition, deletion, and modification of entities in SpatDIF scenes
-\item addition, deletion, and modification of events and associate them to the existing entities in a scene
+\item addition, deletion, and modification of events and associate them to the existing entities in SpatDIF scenes
 \item activation and deactiovation of extensions
 \item answering queries about the data stored in a scene
 \item realtime data handling from a remote host via OSC protocol
 \end{itemize}
 
-In order to maintain platform independency and provide client applications with maximum flexibility, the library does not handle XML, JSON or YAML files directly. Instead, it interprets provideded XML, JSON or YAML formatted string.  SpatDIFLib does not has scheduler or timer, all these functionalities should be implemented in the client application. Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands to the library.  The client application should prepare the appropriate sockets for OSC communication.
+In order to maintain platform independency and provide clients with maximum flexibility, the library does not handle XML or JSON files directly. Instead, it interprets provideded XML, JSON or YAML formatted string, employing Mit Licensed parsers, TinyXML2 \footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson \footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
+
+  Schedulers or timers are not implemented in SpatDIF library; all these functionalities should be implemented in the client application. 
+  
+  Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands. The client application should prepare sockets for OSC communication.
 
 \subsection{C++ Class Structure}
-Figure XXX shows simplified class hierarchy of the library. The following is the description of the most essential classes in the structure.
+Figure XXX shows simplified class hierarchy of the library. 
 
 \subsubsection{sdScene}
-
 sdScene maintains all data associated to a certain SpatDIF scene. This class offers clients the following three functionalities
 
 \begin{enumerate}
@@ -146,9 +148,7 @@ sdScene maintains all data associated to a certain SpatDIF scene. This class off
 \item editing meta data associated to the scene
 \end{enumerate}
 
-Once the client activate an extension in a scene, sdScene automatically add extended functionality and storage to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionality and previously allocated storage of all existing sdEntities. Subsequently, all the extended data will be discarded.
-The only way to instantiate sdEntityCore for the clients is to invoke sdScene::addEntity member function. The instances created through this function will be registerd in an internal vector
-of sdScene and  can be reffered by name of the entity, employing sdEntity::getEntity member function. An instance of sdScene can be converted to XML, JSON, or YAML storable string, using sdSaver and vice versa using sdLoader.
+Once the client activates an extension in a scene, sdScene automatically add extended functionality and storage to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionality and previously allocated storage of all existing sdEntities. Subsequently, all the data associated to the extension will be discarded. 
 
 \subsubsection{sdLoader/sdSaver}
 These two classes provide several utility functions and enable clients to easily convert a XML, JSON, or YAML string to a sdScene and vice versa,
@@ -167,14 +167,7 @@ $\rightarrow$ turenas xml score C++ example
 
 \subsection{Future plan}
 
-The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to furhter improve flexibility and practicality.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under MIT or similar license.
-definition/features/tasks of the lib
-
-%interfaces in/out $\rightarrow$ (native C/C++ / OSC)
-%class structure
-%fileparsing XML/JSON
-%OSC 1.0
-%how to query in 3 lines (C++ code snippet)
+The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to further improve flexibility and practicality.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under the MIT or similar license.
 
 \section{reference renderer }% Jasch
 
