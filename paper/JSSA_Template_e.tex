@@ -2,10 +2,10 @@
 % By Daichi Ando
 % based on ICMC2005
 
-\documentclass{article}
+\documentclass[a4paper]{article}
 \renewcommand{\baselinestretch}{0.9}
 \usepackage{jssa_e,amsmath}
-\usepackage{mediabb}
+% \usepackage{mediabb}
 \usepackage{graphicx}
 
 \usepackage[]{biblatex}
@@ -16,7 +16,7 @@
 \title{Implementing the Spatial Sound Descriptor Interchange Format SpatDIF}
 
 % Paper Category
-\category{Short Paper}
+\category{Research Report}
 
 % Single address
 % To use with only one author or several with the same address
@@ -28,8 +28,8 @@
 % Two addresses
 % --------------
 \twoauthors
-  {Chikashi Miyama} {College of Music Cologne\\Studio for Electronic Music \\ Unter Krahnenb\"{a}umen 87, Cologne, Germany\\ me@chikashi.net }
-  {Jan C. Schacher} {Zurich University of the Arts\\Institute for Computer Music and Sound Technology\\Baslerstrasse 30, Zurich, Switzerland\\jan.schacher@zhdk.ch}
+  {Chikashi Miyama} {College of Music Cologne\\Studio for Electronic Music\\ me@chikashi.net }
+  {Jan C. Schacher} {Zurich University of the Arts\\Institute for Computer Music and Sound Technology \\ jan.schacher@zhdk.ch}
 
 % Three addresses
 % --------------
@@ -120,24 +120,32 @@ format of SpatDIF `bundle'
 \section{library details/structure} %assigned to Chikashi
 
 \subsection{Features}
-SpatdifLib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
+SpatDIFLib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
+
 \begin{itemize}
-\item loading and storing SpatDIF scenes from/to a XML, JSON formatted string.
-\item addition, deletion, and modification of entities in SpatDIF scenes
-\item addition, deletion, and modification of events and associate them to the existing entities in SpatDIF scenes
-\item activation and deactiovation of extensions
-\item answering queries about the data stored in a scene
-\item realtime data handling from a remote host via OSC protocol
+\item Loading and storing SpatDIF scenes from/to a XML, JSON, and YAML formatted string
+\item Addition, deletion, and modification of entities in SpatDIF scenes
+\item Addition, deletion, and modification of events
+\item Associating events with entities
+\item Activation and deactivation of extensions
+\item Answering queries in regard to entities and events in SpatDIF scenes
+\item Controlling data in SpatDIF Scenes via OSC Messages
 \end{itemize}
 
-In order to maintain platform independency and provide clients with maximum flexibility, the library does not handle XML or JSON files directly. Instead, it interprets provideded XML, JSON or YAML formatted string, employing Mit Licensed parsers, TinyXML2 \footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson \footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
-
-  Schedulers or timers are not implemented in SpatDIF library; all these functionalities should be implemented in the client application. 
+In order to maintain platform independency and to achieve maximum flexibility, the library does not handle files directly. Instead, it interprets XML, JSON or YAML formatted string, employing TinyXML-2 \footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson \footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
   
-  Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library simply interprets provided OSC string as commands. The client application should prepare sockets for OSC communication.
-
+  Though SpatDIFLib is controllable employing OSC formatted string, it does not handle network sockets directly for OSC communication; the library  interprets provided OSC string as commands. The client application should prepare sockets and threads for OSC communication. Likewise no scheduler or timer are implemented in the library. 
+  
 \subsection{C++ Class Structure}
-Figure XXX shows simplified class hierarchy of the library. 
+Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
+
+
+\begin{figure*}[t]
+\centerline{
+	\includegraphics[width= 17.5cm]{classes.pdf}}
+\caption{Class Structure}
+\label{fig:class_structure}
+\end{figure*}
 
 \subsubsection{sdScene}
 sdScene maintains all data associated to a certain SpatDIF scene. This class offers clients the following three functionalities
