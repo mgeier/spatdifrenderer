@@ -44,6 +44,7 @@ class spatdifApp : public ofBaseApp{
     
         bool haveScene;
         bool newFileLoaded;
+        bool playScene;
         
         ofEasyCam cam; // add mouse controls for camera movement
     
@@ -59,6 +60,7 @@ class spatdifApp : public ofBaseApp{
         int     sampleRate;
         float 	volume;
 
-
+    
+        ofTrueTypeFont TTF;
     
 };

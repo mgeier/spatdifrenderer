@@ -2,12 +2,13 @@
 
 //--------------------------------------------------------------
 void spatdifApp::setup(){
-    
+    ofSetVerticalSync(true);
     ofSetEscapeQuitsApp(false);
     ofSetLogLevel(OF_LOG_VERBOSE);
     ofSetFrameRate(30);    
     logoImg.loadImage("SpatDIF_logo.png");
-    ofSetVerticalSync(true);
+    TTF.loadFont("lucidagrande.ttf", 8, 1, 1, 0);
+
 
     ofEnableDepthTest();
     cam.setPosition(0.2, 0.4, 10);
@@ -29,7 +30,7 @@ void spatdifApp::setup(){
 //  const char	*infilename = "../../../data/pana_03.aif";
 //  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiKonx.aiff";
     
-    if( sndfileObject->loadSoundFile(infilename) ){
+    if( sndfileObject->loadSoundFile(infilename) ) {
         sndfileObject->looped = true;
         sndfileObject->state = 1;
     }
@@ -41,12 +42,7 @@ void spatdifApp::setup(){
 	sampleRate 			= 44100;
 	volume				= 0.707107f;
     
-    //	lAudio.assign(bufferSize, 0.0);
-    //	rAudio.assign(bufferSize, 0.0);
-	
 	for(int i=0; i < 2;i++) {
-        
-		audioSignals[i].assign(bufferSize, 0.0);
 		audioAmplitudes[i] = 1.0f;
 		
 		float a = i * ( 2*PI / 8 ) - (0.5 * PI)-(0.125 * PI);
@@ -72,21 +68,14 @@ void spatdifApp::update(){
 void spatdifApp::draw(){
     
     ofBackground(255, 255, 255, 255);
-    
-    ofFill();
-    ofSetColor(232);
-    ofRect(0, 0, ofGetWidth(), 40);
-    ofEnableAlphaBlending();
+    ofEnableAntiAliasing();
+    ofEnableDepthTest();
 
     
-    ofSetColor(191);
-    
-    ofNoFill();
-    ofRect(10, 10, 100, 20);
-    
-//    ofVec3f target;
-//    target.set(0.0f, 0.0f, 0.0f);
-//    cam.setTarget(target);
+// start of camera transform
+    //    ofVec3f target;
+    //    target.set(0.0f, 0.0f, 0.0f);
+    //    cam.setTarget(target);
     cam.setDistance(22);
     cam.begin();
     ofRotateY(0);
@@ -95,7 +84,7 @@ void spatdifApp::draw(){
     ofSetLineWidth(1.0);
     
 	ofNoFill();
-    ofSetColor(0,0,0, 16);
+    ofSetColor(0, 0, 0, 16);
     ofRect(-10, -10, 0, 20, 20);
     float size = 10;
     float division = 20;
@@ -128,7 +117,7 @@ void spatdifApp::draw(){
     
 
     
-    if(haveScene){
+    if(haveScene) {
         ofScale(1.0, 1.0, 1.0);
         ofSetColor(255, 127, 0, 255);
         ofFill();
@@ -163,10 +152,30 @@ void spatdifApp::draw(){
         }
         
     }
-    
-    
     cam.end();
-
+    // end of camera transform
+    ofDisableAntiAliasing();
+    ofDisableDepthTest();
+    // the GUI
+    ofFill();
+    ofSetColor(242);
+    ofRect(0, 0, ofGetWidth(), 40);
+    
+    ofSetLineWidth(0.5);
+    ofSetColor(0, 0, 0, 63);
+    ofNoFill();
+    ofRect(5, 5, 60, 16);
+    ofSetColor(0, 0, 0, 63);
+    TTF.drawString("open file", 9, 18);
+    
+    if(!playScene){
+        ofLine(80, 5, 95, 13);
+        ofLine(80, 21, 95, 13);
+        ofLine(80, 5, 80, 21);
+}else{
+    
+    }
+    
 }
 
 void spatdifApp::keyPressed  (int key){
@@ -291,9 +300,11 @@ void spatdifApp::audioOut(float * output, int bufferSize, int nChannels){
     if(sndfileObject->state == 1) {
         sndfileObject->getNextFrame(sndfileObject->infile, buffer, bufferSize);
     }
+    
+    // get the  samples into the local buffer
 
+    
     for (int i = 0; i < bufferSize; i++) {
-        
         if(sndfileObject->state == 1){
             if(sndfileObject->sfinfo.channels == 2) {
                 sample[0] = buffer[i * sndfileObject->sfinfo.channels];
@@ -302,10 +313,12 @@ void spatdifApp::audioOut(float * output, int bufferSize, int nChannels){
                 sample[0] = buffer[i * sndfileObject->sfinfo.channels];
                 sample[1] = buffer[i * sndfileObject->sfinfo.channels]; 
             }
+            
         }else{
             sample[0] = sample[1] = 0.0;
         }
         
+    // fill the local buffer into the output stream
         for(int j = 0; j < nChannels; j++) {
             output[i * nChannels + j] = sample[j] * volume * audioAmplitudes[j];
         }
