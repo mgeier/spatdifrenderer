@@ -132,13 +132,12 @@ SpatDIFLib is an open source C/C++ multi-platform library, that offers the follo
 \item Controlling data in SpatDIF Scenes via OSC Messages
 \end{itemize}
 
-In order to maintain platform independency and to achieve maximum flexibility, the library does not handle files directly. Instead, it interprets XML, JSON or YAML formatted string, employing TinyXML-2 \footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson \footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
+
   
-  Though SpatDIFLib can be controlled by OSC formatted strings, it does not handle network sockets directly for the OSC communication; the library interprets given OSC strings as commands. The client application should prepare sockets and threads for OSC communication. Likewise no scheduler or timer are implemented in the library. 
+Though SpatDIFLib can be controlled by OSC formatted strings, the library does not handle network sockets directly for the OSC communication; the library interprets given OSC strings as commands. The client application should prepare sockets and threads for OSC communication. Likewise no scheduler or timer are implemented in the library. 
   
 \subsection{C++ Class Structure}
 Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
-
 
 \begin{figure*}[t]
 \centerline{
@@ -148,34 +147,47 @@ Figure \ref{fig:class_structure} shows simplified class hierarchy of the library
 \end{figure*}
 
 \subsubsection{sdScene}
-sdScene maintains all data associated to a certain SpatDIF scene. This class offers clients the following three functionalities
+sdScene maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
 
 \begin{enumerate}
-\item adding, removing and modifying entities in its scene
-\item activation and deactivation of the extensions
-\item editing meta data associated to the scene
+\item Addition, deletion and modification entities in its scene
+\item Addition and modification of the meta data associated to its scene
+\item Activation and deactivation of the extensions
 \end{enumerate}
 
-Once the client activates an extension in a scene, sdScene automatically add extended functionality and storage to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionality and previously allocated storage of all existing sdEntities. Subsequently, all the data associated to the extension will be discarded. 
+Once the client activates an extension in a scene, sdScene automatically adds extended functionalities and allocates extra buffers to all existing and newly created instances of sdEntityCore. By the deactivation of an extension, sdScene removes all extended functionalities and previously allocated buffers of all existing sdEntities. Subsequently, all data stored in the extension buffers are discarded.
 
 \subsubsection{sdLoader/sdSaver}
-These two classes provide several utility functions and enable clients to easily convert a XML, JSON, or YAML string to a sdScene and vice versa,
+These two classes provide several utility functions and enable clients to create an instance of sdScene from a XML, JSON, or YAML string and vice versa. In order to maintain platform independency and to achieve maximum flexibility, the library does not handle files directly; The client is responsible for the file management. 
+
+These functions utilize two external libraries, TinyXML-2 \footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson \footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
+
+\subsubsection{sdEvent}
+This is a pure abstract class of event, that maintains following three data.
+
+\begin{enumerate}
+\item time - absolute time of the event
+\item descriptor - type of event
+\item value - actual data
+\end{enumerate}
+
+\subsubsection{sdEntity}
+This is a pure abstract class of entity in SpatDIF scene. All basic functionalities, such as addition, deletion, and modification of events are implemented or declared as pure virtual functions.
 
 \subsubsection{sdEntityCore}
-An instance of sdEntityCore maintains events with SpatDIF core descriptors and keep a vector to hold instances of SpatDIF extensions. This class is also responsible for answering query from the client about events. For example, if a client asks an entity a value of a certain descriptor at a specific time, the sdEntity returns value to the client. The client is able to request multiple events within a certain time frame and filter events by descriptor. If the client request values of extended desciriptors, the sdEntityCore forwards the query to the attached extension.
+An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to hold instances of SpatDIF extensions. This class is also responsible for answering queries from the client conceding its events. For example, if a client asks an instance of sdEntityCore a value of a certain descriptor at a specific time, the sdEntity returns value to the client. The client is able to ask for multiple events within a certain time frame and filter events by descriptor. If the client requests values of extended desciriptors, the instance of sdEntityCore forwards the query to the attached extension.
 
 \subsubsection{sdEntityExtension}
-This is a pure abstract class of extensions. The subclasses of this class. e.g. sdEntityExtensionMedia handle the events with extended descriptors. If the cleint activates an extension in a scene, all existing sdEntityCore create an instance of designated subclass of sdEntityExtension and register it to the internal vector.
+This is a pure abstract class of extensions. The descendants of this class. e.g. sdEntityExtensionMedia handles the events with extended descriptors. If the client activates an extension in a scene, all existing instances of sdEntityCore create an instance of the designated subclass of sdEntityExtension and register it to their internal vector.
 
 \subsection{Simple Example}
 The following example code shows how to load a XML formatted string to a sdScene and query a event stored in it.
-
-How to query.cpp
-$\rightarrow$ turenas xml score C++ example
+----
+----
 
 \subsection{Future plan}
 
-The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to further improve flexibility and practicality.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under the MIT or similar license.
+The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and currently examined against SpatDIFRenderer, in order to further improve its performance.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and C interface will be added in the late 2014. The library will be completed by the end of 2014 and released under the MIT or similar license.
 
 \section{reference renderer }% Jasch
 
