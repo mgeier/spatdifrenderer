@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30384DB6180436F100F8C962 /* ofxSndfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30384DB1180436F100F8C962 /* ofxSndfile.cpp */; };
-		306D096717F56AFB0026A909 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D096317F56AFB0026A909 /* libspatdif.dylib */; };
-		306D096817F56AFB0026A909 /* ofxSpatDIF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D096517F56AFB0026A909 /* ofxSpatDIF.cpp */; };
+		301CA19D1811827C008C43FB /* libsndfile.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9ECB1811827B008C43FB /* libsndfile.1.dylib */; };
+		301CA19E1811827C008C43FB /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9ECC1811827B008C43FB /* libsndfile.a */; };
+		301CA19F1811827C008C43FB /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9ECD1811827B008C43FB /* libsndfile.dylib */; };
+		301CA1A01811827C008C43FB /* ofxSndfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 301C9ECF1811827B008C43FB /* ofxSndfile.cpp */; };
+		301CA1A11811827C008C43FB /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9EE01811827B008C43FB /* libspatdif.dylib */; };
+		301CA1A21811827C008C43FB /* ofxSpatDIF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 301C9EE21811827B008C43FB /* ofxSpatDIF.cpp */; };
 		3071F84917FB687900886E7E /* spatdifRenderEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3071F84817FB687900886E7E /* spatdifRenderEngine.cpp */; };
-		3096860A18056627008C291C /* libspatdif.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 306D096317F56AFB0026A909 /* libspatdif.dylib */; };
-		3096860D18068B40008C291C /* libsndfile.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3096860C18068B40008C291C /* libsndfile.1.dylib */; };
-		3096860E18068B56008C291C /* libsndfile.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3096860C18068B40008C291C /* libsndfile.1.dylib */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -59,8 +59,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				3096860A18056627008C291C /* libspatdif.dylib in CopyFiles */,
-				3096860E18068B56008C291C /* libsndfile.1.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,27 +75,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		30384DA7180436F100F8C962 /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
-		30384DA8180436F100F8C962 /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
-		30384DB1180436F100F8C962 /* ofxSndfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSndfile.cpp; sourceTree = "<group>"; };
-		30384DB2180436F100F8C962 /* ofxSndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSndfile.h; sourceTree = "<group>"; };
-		306D095717F56AFB0026A909 /* sdConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdConst.h; sourceTree = "<group>"; };
-		306D095817F56AFB0026A909 /* sdDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdDate.h; sourceTree = "<group>"; };
-		306D095917F56AFB0026A909 /* sdEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntity.h; sourceTree = "<group>"; };
-		306D095A17F56AFB0026A909 /* sdEntityCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityCore.h; sourceTree = "<group>"; };
-		306D095B17F56AFB0026A909 /* sdEntityExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtension.h; sourceTree = "<group>"; };
-		306D095C17F56AFB0026A909 /* sdEntityExtensionMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtensionMedia.h; sourceTree = "<group>"; };
-		306D095D17F56AFB0026A909 /* sdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdInfo.h; sourceTree = "<group>"; };
-		306D095E17F56AFB0026A909 /* sdLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdLoader.h; sourceTree = "<group>"; };
-		306D095F17F56AFB0026A909 /* sdOSCResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdOSCResponder.h; sourceTree = "<group>"; };
-		306D096017F56AFB0026A909 /* sdSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdSaver.h; sourceTree = "<group>"; };
-		306D096117F56AFB0026A909 /* sdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdScene.h; sourceTree = "<group>"; };
-		306D096317F56AFB0026A909 /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libspatdif.dylib; sourceTree = "<group>"; };
-		306D096517F56AFB0026A909 /* ofxSpatDIF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSpatDIF.cpp; sourceTree = "<group>"; };
-		306D096617F56AFB0026A909 /* ofxSpatDIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpatDIF.h; sourceTree = "<group>"; };
+		301C9EC81811827B008C43FB /* sndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sndfile.h; sourceTree = "<group>"; };
+		301C9EC91811827B008C43FB /* sndfile.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sndfile.hh; sourceTree = "<group>"; };
+		301C9ECB1811827B008C43FB /* libsndfile.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.1.dylib; sourceTree = "<group>"; };
+		301C9ECC1811827B008C43FB /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsndfile.a; sourceTree = "<group>"; };
+		301C9ECD1811827B008C43FB /* libsndfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.dylib; sourceTree = "<group>"; };
+		301C9ECF1811827B008C43FB /* ofxSndfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSndfile.cpp; sourceTree = "<group>"; };
+		301C9ED01811827B008C43FB /* ofxSndfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSndfile.h; sourceTree = "<group>"; };
+		301C9ED41811827B008C43FB /* sdConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdConst.h; sourceTree = "<group>"; };
+		301C9ED51811827B008C43FB /* sdDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdDate.h; sourceTree = "<group>"; };
+		301C9ED61811827B008C43FB /* sdEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntity.h; sourceTree = "<group>"; };
+		301C9ED71811827B008C43FB /* sdEntityCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityCore.h; sourceTree = "<group>"; };
+		301C9ED81811827B008C43FB /* sdEntityExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtension.h; sourceTree = "<group>"; };
+		301C9ED91811827B008C43FB /* sdEntityExtensionMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtensionMedia.h; sourceTree = "<group>"; };
+		301C9EDA1811827B008C43FB /* sdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdInfo.h; sourceTree = "<group>"; };
+		301C9EDB1811827B008C43FB /* sdLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdLoader.h; sourceTree = "<group>"; };
+		301C9EDC1811827B008C43FB /* sdOSCResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdOSCResponder.h; sourceTree = "<group>"; };
+		301C9EDD1811827B008C43FB /* sdSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdSaver.h; sourceTree = "<group>"; };
+		301C9EDE1811827B008C43FB /* sdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdScene.h; sourceTree = "<group>"; };
+		301C9EE01811827B008C43FB /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libspatdif.dylib; sourceTree = "<group>"; };
+		301C9EE21811827B008C43FB /* ofxSpatDIF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSpatDIF.cpp; sourceTree = "<group>"; };
+		301C9EE31811827B008C43FB /* ofxSpatDIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpatDIF.h; sourceTree = "<group>"; };
 		3071F84717FB687900886E7E /* spatdifRenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatdifRenderEngine.h; sourceTree = "<group>"; };
 		3071F84817FB687900886E7E /* spatdifRenderEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatdifRenderEngine.cpp; sourceTree = "<group>"; };
-		3096860C18068B40008C291C /* libsndfile.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsndfile.1.dylib; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -144,109 +144,111 @@
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
-				306D096717F56AFB0026A909 /* libspatdif.dylib in Frameworks */,
-				3096860D18068B40008C291C /* libsndfile.1.dylib in Frameworks */,
+				301CA19D1811827C008C43FB /* libsndfile.1.dylib in Frameworks */,
+				301CA19E1811827C008C43FB /* libsndfile.a in Frameworks */,
+				301CA19F1811827C008C43FB /* libsndfile.dylib in Frameworks */,
+				301CA1A11811827C008C43FB /* libspatdif.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		30384DA4180436F100F8C962 /* ofxSndfile */ = {
+		301C986818118277008C43FB /* ofxSndfile */ = {
 			isa = PBXGroup;
 			children = (
-				30384DA5180436F100F8C962 /* libs */,
-				30384DAC180436F100F8C962 /* src */,
+				301C9EC61811827B008C43FB /* libs */,
+				301C9ECE1811827B008C43FB /* src */,
 			);
-			name = ofxSndfile;
-			path = ../../../addons/ofxSndfile;
+			path = ofxSndfile;
 			sourceTree = "<group>";
 		};
-		30384DA5180436F100F8C962 /* libs */ = {
+		301C9EC61811827B008C43FB /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				30384DA6180436F100F8C962 /* include */,
-				30384DA9180436F100F8C962 /* lib */,
+				301C9EC71811827B008C43FB /* include */,
+				301C9ECA1811827B008C43FB /* lib */,
 			);
 			path = libs;
 			sourceTree = "<group>";
 		};
-		30384DA6180436F100F8C962 /* include */ = {
+		301C9EC71811827B008C43FB /* include */ = {
 			isa = PBXGroup;
 			children = (
-				30384DA7180436F100F8C962 /* sndfile.h */,
-				30384DA8180436F100F8C962 /* sndfile.hh */,
+				301C9EC81811827B008C43FB /* sndfile.h */,
+				301C9EC91811827B008C43FB /* sndfile.hh */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		30384DA9180436F100F8C962 /* lib */ = {
+		301C9ECA1811827B008C43FB /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				3096860C18068B40008C291C /* libsndfile.1.dylib */,
+				301C9ECB1811827B008C43FB /* libsndfile.1.dylib */,
+				301C9ECC1811827B008C43FB /* libsndfile.a */,
+				301C9ECD1811827B008C43FB /* libsndfile.dylib */,
 			);
 			path = lib;
 			sourceTree = "<group>";
 		};
-		30384DAC180436F100F8C962 /* src */ = {
+		301C9ECE1811827B008C43FB /* src */ = {
 			isa = PBXGroup;
 			children = (
-				30384DB1180436F100F8C962 /* ofxSndfile.cpp */,
-				30384DB2180436F100F8C962 /* ofxSndfile.h */,
+				301C9ECF1811827B008C43FB /* ofxSndfile.cpp */,
+				301C9ED01811827B008C43FB /* ofxSndfile.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		306D095417F56AFB0026A909 /* ofxSpatDIF */ = {
+		301C9ED11811827B008C43FB /* ofxSpatDIF */ = {
 			isa = PBXGroup;
 			children = (
-				306D095517F56AFB0026A909 /* libs */,
-				306D096417F56AFB0026A909 /* src */,
+				301C9ED21811827B008C43FB /* libs */,
+				301C9EE11811827B008C43FB /* src */,
 			);
-			name = ofxSpatDIF;
-			path = ../../../addons/ofxSpatDIF;
+			path = ofxSpatDIF;
 			sourceTree = "<group>";
 		};
-		306D095517F56AFB0026A909 /* libs */ = {
+		301C9ED21811827B008C43FB /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				306D095617F56AFB0026A909 /* include */,
-				306D096217F56AFB0026A909 /* lib */,
+				301C9ED31811827B008C43FB /* include */,
+				301C9EDF1811827B008C43FB /* lib */,
 			);
 			path = libs;
 			sourceTree = "<group>";
 		};
-		306D095617F56AFB0026A909 /* include */ = {
+		301C9ED31811827B008C43FB /* include */ = {
 			isa = PBXGroup;
 			children = (
-				306D095717F56AFB0026A909 /* sdConst.h */,
-				306D095817F56AFB0026A909 /* sdDate.h */,
-				306D095917F56AFB0026A909 /* sdEntity.h */,
-				306D095A17F56AFB0026A909 /* sdEntityCore.h */,
-				306D095B17F56AFB0026A909 /* sdEntityExtension.h */,
-				306D095C17F56AFB0026A909 /* sdEntityExtensionMedia.h */,
-				306D095D17F56AFB0026A909 /* sdInfo.h */,
-				306D095E17F56AFB0026A909 /* sdLoader.h */,
-				306D095F17F56AFB0026A909 /* sdOSCResponder.h */,
-				306D096017F56AFB0026A909 /* sdSaver.h */,
-				306D096117F56AFB0026A909 /* sdScene.h */,
+				301C9ED41811827B008C43FB /* sdConst.h */,
+				301C9ED51811827B008C43FB /* sdDate.h */,
+				301C9ED61811827B008C43FB /* sdEntity.h */,
+				301C9ED71811827B008C43FB /* sdEntityCore.h */,
+				301C9ED81811827B008C43FB /* sdEntityExtension.h */,
+				301C9ED91811827B008C43FB /* sdEntityExtensionMedia.h */,
+				301C9EDA1811827B008C43FB /* sdInfo.h */,
+				301C9EDB1811827B008C43FB /* sdLoader.h */,
+				301C9EDC1811827B008C43FB /* sdOSCResponder.h */,
+				301C9EDD1811827B008C43FB /* sdSaver.h */,
+				301C9EDE1811827B008C43FB /* sdScene.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		306D096217F56AFB0026A909 /* lib */ = {
+		301C9EDF1811827B008C43FB /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				306D096317F56AFB0026A909 /* libspatdif.dylib */,
+				301C9EE01811827B008C43FB /* libspatdif.dylib */,
 			);
 			path = lib;
 			sourceTree = "<group>";
 		};
-		306D096417F56AFB0026A909 /* src */ = {
+		301C9EE11811827B008C43FB /* src */ = {
 			isa = PBXGroup;
 			children = (
-				306D096517F56AFB0026A909 /* ofxSpatDIF.cpp */,
-				306D096617F56AFB0026A909 /* ofxSpatDIF.h */,
+				301C9EE21811827B008C43FB /* ofxSpatDIF.cpp */,
+				301C9EE31811827B008C43FB /* ofxSpatDIF.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -254,8 +256,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				30384DA4180436F100F8C962 /* ofxSndfile */,
-				306D095417F56AFB0026A909 /* ofxSpatDIF */,
+				301C986818118277008C43FB /* ofxSndfile */,
+				301C9ED11811827B008C43FB /* ofxSpatDIF */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -428,9 +430,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				306D096817F56AFB0026A909 /* ofxSpatDIF.cpp in Sources */,
 				3071F84917FB687900886E7E /* spatdifRenderEngine.cpp in Sources */,
-				30384DB6180436F100F8C962 /* ofxSndfile.cpp in Sources */,
+				301CA1A01811827C008C43FB /* ofxSndfile.cpp in Sources */,
+				301CA1A21811827C008C43FB /* ofxSpatDIF.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,14 +470,14 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					"../../../addons/ofxSndfile/libs/**",
-					"../../../addons/ofxSndfile/src/**",
-					"../../../addons/ofxSpatDIF/libs/**",
-					"../../../addons/ofxSpatDIF/src/**",
+					"ofxSndfile/libs/**",
+					"ofxSndfile/src/**",
+					"ofxSpatDIF/libs/**",
+					"ofxSpatDIF/src/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../addons/ofxSndfile/libs/lib/**",
-					"../../../addons/ofxSpatDIF/libs/lib/**",
+					"ofxSndfile/libs/lib/**",
+					"ofxSpatDIF/libs/lib/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -512,14 +514,14 @@
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
-					"../../../addons/ofxSndfile/libs/**",
-					"../../../addons/ofxSndfile/src/**",
-					"../../../addons/ofxSpatDIF/libs/**",
-					"../../../addons/ofxSpatDIF/src/**",
+					"ofxSndfile/libs/**",
+					"ofxSndfile/src/**",
+					"ofxSpatDIF/libs/**",
+					"ofxSpatDIF/src/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../addons/ofxSndfile/libs/lib/**",
-					"../../../addons/ofxSpatDIF/libs/lib/**",
+					"ofxSndfile/libs/lib/**",
+					"ofxSpatDIF/libs/lib/**",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -546,6 +548,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"ofxSndfile/libs/**",
+					"ofxSndfile/src/**",
+					"ofxSpatDIF/libs/**",
+					"ofxSpatDIF/src/**",
+				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
@@ -615,6 +624,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 					"\"$(SRCROOT)/../../../addons/ofxSpatDIF/libs/lib\"",
 					"\"$(SRCROOT)/../../../addons/ofxSndfile/libs/lib\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/build\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/G72x/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/GSM610/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/G72x/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/GSM610/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/libs/lib\"",
+					"\"$(SRCROOT)/ofxSpatDIF/libs/lib\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -636,6 +654,13 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					"ofxSndfile/libs/**",
+					"ofxSndfile/src/**",
+					"ofxSpatDIF/libs/**",
+					"ofxSpatDIF/src/**",
+				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
@@ -705,6 +730,15 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"\"$(SRCROOT)/../../../addons/ofxSpatDIF/libs/lib\"",
 					"\"$(SRCROOT)/../../../addons/ofxSndfile/libs/lib\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/build\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/G72x/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/GSM610/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/G72x/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/GSM610/.libs\"",
+					"\"$(SRCROOT)/ofxSndfile/libs/lib\"",
+					"\"$(SRCROOT)/ofxSpatDIF/libs/lib\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;

@@ -1,0 +1,138 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 1.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{2008ICMCpanel}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kendall}{K.}%
+     {Gary~S.}{G.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Geier}{G.}%
+     {Matthias}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{spatialisation, SpatDIF, Jamoma}
+  \strng{namehash}{KGSPNGM1}
+  \strng{fullhash}{KGSPNGM1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proc. of the International Computer Music Conference}
+  \field{pages}{295\bibrangedash 296}
+  \field{title}{Towards an Interchange Format for Spatial Audio Scenes}
+  \list{location}{1}{%
+    {Belfast, UK}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{Peters:2008spatdif}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{spatialisation, SpatDIF, Jamoma}
+  \strng{namehash}{PN1}
+  \strng{fullhash}{PN1}
+  \field{sortinit}{P}
+  \field{booktitle}{Proc. of the International Computer Music Conference}
+  \field{pages}{299\bibrangedash 300}
+  \field{title}{{Proposing SpatDIF - The Spatial Sound Description Interchange
+  Format}}
+  \list{location}{1}{%
+    {Belfast, UK}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{peters_caa07}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ferguson}{F.}%
+     {Sean}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McAdams}{M.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PNFSMS1}
+  \strng{fullhash}{PNFSMS1}
+  \field{sortinit}{P}
+  \field{number}{3}
+  \field{pages}{64\bibrangedash 65}
+  \field{title}{{Towards a Spatial Sound Description Interchange Format
+  (SpatDIF)}}
+  \field{volume}{35}
+  \field{journaltitle}{Canadian Acoustics}
+  \field{year}{2007}
+\endentry
+
+\entry{scheirer1999audiobifs}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Scheirer}{S.}%
+     {E.D.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vaananen}{V.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Huopaniemi}{H.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE}%
+  }
+  \strng{namehash}{SEVRHJ1}
+  \strng{fullhash}{SEVRHJ1}
+  \field{sortinit}{S}
+  \field{number}{3}
+  \field{pages}{237\bibrangedash 250}
+  \field{title}{{AudioBIFS}: Describing audio scenes with the {MPEG-4}
+  multimedia standard}
+  \field{volume}{1}
+  \field{journaltitle}{IEEE Transactions on Multimedia}
+  \field{year}{1999}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
