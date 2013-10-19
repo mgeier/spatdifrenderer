@@ -41,16 +41,16 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>JSSA_spatif_article.aux</file>
-      <file>JSSA_spatif_article-blx.bib</file>
+      <file>JSSA_spatif_article.bcf</file>
     </provides>
     <requires type="dynamic">
       <file>JSSA_spatif_article.bbl</file>
     </requires>
     <requires type="static">
+      <file>blx-dm.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
       <file>numeric.bbx</file>
@@ -60,15 +60,14 @@
       <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
+  <external package="biblatex" priority="5" active="1">
+    <generic>biber</generic>
     <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
+      <binary>biber</binary>
       <infile>JSSA_spatif_article</infile>
     </cmdline>
     <input>
-      <file>JSSA_spatif_article.aux</file>
+      <file>JSSA_spatif_article.bcf</file>
     </input>
     <output>
       <file>JSSA_spatif_article.bbl</file>
@@ -77,14 +76,10 @@
       <file>JSSA_spatif_article.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>JSSA_spatif_article.aux</file>
-      <file>JSSA_spatif_article-blx.bib</file>
+      <file>JSSA_spatif_article.bcf</file>
     </requires>
     <requires type="editable">
       <file>SpatDIF.bib</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>

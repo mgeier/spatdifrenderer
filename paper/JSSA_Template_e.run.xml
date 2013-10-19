@@ -44,13 +44,13 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>JSSA_Template_e.aux</file>
-      <file>JSSA_Template_e-blx.bib</file>
+      <file>JSSA_Template_e.bcf</file>
     </provides>
     <requires type="dynamic">
       <file>JSSA_Template_e.bbl</file>
     </requires>
     <requires type="static">
+      <file>blx-dm.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
       <file>numeric.bbx</file>
@@ -61,14 +61,13 @@
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
-    <generic>bibtex</generic>
+    <generic>biber</generic>
     <cmdline>
-      <binary>bibtex</binary>
-      <option>-min-crossrefs 2</option>
+      <binary>biber</binary>
       <infile>JSSA_Template_e</infile>
     </cmdline>
     <input>
-      <file>JSSA_Template_e.aux</file>
+      <file>JSSA_Template_e.bcf</file>
     </input>
     <output>
       <file>JSSA_Template_e.bbl</file>
@@ -77,14 +76,10 @@
       <file>JSSA_Template_e.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>JSSA_Template_e.aux</file>
-      <file>JSSA_Template_e-blx.bib</file>
+      <file>JSSA_Template_e.bcf</file>
     </requires>
     <requires type="editable">
       <file>SpatDIF.bib</file>
-    </requires>
-    <requires type="static">
-      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>

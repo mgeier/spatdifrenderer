@@ -7,9 +7,10 @@
 \usepackage{jssa_e,amsmath}
 % \usepackage{mediabb}
 \usepackage{graphicx}
-
+\usepackage{color}
 \usepackage[]{biblatex}
 \addbibresource{SpatDIF.bib}
+
 
 % Title.
 % ------
@@ -43,6 +44,9 @@
 %%% -- Page Number Designation
 % Ignore when submitting
 
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\todo}[1]{\noindent\textcolor{red}{[\underline{TODO}: #1]}}
+
 \makeatletter 
 \def\ps@myheadings{% 
 \let\ps@jpl@in\ps@plain% 
@@ -59,7 +63,7 @@
 %%% 
 %%% Designation of starting page number
 % Ignore when submitting
-\setcounter{page}{17} 
+\setcounter{page}{1} 
 \pagestyle{myheadings} 
 %%%
 % Designation of header
@@ -93,13 +97,13 @@ SpatDIF also fosters collaboration between artists such as composers, musicians,
 SpatDIF is developed as a collaborative effort and has evolved over a number of years. 
 The community and all related information can be found at \url{www.spatdif.org}.
 
-\section{history of the project} %assigned to Jasch
-SpatDIF was coined in \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since at that time the available spatial rendering systems all used self-contained syntax and data-formats. 
+\section{History of the project} %assigned to Jasch
+SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since at that time the available spatial rendering systems all used self-contained syntax and data-formats. 
 Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has since been extended, refined, and consolidated. 
 
-After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC 2011 in Huddersfield in August 2011, at a workshop at the TU-Berlin in September 2011 and in its current form in a Computer Music Journal article in 2013 \cite{}
+After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011, at a workshop at the TU-Berlin in September 2011.
 The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification \cite{scheirer1999audiobifs}.  
-In addition, many features necessary to make this lightweight standard functional were put forward, for example the capability of dealing with temporal interpolation of scene descriptors. 
+In addition, many features necessary to make this lightweight standard functional were put forward, for example the capability of dealing with temporal interpolation of scene descriptors as described in the 2013 Computer Music Journal article \cite{Peters:2013SpatDifCMJ}.
 
 \section{conceptual explanation / structure} %assigned to Jasch/Trond/Nils
 
@@ -142,7 +146,7 @@ Figure \ref{fig:class_structure} shows simplified class hierarchy of the library
 \begin{figure*}[t]
 \centerline{
 	\includegraphics[width= 17.5cm]{classes.pdf}}
-\caption{Class Structure}
+\caption{Class Structure \todo{the text in the Class Structure looks pixely, can we save it a vector graphics?}}
 \label{fig:class_structure}
 \end{figure*}
 
