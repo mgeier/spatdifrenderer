@@ -6,12 +6,19 @@
 			<date>2013-10-17</date>
 			<author>jasch</author>
 		</info>
+		<extensions>media</extensions>
 		<ordering>time</ordering>
 	</meta>
 	<time>0.0</time>
 		<source>
 			<name>insect</name>
 			<position>0.0 8.0 0.0</position>
+			<media>
+				<id>suond1</id>
+			   <type>file</type>
+			   <location>../audio/insect_simulated.aiff</location>
+			   <channel>1</channel> 
+			</media>
 		</source>
 	<time>0.078</time>
 		<source>

@@ -24,11 +24,10 @@ void spatdifApp::setup(){
     ofBackground(255,255,255);
     
 	ofSetFrameRate(60);
-    const char	*infilename = "../../../data/insect_simulated.aiff";
-
+//    const char	*infilename = "../../../data/insect_simulated.aiff";
 //	const char	*infilename = "../../../data/beating_loop.aiff";
 //  const char	*infilename = "../../../data/pana_03.aif";
-//  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiKonx.aiff";
+  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiKonx.aiff";
     
     if( sndfileObject->loadSoundFile(infilename) ) {
         sndfileObject->looped = true;
@@ -303,7 +302,6 @@ void spatdifApp::audioOut(float * output, int bufferSize, int nChannels){
     
     // get the  samples into the local buffer
 
-    
     for (int i = 0; i < bufferSize; i++) {
         if(sndfileObject->state == 1){
             if(sndfileObject->sfinfo.channels == 2) {
