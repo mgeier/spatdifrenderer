@@ -2,14 +2,16 @@
 
 //--------------------------------------------------------------
 void spatdifApp::setup(){
-    ofSetVerticalSync(true);
+    
     ofSetEscapeQuitsApp(false);
+    ofSetVerticalSync(true);
+    
     ofSetLogLevel(OF_LOG_VERBOSE);
     ofSetFrameRate(30);    
     logoImg.loadImage("SpatDIF_logo.png");
     TTF.loadFont("lucidagrande.ttf", 8, 1, 1, 0);
-
-
+    sphere.setRadius(0.05);
+    
     ofEnableDepthTest();
     cam.setPosition(0.2, 0.4, 10);
     cam.setNearClip(0.01);
@@ -26,12 +28,13 @@ void spatdifApp::setup(){
 	ofSetFrameRate(60);
 //    const char	*infilename = "../../../data/insect_simulated.aiff";
 //	const char	*infilename = "../../../data/beating_loop.aiff";
-//  const char	*infilename = "../../../data/pana_03.aif";
-  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiKonx.aiff";
+  const char	*infilename = "/Users/jasch/Documents/_sounds/pana_03.aif";
+//  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiPax.aiff";
     
     if( sndfileObject->loadSoundFile(infilename) ) {
         sndfileObject->looped = true;
         sndfileObject->state = 1;
+        sndfileObject->framecounter = 0;
     }
     
 //    loadSndfile(infilename);
@@ -39,7 +42,8 @@ void spatdifApp::setup(){
         
     bufferSize          = 256;
 	sampleRate 			= 44100;
-	volume				= 0.707107f;
+//	volume				= 0.707107f;
+	volume				= 1.0;
     
 	for(int i=0; i < 2;i++) {
 		audioAmplitudes[i] = 1.0f;
@@ -52,7 +56,7 @@ void spatdifApp::setup(){
 		locspeakers[i].set(x,y);        
 	}	
 	soundStream.listDevices();  
-	soundStream.setDeviceID(2);    
+	soundStream.setDeviceID(2);
 	soundStream.setup(this, 2, 0, sampleRate, bufferSize, 4);
 
 }
@@ -83,7 +87,7 @@ void spatdifApp::draw(){
     ofSetLineWidth(1.0);
     
 	ofNoFill();
-    ofSetColor(0, 0, 0, 16);
+    ofSetColor(0, 0, 0, 63);
     ofRect(-10, -10, 0, 20, 20);
     float size = 10;
     float division = 20;
@@ -114,8 +118,6 @@ void spatdifApp::draw(){
     
 	ofPopMatrix();
     
-
-    
     if(haveScene) {
         ofScale(1.0, 1.0, 1.0);
         ofSetColor(255, 127, 0, 255);
@@ -126,8 +128,8 @@ void spatdifApp::draw(){
         sdEntityCore * entity = spatDifObject->myScene.getEntity(string(entityName));
         double* pos = static_cast<double*>(entity->getValue(currentTime , SD_POSITION));
         if(pos != NULL) {
-            // ofRect(pos[0]-0.05,pos[1]-0.05,pos[2],0.1, 0.1);
-            ofSphere(pos[0], pos[1], pos[2], 0.05);
+            
+            ofRect(pos[0]-0.05,pos[1]-0.05,pos[2], 0.1, 0.1);
             oldPoint.x = pos[0];
             oldPoint.y = pos[1];
             oldPoint.z = pos[2];
@@ -139,8 +141,7 @@ void spatdifApp::draw(){
             
             pos = static_cast<double*>(entity->getValue(sEvent->getTime(), SD_POSITION));
             
-//            ofRect(pos[0]-0.05,pos[1],pos[2],0.1, 0.1);
-            ofSphere(pos[0], pos[1], pos[2], 0.05);
+            ofRect(pos[0]-0.05,pos[1],pos[2],0.1, 0.1);
             ofSetLineWidth(1.0);
             ofLine(oldPoint.x, oldPoint.y, oldPoint.z, pos[0], pos[1], pos[2]);
             
@@ -167,11 +168,13 @@ void spatdifApp::draw(){
     ofSetColor(0, 0, 0, 63);
     TTF.drawString("open file", 9, 18);
     
+    TTF.drawString(ofToString( (float)( (sndfileObject->framecounter) * bufferSize) / sampleRate), 100, 18);
+    
     if(!playScene){
         ofLine(80, 5, 95, 13);
         ofLine(80, 21, 95, 13);
         ofLine(80, 5, 80, 21);
-}else{
+    }else{
     
     }
     
@@ -269,12 +272,9 @@ void spatdifApp::loadSceneInfo(sdScene * myScene)
     double currentTime = 0.0;
     while (true) {
         sdEvent* sEvent = entity->getNextEvent(currentTime, SD_POSITION);
-        if(sEvent == NULL) break;
-        
+        if(sEvent == NULL) { break; }
         pos = static_cast<double*>(entity->getValue(sEvent->getTime(), SD_POSITION));
-        
         cout << "position of " << entityName <<" at " << sEvent->getTimeAsString() << ": " << pos[0] << ' ' << pos[1] << ' ' << pos[2] << endl;
-
         currentTime = sEvent->getTime();
     }
 }
@@ -304,6 +304,7 @@ void spatdifApp::audioOut(float * output, int bufferSize, int nChannels){
 
     for (int i = 0; i < bufferSize; i++) {
         if(sndfileObject->state == 1){
+            
             if(sndfileObject->sfinfo.channels == 2) {
                 sample[0] = buffer[i * sndfileObject->sfinfo.channels];
                 sample[1] = buffer[i * sndfileObject->sfinfo.channels + 1];

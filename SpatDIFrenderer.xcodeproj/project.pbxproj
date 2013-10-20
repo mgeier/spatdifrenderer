@@ -11,9 +11,12 @@
 		301CA19E1811827C008C43FB /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9ECC1811827B008C43FB /* libsndfile.a */; };
 		301CA19F1811827C008C43FB /* libsndfile.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9ECD1811827B008C43FB /* libsndfile.dylib */; };
 		301CA1A01811827C008C43FB /* ofxSndfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 301C9ECF1811827B008C43FB /* ofxSndfile.cpp */; };
-		301CA1A11811827C008C43FB /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9EE01811827B008C43FB /* libspatdif.dylib */; };
 		301CA1A21811827C008C43FB /* ofxSpatDIF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 301C9EE21811827B008C43FB /* ofxSpatDIF.cpp */; };
 		3071F84917FB687900886E7E /* spatdifRenderEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3071F84817FB687900886E7E /* spatdifRenderEngine.cpp */; };
+		30AECCC518144D3B00667649 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 301C9EE01811827B008C43FB /* libspatdif.dylib */; };
+		30AECCC618144DE600667649 /* libspatdif.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 301C9EE01811827B008C43FB /* libspatdif.dylib */; };
+		30AECCC718144DEE00667649 /* libsndfile.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 301C9ECB1811827B008C43FB /* libsndfile.1.dylib */; };
+		30AECCC818144DEE00667649 /* libsndfile.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 301C9ECD1811827B008C43FB /* libsndfile.dylib */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -59,6 +62,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				30AECCC718144DEE00667649 /* libsndfile.1.dylib in CopyFiles */,
+				30AECCC818144DEE00667649 /* libsndfile.dylib in CopyFiles */,
+				30AECCC618144DE600667649 /* libspatdif.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +153,7 @@
 				301CA19D1811827C008C43FB /* libsndfile.1.dylib in Frameworks */,
 				301CA19E1811827C008C43FB /* libsndfile.a in Frameworks */,
 				301CA19F1811827C008C43FB /* libsndfile.dylib in Frameworks */,
-				301CA1A11811827C008C43FB /* libspatdif.dylib in Frameworks */,
+				30AECCC518144D3B00667649 /* libspatdif.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +426,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -id @executable_path/libspatdif.dylib ../../../addons/ofxSpatDIF/libs/lib/libspatdif.dylib\ninstall_name_tool -id @executable_path/libsndfile.1.dylib ../../../addons/ofxSpatDIF/libs/lib/libsndfile.1.dylib\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ninstall_name_tool -id @executable_path/libspatdif.dylib /ofxSpatDIF/libs/lib/libspatdif.dylib\ninstall_name_tool -id @executable_path/libsndfile.1.dylib /ofxSndfile/libs/lib/libsndfile.1.dylib\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -455,7 +461,7 @@
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../addons/ofxSndfile/libs/lib/**";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -498,7 +504,7 @@
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../addons/ofxSndfile/libs/lib/**";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
@@ -622,15 +628,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
-					"\"$(SRCROOT)/../../../addons/ofxSpatDIF/libs/lib\"",
-					"\"$(SRCROOT)/../../../addons/ofxSndfile/libs/lib\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/build\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/G72x/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/GSM610/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/G72x/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/GSM610/.libs\"",
 					"\"$(SRCROOT)/ofxSndfile/libs/lib\"",
 					"\"$(SRCROOT)/ofxSpatDIF/libs/lib\"",
 				);
@@ -728,15 +725,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
-					"\"$(SRCROOT)/../../../addons/ofxSpatDIF/libs/lib\"",
-					"\"$(SRCROOT)/../../../addons/ofxSndfile/libs/lib\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/build\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/G72x/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386/src/GSM610/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/G72x/.libs\"",
-					"\"$(SRCROOT)/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64/src/GSM610/.libs\"",
 					"\"$(SRCROOT)/ofxSndfile/libs/lib\"",
 					"\"$(SRCROOT)/ofxSpatDIF/libs/lib\"",
 				);

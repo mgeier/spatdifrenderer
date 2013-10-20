@@ -62,5 +62,8 @@ class spatdifApp : public ofBaseApp{
 
     
         ofTrueTypeFont TTF;
+        ofSpherePrimitive sphere;
+    
+
     
 };
