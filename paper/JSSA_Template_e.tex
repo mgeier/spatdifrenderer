@@ -15,7 +15,7 @@
 
 % Title.
 % ------
-\title{libspatdif - Implementing the Spatial Sound Descriptor Interchange Format}
+\title{spatdif library -- Implementing the Spatial Sound Descriptor Interchange Format}
 
 % Paper Category
 \category{Research Report}
@@ -31,7 +31,7 @@
 % --------------
 \twoauthors
   {Chikashi Miyama} {College of Music Cologne\\Studio for Electronic Music\\ me@chikashi.net }
-  {Jan C. Schacher} {Zurich University of the Arts\\Institute for Computer Music and Sound Technology \\ jan.schacher@zhdk.ch}
+  {Jan C. Schacher} {Zurich University of the Arts\\ ICST \\ jan.schacher@zhdk.ch}
 
 % Three addresses
 % --------------
@@ -87,7 +87,6 @@ Here we have an abstract
 % keywords ?
 
 \section{Introduction}
-
 
 In this article we present the development of a software tool aimed at simple integration of SpatDIF into existing software.
 The concepts and guidelines are implemented in a C-Library and applied in an example surround-playback application.
@@ -155,6 +154,8 @@ Though SpatDIFLib can be controlled by OSC formatted strings, the library does n
 \subsection{C++ Class Structure}
 Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
 
+# explains what I want to show here 2 - 3sentences
+
 \begin{figure*}[t]
 \centerline{
 	\includegraphics[width= 17.5cm]{classes.pdf}}
@@ -191,7 +192,7 @@ This is a pure abstract class of event, that maintains following three data item
 This is a pure abstract class of entity in SpatDIF scene. All basic functionalities, such as addition, deletion, and modification of events are implemented or declared as pure virtual functions.
 
 \subsubsection{sdEntityCore}
-An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to hold instances of SpatDIF extensions. This class is also responsible for answering queries from the client conceding its events. For example, if a client asks an instance of sdEntityCore a value of a certain descriptor at a specific time, the sdEntity returns value to the client. The client is able to ask for multiple events within a certain time frame and filter events by descriptor. If the client requests values of extended desciriptors, the instance of sdEntityCore forwards the query to the attached extension.
+An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to hold instances of SpatDIF extensions. This class is also responsible for answering queries from the client conceding its events. For example, if a client asks an instance of sdEntityCore a value of a certain descriptor at a specific time, the sdEntity returns value to the client. The client is able to ask for multiple events within a certain time frame and filter events by descriptor. If the client requests values of extended descriptors, the instance of sdEntityCore forwards the query to the attached extension.
 
 \subsubsection{sdEntityExtension}
 This is a pure abstract class of extensions. The descendants of this class. e.g. sdEntityExtensionMedia handles the events with extended descriptors. If the client activates an extension in a scene, all existing instances of sdEntityCore create an instance of the designated subclass of sdEntityExtension and register it to their internal vector.
@@ -203,14 +204,16 @@ The following code listing shows how to load an XML-formatted string into an sdS
 
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
 
-\noindent This produces the folloing std-output: 
+\noindent This produces the following std-output: 
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{code_output.txt} 
 
-\subsection{Future work}
+---- description of program here.
+
+\subsection{Future Work}
 
 The above mentioned basic class hierarchy is already implemented in the library. The library is also able to interpret simple XML, JSON and OSC messages and is currently examined against  the SpatDIFRenderer, in order to further improve its performance.  All extensions defined in the SpatDIF specification 0.3 will be implemented in early 2014 and a C interface will be added in late 2014. The library will be completed by the end of 2014 and released under the MIT, BSD or similar licenses.
 
-\section{The Example application}% Jasch
+\section{The Example Application}% Jasch
 
 An example application is developed, that implements an entire workflow for playback of SpatDIF files. 
 It is called a `renderer' in analogy to visual tools, because it renders audible, in a surround setup, the information contained in a SpatDIF `bundle'.
@@ -224,11 +227,11 @@ More importantly however, it demonstrates the power and simplicity of SpatDIF, b
 In order to provide a relevant example for the application of the libspatdif-library, the scope of the application has deliberately been limited.
 The panning algorithm is a simple spatial windowing algorithms called ``ambipanning'' \cite{Neukom:2008ambipan} that has the advantage of being a one-step calculation (contrary to ambisonics), which is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialisation situations.
 
-\subsection{Implementation details}
+\subsection{Implementation Details}
 
 This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc/ URI valid 2013/10/23}, which provides a powerful C++ toolset and a thriving community.
 Since it is not particularly oriented towards sound programming, the provided classes are somewhat rudimentary.
-However -- and that is its great strength -- many extensions exist and it is releasy to add new functionalities and libraries.
+However -- and that is its great strength -- many extensions exist and it is relatively easy to add new functionalities and libraries.
 One one of these extension-libraries that is being used for this application is libsndfile  
 \footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23} a powerful audiofile handling toolset.
  
