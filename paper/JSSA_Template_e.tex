@@ -125,7 +125,7 @@ By providing a software library rather than just a complete software application
  
 Referring back to the canonical example ``Turenas'' by John Chowning (see also \cite{Peters:2013SpatDifCMJ}), the beginning of a SpatDIF example scene, including only the `insect' trajectory at second 0:44, contains the following elements in an XML format:
 
-\lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{turenas-insect-extract.xml} 
+\lstinputlisting[tabsize=3,columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{turenas-insect-extract.xml} 
 
 Apart from the SpatDIF-compliant xml-file, or other structured markup formatted file, the corresponding sound-files have to be stored and transported alongside, in order to permit recreation of the scene.
 It is therefore important to think in terms of `SpatDIF-bundles' or projects rther than single files.
@@ -153,13 +153,13 @@ Though SpatDIFLib can be controlled by OSC formatted strings, the library does n
   
 \subsection{C++ Class Structure}
 Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
-
-# explains what I want to show here 2 - 3sentences
+A instances of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. The activation and deactivation of the extension is global within a scene. Thus, sdScene is also responsible for the extension handling. Each instance of
+sdEntityCore maintains instances of {\it sdEvent} that are ordered in time and represent events of entities that they are attached to. The followings are the brief descriptions of these most important classes.
 
 \begin{figure*}[t]
 \centerline{
 	\includegraphics[width= 17.5cm]{classes.pdf}}
-\caption{Class Structure \todo{the text in the Class Structure looks pixely, can we save it a vector graphics?}}
+\caption{Class Structure}
 \label{fig:class_structure}
 \end{figure*}
 
@@ -202,12 +202,16 @@ The following code listing shows how to load an XML-formatted string into an sdS
 
 \vfill
 
-\lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
+\lstinputlisting[columns=fullflexible,breaklines=true,numbers=left,basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
 
 \noindent This produces the following std-output: 
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{code_output.txt} 
 
----- description of program here.
+L1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string. 
+L2: A pointer to an entity, named "insect", is obtained by scene.getEntity function.
+L3-4: The entity "insect" is requested to return a pointer to the first event with the position and media location descriptor.
+L6: Querying the "insect" entity for its name
+L7-9: Posting values and time of events 
 
 \subsection{Future Work}
 
