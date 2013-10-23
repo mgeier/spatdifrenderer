@@ -19,13 +19,14 @@ ofxSndfile::~ofxSndfile() {
 
 bool ofxSndfile::loadSoundFile(const char *infilename) {
 	
-    if (! (infile = sf_open (infilename, SFM_READ, &sfinfo))){
+    if (! (infile = sf_open (infilename, SFM_READ, &sfinfo))) {
         ofLogVerbose("SF OPEN routine Not able to open input file %s", infilename) ;
         ofLogError("libsndfile", sf_strerror(NULL)) ;
         return false;
 	} else{
         ofLogVerbose("SF OPEN : file loaded:", infilename);
         dumpInfo();
+        framecounter = 0;
         return true;
 	}
 }
@@ -49,10 +50,12 @@ int ofxSndfile::getNextFrame(SNDFILE *infile, float * buffer, int blocksize) {
 
     if( (readcount = sf_readf_float (infile, buffer, blocksize)) > 0) {
         // readcount returns blocksize unless the end is reached
+        framecounter++;
         if(readcount < blocksize){
             if(looped){
                 sf_seek(infile, (sf_count_t)0, SEEK_SET);
                 loopcounter++;
+                framecounter = 0;
             }else {
                 state = 0;
             }

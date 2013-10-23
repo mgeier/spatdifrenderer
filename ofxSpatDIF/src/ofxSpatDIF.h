@@ -22,6 +22,24 @@
 #include "sdSaver.h"
 #include "sdScene.h"
 
+class ofxSpatDIFPlayer{
+    
+public:    
+    ofxSpatDIFPlayer()
+    {
+        entityName = "";
+        numMedia = 0;
+        mediaID = NULL;
+
+    }
+    virtual ~ofxSpatDIFPlayer(){};
+    
+    string entityName;
+    int numMedia;
+    string * mediaID;
+
+    
+};
 
 class ofxSpatDIF{
 	
@@ -36,6 +54,10 @@ class ofxSpatDIF{
         unsigned int getNumberOfEntities(sdScene theScene);
         string getEntityName(sdScene * theScene, int ID);
         sdScene myScene;
+    
+        ofxSpatDIFPlayer * player;
 };
+
+
 
 #endif /* defined(__ofxSpatDIF__) */

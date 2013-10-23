@@ -30,6 +30,7 @@ class ofxSndfile{
         int state; // 0 = stopped, 1 = playing, 2 = paused
         bool looped;
         int loopcounter;
+        unsigned long long framecounter;
     
 };
 #endif

@@ -265,7 +265,7 @@ void spatdifApp::loadSceneInfo(sdScene * myScene)
     
     // run through all events of one entity and extract their time/position
     sdEntityCore * entity = myScene->getEntity(string(entityName));
-    double* pos = static_cast<double*>(entity->getValue(0.0 , SD_POSITION));
+    double * pos = static_cast<double*>(entity->getValue(0.0 , SD_POSITION));
     if(pos != NULL){
         cout << "position of " << entityName <<" at 0.0: " << pos[0] << ' ' << pos[1] << ' ' << pos[2] << endl;
     }

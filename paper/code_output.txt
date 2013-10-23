@@ -1,0 +1,4 @@
+Entity Name: insect
+First event is at: 0.0 8.0 0.0
+Attached Sound File: insect.wav
+Attached at: 44.0
