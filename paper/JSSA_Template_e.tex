@@ -12,10 +12,12 @@
 \addbibresource{SpatDIF.bib}
 \usepackage{listings}
 \usepackage{enumitem}
-
+\usepackage{balance}
 % Title.
 % ------
+
 \title{spatdif library -- Implementing the Spatial Sound Descriptor Interchange Format}
+
 
 % Paper Category
 \category{Research Report}
@@ -152,9 +154,10 @@ SpatDIFLib is an open source C/C++ multi-platform library, that offers the follo
 Though SpatDIFLib can be controlled by OSC formatted strings, the library does not handle network sockets directly for the OSC communication; the library interprets given OSC strings as commands. The client application should prepare sockets and threads for OSC communication. Likewise no scheduler or timer is implemented in the library. 
   
 \subsection{C++ Class Structure}
+
 Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
 
-# explains what I want to show here 2 - 3sentences
+% explains what I want to show here 2 - 3sentences
 
 \begin{figure*}[t]
 \centerline{
@@ -227,13 +230,23 @@ More importantly however, it demonstrates the power and simplicity of SpatDIF, b
 In order to provide a relevant example for the application of the libspatdif-library, the scope of the application has deliberately been limited.
 The panning algorithm is a simple spatial windowing algorithms called ``ambipanning'' \cite{Neukom:2008ambipan} that has the advantage of being a one-step calculation (contrary to ambisonics), which is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialisation situations.
 
-\subsection{Implementation Details}
+\subsection{Implementation details}
 
 This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc/ URI valid 2013/10/23}, which provides a powerful C++ toolset and a thriving community.
 Since it is not particularly oriented towards sound programming, the provided classes are somewhat rudimentary.
-However -- and that is its great strength -- many extensions exist and it is relatively easy to add new functionalities and libraries.
+However -- and that is its great strength -- many extensions exist and it is releasy to add new functionalities and libraries.
 One one of these extension-libraries that is being used for this application is libsndfile  
 \footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23} a powerful audiofile handling toolset.
+ 
+Figure \ref{fig:screenshot} shows the scene-display of the example application. 
+
+\begin{figure}[h]
+\centerline{
+	\includegraphics[width=\columnwidth]{SpatDIFrenderer_screenshot2}}
+\caption{Interface of the example renderer application.\todo{export from OF as SVG/PDF}}
+\label{fig:screenshot}
+\end{figure}
+
  
 
 
@@ -269,6 +282,8 @@ This software development would not have been possible without the generous fina
 
 
 \section{Author's Profile}
+\balance
+
 \subsection*{Chikashi Miyama}
 Chikashi Miyama is a composer, video artist, interface designer, performer, and author. He received a MA (Sonology/2004) from Kunitachi College of Music, Tokyo, Japan, a Nachdiplom (Komposition im Elektronischen Studio/2007) from Music academy of Basel, Switzerland, and a Ph.D (Composition/2011) from University at Buffalo, New york, USA. His compositions have received an ICMA award (2011/UK) from the International Computer Music Association, a second prize in SEAMUS commission competition (2010/St. Cloud, USA), a special prize in Destellos Competition (2009/Argentina), and a honorable mention in the Bourges Electroacoustic Music Competition (2002/France). Several works of him are included on the DVD of the Computer Music Journal Vol.28 by MIT press, and ICMC official CD/DVD(2005/2011). In 2011, he received a research grant from DAAD (German Academic Exchange Service) and worked as a visiting researcher at ZKM, Karlsruhe, Germany. He has taught computer music at  University at Buffalo, USA,  Music Academy Basel, and College of Arts Bern, Switzerland. He is currently teaching at College of Music and Dance, Cologne, Germany. 
 
@@ -351,3 +366,5 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 
 \end{document}
 
+=======
+>>>>>>> External Changes
