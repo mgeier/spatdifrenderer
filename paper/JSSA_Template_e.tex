@@ -203,20 +203,27 @@ An instance of sdEntityCore maintains events with SpatDIF core descriptors and h
 This is a pure abstract class of extensions. The descendants of this class. e.g. sdEntityExtensionMedia handles the events with extended descriptors. If the client activates an extension in a scene, all existing instances of sdEntityCore create an instance of the designated subclass of sdEntityExtension and register it to their internal vector.
 
 \subsection{Simple Example}
-The following code listing shows how to load an XML-formatted string into an sdScene and query the entity called ``insect'' for the first occurrence of an event which contains a position- and a media-descriptor.
+The following listing shows how to load an XML-formatted string into an sdScene and query the entity called `insect' for the first occurrence of an event which contains a position- and a media-descriptor.
 
 \vfill
 
-\lstinputlisting[columns=fullflexible,breaklines=true,numbers=left,basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
+\lstinputlisting[columns=fullflexible, breaklines=true, numbers=left,xleftmargin=2em,frame=none,framexleftmargin=1.5em, basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
 
-\noindent This produces the following std-output: 
+\noindent The code produces this console-output: 
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{code_output.txt} 
 
-L1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string. 
-L2: A pointer to an entity, named "insect", is obtained by scene.getEntity function.
-L3-4: The entity "insect" is requested to return a pointer to the first event with the position and media location descriptor.
-L6: Querying the "insect" entity for its name
-L7-9: Posting values and time of events 
+\noindent 
+The following is taking place in the code example:
+
+\noindent Line 1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string.
+
+\noindent Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity function.
+
+\noindent Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
+
+\noindent Line 6: Querying the `insect' entity for its name
+
+\noindent Lines 7-9: Posting the values and time of events to the console
 
 \subsection{Future Work}
 
@@ -241,8 +248,7 @@ The panning algorithm is a simple spatial windowing algorithms called ``ambipann
 This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc/ URI valid 2013/10/23}, which provides a powerful C++ toolset and a thriving community.
 Since it is not particularly oriented towards sound programming, the provided classes are somewhat rudimentary.
 However -- and that is its great strength -- many extensions exist and it is releasy to add new functionalities and libraries.
-One one of these extension-libraries that is being used for this application is libsndfile  
-\footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23} a powerful audiofile handling toolset.
+One one of these extension-libraries that is being used for this application is libsndfile\footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23}, which is a powerful audiofile handling toolset.
  
 Figure \ref{fig:screenshot} shows the scene-display of the example application. 
 
@@ -276,12 +282,12 @@ i.e. scheduler
 or sockets / file-IO
 \section{Availability}% Jasch
 
-Both he library and the example application will be made publicly and freely available, as soon as the full feature-set of the 0.3 specifications are implemented a thoroughly tested.
-But of course, an advance access to the code can be granted on demand.
+Both the library and the example application will be made freely and publicly available, as soon as the full feature-set of the 0.3 specifications are implemented and thoroughly tested.
+Of course, an advance access to the code can be granted on demand.
 
 \section{Acknowledgements}% Jasch
 
-This software development would not have been possible without the generous financial support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts.
+This software development would not have been possible without the generous support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts.
 
 
 \printbibliography
@@ -372,5 +378,3 @@ Also multiple citiation is as follows\cite{Author1:08,Author2:09}.
 
 \end{document}
 
-=======
->>>>>>> External Changes
