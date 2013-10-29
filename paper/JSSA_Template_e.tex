@@ -16,7 +16,7 @@
 % Title.
 % ------
 
-\title{spatdif library -- Implementing the Spatial Sound Descriptor Interchange Format}
+\title{Spatdif Library -- Implementing the Spatial Sound Descriptor Interchange Format}
 
 
 % Paper Category
@@ -108,10 +108,10 @@ SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters st
 Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has since been extended, refined, and consolidated. 
 
 After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011, at a workshop at the TU-Berlin in September 2011.
-The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification. % \cite{scheirer1999audiobifs}.  
+The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification.
 In addition, many features necessary to make this lightweight standard become functional were put forward in the 2013 Computer Music Journal article \cite{Peters:2013SpatDifCMJ}, such as for example the capability of dealing with temporal interpolation of scene descriptors as described.
 
-\section{Concepts} %assigned to Jasch/Trond/Nils
+\section{Concepts}
 
 One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound might occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
 It formulates a concise semantic structure that is capable of carrying all the relevant information, without being tied to a specific implementation, thought-model or technical method. 
@@ -128,7 +128,7 @@ By providing a software library rather than just a complete software application
  
 \subsection{Example Scene}
  
-Referring back to the canonical example ``Turenas'' by John Chowning (see also \cite{Peters:2013SpatDifCMJ}), the beginning of a SpatDIF example scene, including only the `insect' trajectory at second 0:44, contains the following elements in an XML format:
+Referring back to the canonical example `Turenas' by John Chowning (see also \cite{Peters:2013SpatDifCMJ}), the beginning of a SpatDIF example scene, including only the `insect' trajectory at second 0:44, contains the following elements in an XML format:
 
 \lstinputlisting[tabsize=3,columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{turenas-insect-extract.xml} 
 
@@ -139,19 +139,19 @@ A deliberate choice was made not to propose a format that combines sound-files a
 \section{The Library} %assigned to Chikashi
 
 In the following sections, a detailed description of the concepts and structures implemented in both the library and the example application are provided.
-Although this information is mainly relevant to software developers implementing SpatDIF in software, we believe that showing these technical details also provides an additional perspective on the possibilities SpatDIF offers as a syntax.
+Although this information is mainly relevant to software developers implementing SpatDIF in audio software, we believe that showing these technical details also provides an additional perspective on the possibilities SpatDIF offers as a syntax.
 
 \subsection{Features}
 SpatDIFLib is an open source C/C++ multi-platform library, that offers the following functionalities to the developers of SpatDIF compatible softwares (clients).
 
-\begin{itemize}
-\item Loading and storing SpatDIF scenes from/to a XML, JSON, and YAML formatted string
-\item Addition, deletion, and modification of entities in SpatDIF scenes
-\item Addition, deletion, and modification of events
-\item Associating events with entities
-\item Activation and deactivation of extensions
-\item Answering queries in regard to entities and events in SpatDIF scenes
-\item Controlling data in SpatDIF Scenes via OSC Messages
+\begin{itemize}[leftmargin=*]
+\item[--] Loading and storing SpatDIF scenes from/to a XML, JSON, and YAML formatted string
+\item[--] Addition, deletion, and modification of entities in SpatDIF scenes
+\item[--] Addition, deletion, and modification of events
+\item[--] Associating events with entities
+\item[--] Activation and deactivation of extensions
+\item[--] Answering queries in regard to entities and events in SpatDIF scenes
+\item[--] Controlling data in SpatDIF Scenes via OSC Messages
 \end{itemize}
 
 Though SpatDIFLib can be controlled by OSC \cite{Wessel_2002, Schmeder_2008} formatted strings, the library does not handle network sockets directly for the OSC communication; the library interprets given OSC strings as commands. 
@@ -179,10 +179,10 @@ The followings are the brief descriptions of these most important classes.
 \subsubsection{sdScene}
 The class sdScene maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
 
-\begin{itemize}
-\item Addition, deletion and modification entities in its scene
-\item Addition and modification of the meta data associated to its scene
-\item Activation and deactivation of the extensions
+\begin{itemize}[leftmargin=*]
+\item[--] Addition, deletion and modification entities in its scene
+\item[--] Addition and modification of the meta data associated to its scene
+\item[--] Activation and deactivation of the extensions
 \end{itemize}
 
 Once the client activates an extension in a scene, sdScene automatically adds extended functionalities and allocates extra buffers to all existing and newly created instances of sdEntityCore. 
@@ -198,10 +198,10 @@ These functions utilise two external libraries for parsing markup formatted stri
 \subsubsection{sdEvent}
 This is a pure abstract class of event, that maintains following three data items.
 
-\begin{itemize}
-\item time - absolute time of the event
-\item descriptor - type of event
-\item value - actual data
+\begin{itemize}[leftmargin=*]
+\item[--] time - absolute time of the event
+\item[--] descriptor - type of event
+\item[--] value - actual data
 \end{itemize}
 
 \subsubsection{sdEntity}
@@ -223,18 +223,20 @@ The following code listing shows how to load an XML-formatted string obtained fr
 
 \lstinputlisting[columns=fullflexible, breaklines=true, numbers=left,xleftmargin=2em,frame=none,framexleftmargin=1.5em, basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
 
+\pagebreak
+
 \noindent The code produces this console-output: 
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{code_output.txt} 
 
 \noindent 
 The following is taking place in the code example:
 
-\begin{itemize}
-\item Line 1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string.
-\item Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity function.
-\item Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
-\item Line 6: Querying the `insect' entity for its name
-\item Lines 7-9: Posting the values and time of events to the console
+\begin{itemize}[leftmargin=*]
+\item[--] Line 1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string.
+\item[--] Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity function.
+\item[--] Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
+\item[--] Line 6: Querying the `insect' entity for its name
+\item[--] Lines 7-9: Posting the values and time of events to the console
 \end{itemize}
 
 % \subsection{Future Work}
@@ -265,14 +267,14 @@ Currently two mark-up languages are supported, XML and JSON, with more to come i
 
 This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc/ URI valid 2013/10/23}, which provides a powerful C++ toolset and a thriving community.
 Since it is not particularly oriented towards sound programming, the provided classes are somewhat rudimentary.
-However -- and that is its great strength -- many extensions exist and it is relatively easy to add new functionalities and libraries.
-One one of these extension-libraries that is being used for this application is \textbf{libsndfile}\footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23}, which provides a powerful audio-file handling toolset.
+However -- and that is its strength -- many extensions exist and it is relatively easy to add new functionalities and libraries.
+One one of these extension-libraries that is being used for this application is libsndfile\footnote{http://www.mega-nerd.com/libsndfile/ URI valid 2013/10/23}, which provides a powerful audio-file handling toolset.
 The SpatDIF-library is linked in as a dynamic library, and provides the entire data-structure and methods for handling the scene.
 The renderer runs both a sonic and visual playback of the scene.
 The visual representation is a bare-bones wireframe drawing of the scene in OpenGL.
 Figure \ref{fig:screenshot} shows the scene-display of the example application.
 The sound playback runs through the sound-stream interface provided by openFrameworks.
-After retrieving samples from the sound-files via the `libsndfile', panning and distance correction is applied, before the blocks of audio-samples are output.
+After retrieving samples from the sound-files via libsndfile, panning and distance correction is applied, before the blocks of audio-samples are output.
 The signal processing chain is deliberately kept simple, to provide a clear example of the implementation of such a process.
 
 \begin{figure}[h]
