@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<spatdif version="0.3">
+  <meta>
+    <info>
+      <annotation>turenas insect trajectory</annotation>
+      <date>2013-10-23</date>
+      <author>jasch</author>
+    </info>
+    <extensions>media</extensions>
+    <ordering>time</ordering>
+  </meta>
+  <time>44.0</time>
+    <source>
+      <name>insect</name>
+      <position>0.0 8.0 0.0</position>
+      <media>
+        <id>sound_0001</id>
+        <type>file</type>
+        <location>/sound/insect.wav</location>
+        <channel>1</channel> 
+      </media>
+    </source>
+  <time>44.078</time>
+    <source>
+      <name>insect</name>
+      <position>1.359056 7.757522 0.0</position>
+    </source>

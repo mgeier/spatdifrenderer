@@ -1,0 +1,42 @@
+# building libsnfile as a dylib:
+
+download libsndfile 1.0.25
+
+http://sourceforge.net/apps/mediawiki/csound/index.php?title=Building_Csound_on_OSX_Lion
+
+libsndfile
+
+Download libsndfile from http://www.mega-nerd.com/libsndfile/#Download. The version used at the time of this build is 1.0.25. To make a fat binary, you will need to unarchive the tgz file twice into two directories. For this build, I placed them in libsndfile-1.0.25-i386 and libsndfile-1.0.25-x86_64. After doing this, copy the following into a file named buildLibSndFileUniversal.sh in the same directory that contains the two libsndfile directories:
+
+export CFLAGS="-arch i386"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS=$CFLAGS
+
+cd libsndfile-1.0.25-i386
+./configure --disable-sqlite; make
+
+
+export CFLAGS="-arch x86_64"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS=$CFLAGS
+
+cd ../libsndfile-1.0.25-x86_64
+./configure --disable-sqlite; make
+
+sudo make install
+sudo lipo -create src/.libs/libsndfile.1.dylib ../libsndfile-1.0.25-i386/src/.libs/libsndfile.1.dylib -output /usr/local/lib/libsndfile.1.dylib
+
+This will build libsndfile in each of the two directories, run make install in the 2nd directory to install headers and libraries, then create a universal library and overwrite /usr/local/lib/libsndfile.1.dylib. 
+
+# in the terminal set the executable bit for the file chmod +x buildLibSndFileUniversal.sh
+
+
+#fix libsndfile code
+
+programs/sndfile-play.c : Remove un-needed OSX include <Carbon.h>. 
+
+go into /programs/sndfile-play.c and comment out the <Carbon.h> include
+
+build by running the script like so: ./buildLibSndFileUniversal.sh
+
+finally, go into /usr/local/lib and recuperate the three files libsndfile.1.dylib libsndfile.a libsndfile.dylib
