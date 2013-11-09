@@ -119,7 +119,7 @@ SpatDIF is a syntax rather than a programming interface or file-format and may b
 It describes only those aspects required for the storage and transmission of \emph{spatial information} regarding the sound.
 However, a complete work typically contains additional dimensions that lie outside the scope of SpatDIF. 
 These are judiciously addressed only to the extent necessary for linking these external sound elements to the descriptions of the spatial dimension. 
-For example, the description of media-streams in the Media extension is necessary in order to describe fro where the sounding content of the scene originates.
+For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
 
 After establishing a coherent specification with example use-cases in textual form only, the next step towards usability in a technological manner is the implementation of software that embodies the concepts and stores and executes the SpatDIF descriptors in actual surround sound.
 For this purpose a software library was designed and is being implemented in a platform independent manner. 
@@ -138,7 +138,7 @@ A deliberate choice was made not to propose a format that combines sound-files a
 
 \section{The Library} %assigned to Chikashi
 
-In the following sections, a detailed description of the concepts and structures implemented in both the library and the example application are provided.
+In this and the following sections, the concepts and structures implemented in the library and the example application are described.
 Although this information is mainly relevant to software developers implementing SpatDIF in audio software, we believe that showing these technical details also provides an additional perspective on the possibilities SpatDIF offers as a syntax.
 
 \subsection{Features}
@@ -154,20 +154,17 @@ SpatDIFLib is an open source C/C++ multi-platform library, that offers the follo
 \item[--] Controlling data in SpatDIF Scenes via OSC Messages
 \end{itemize}
 
-Though SpatDIFLib can be controlled by OSC \cite{Wessel_2002, Schmeder_2008} formatted strings, the library does not handle network sockets directly for the OSC communication; the library interprets given OSC strings as commands. 
-The client application should prepare sockets and threads for OSC communication. 
-Likewise no scheduler or timer is implemented in the library. 
+Though SpatDIFLib can be controlled by OSC \cite{Wessel_2002, Schmeder_2008} formatted strings, the library does not handle network sockets directly for the OSC communication; the library interprets given OSC formatted strings as commands. Thus, the client application should prepare sockets and threads for OSC communication. Likewise no scheduler or timer is implemented in the library. 
   
 \subsection{C++ Class Structure}
 
-Figure \ref{fig:class_structure} shows simplified class hierarchy of the library. 
+Figure \ref{fig:class_structure} shows the simplified class hierarchy of the library. 
 
 % explains what I want to show here 2 - 3sentences
-A instances of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. 
-The activation and deactivation of the extension is global within a scene. 
+A instance of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. 
+The activation and deactivation of the extension are global within a scene. 
 Thus, sdScene is also responsible for the extension handling. 
-Each instance of sdEntityCore maintains instances of {\it sdEvent} that are ordered in time and represent events of entities that they are attached to. 
-The followings are the brief descriptions of these most important classes.
+Each instance of sdEntityCore maintains instances of {\it sdEvent}, that represent events of entities they are attached to. The followings are the brief descriptions of the most important classes.
 
 \begin{figure*}[t]
 \centerline{
@@ -177,10 +174,10 @@ The followings are the brief descriptions of these most important classes.
 \end{figure*}
 
 \subsubsection{sdScene}
-The class sdScene maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
+An instance of sdScene maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
 
 \begin{itemize}[leftmargin=*]
-\item[--] Addition, deletion and modification entities in its scene
+\item[--] Addition, deletion and modification of entities in its scene
 \item[--] Addition and modification of the meta data associated to its scene
 \item[--] Activation and deactivation of the extensions
 \end{itemize}
@@ -208,13 +205,13 @@ This is a pure abstract class of event, that maintains following three data item
 This is a pure abstract class of entity in SpatDIF scene. All basic functionalities, such as addition, deletion, and modification of events are implemented or declared as pure virtual functions.
 
 \subsubsection{sdEntityCore}
-An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to hold instances of SpatDIF extensions. 
-This class is also responsible for answering queries from the client conceding its events. For example, if a client asks an instance of sdEntityCore a value of a certain descriptor at a specific time, the sdEntity returns value to the client. 
-The client is able to ask for multiple events within a certain time frame and filter events by descriptor. If the client requests values of extended descriptors, the instance of sdEntityCore forwards the query to the attached extension.
+An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to store instances of SpatDIF extensions. 
+This class is also responsible for answering queries from the client conceding its events. For example, if a client asks an instance of sdEntityCore a value of a certain descriptor at a specific time, the sdEntityCore returns value to the client. 
+The client is able to ask for multiple events within a certain time frame and filter events by descriptors. If the client requests values of extended descriptors, the instance of sdEntityCore forwards the query to the attached extensions stored in the vector.
 
 \subsubsection{sdEntityExtension}
 This is a pure abstract class of extensions. The descendants of this class. e.g. sdEntityExtensionMedia handles the events with extended descriptors. 
-If the client activates an extension in a scene, all existing instances of sdEntityCore create an instance of the designated subclass of sdEntityExtension and register it to their internal vector.
+If a client activates an extension in a scene, each existing instance of sdEntityCore creates an instance of the designated subclass of sdEntityExtension and register it to their internal vector.
 
 \subsection{Simple Code Example}
 The following code listing shows how to load an XML-formatted string obtained from a SpatDIF file into an sdScene and query the entity called `insect' for the first occurrence of an event which contains a position- and a media-descriptor.
@@ -232,8 +229,8 @@ The following code listing shows how to load an XML-formatted string obtained fr
 The following is taking place in the code example:
 
 \begin{itemize}[leftmargin=*]
-\item[--] Line 1: sdLoader::sceneFrom static function loads a SpatDIF scene from a XML formatted string.
-\item[--] Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity function.
+\item[--] Line 1: sdLoader::sceneFromXML static function loads a SpatDIF scene from a XML formatted string.
+\item[--] Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity member function.
 \item[--] Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
 \item[--] Line 6: Querying the `insect' entity for its name
 \item[--] Lines 7-9: Posting the values and time of events to the console
@@ -318,7 +315,7 @@ This software development would not have been possible without the generous supp
 \balance % used here in order to balance the last pages columns
 
 \subsection*{Chikashi Miyama}
-Chikashi Miyama is a composer, video artist, interface designer, performer, and author. He received a MA (Sonology/2004) from Kunitachi College of Music, Tokyo, Japan, a Nachdiplom (Komposition im Elektronischen Studio/2007) from Music academy of Basel, Switzerland, and a Ph.D (Composition/2011) from University at Buffalo, New york, USA. His compositions have received an ICMA award (2011/UK) from the International Computer Music Association, a second prize in SEAMUS commission competition (2010/St. Cloud, USA), a special prize in Destellos Competition (2009/Argentina), and a honorable mention in the Bourges Electroacoustic Music Competition (2002/France). Several works of him are included on the DVD of the Computer Music Journal Vol.28 by MIT press, and ICMC official CD/DVD(2005/2011). In 2011, he received a research grant from DAAD (German Academic Exchange Service) and worked as a visiting researcher at ZKM, Karlsruhe, Germany. He has taught computer music at  University at Buffalo, USA,  Music Academy Basel, and College of Arts Bern, Switzerland. He is currently teaching at College of Music and Dance, Cologne, Germany. 
+Chikashi Miyama is a composer, video artist, interface designer, performer. He received a MA (Sonology/2004) from Kunitachi College of Music, Tokyo, Japan, a Nachdiplom (Komposition im Elektronischen Studio/2007) from Music academy of Basel, Switzerland, and a Ph.D (Composition/2011) from University at Buffalo, New york, USA. His compositions have received an ICMA award (2011/UK) from the International Computer Music Association, a second prize in SEAMUS commission competition (2010/St. Cloud, USA), a special prize in Destellos Competition (2009/Argentina), and a honorable mention in the Bourges Electroacoustic Music Competition (2002/France). Several works of him are included on the DVD of the Computer Music Journal Vol.28 by MIT press, and ICMC official CD/DVD(2005/2011). In 2011, he received a research grant from DAAD (German Academic Exchange Service) and worked as a visiting researcher at ZKM, Karlsruhe, Germany. He has taught computer music at University at Buffalo, USA and College of Arts Bern, Switzerland. He is currently teaching at College of Music and Dance Cologne, College of Music Basel, and Zurich University of the Arts. http://chikashi.net
 
 \subsection*{Jan C. Schacher}
 A doublebass-player, composer and digital artist, Jan Schacher is active in electronic and exploratory music. His main focus is on works combining digital sound and images, abstract graphics and experimental video in the field of electro-acoustic music and in mixed-media projects for the stage and in installations. Jan Schacher has been invited as artist and lecturer to numerous cultural and academic institutions and has presented installations in galleries and performances in clubs and at festivals such as the Sonar Festival (Barcelona), Edinburgh Festival, the Singapore Arts Festival, the Holland Festival (Amsterdam), the Sonic Circuits Festival, Washington DC and numerous venues throughout Europe, North America, Australia and Asia. He is an associate researcher at the Zurich University of the Arts and doctoral candidate at the Royal Conservatory Antwerp.
