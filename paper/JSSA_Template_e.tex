@@ -163,8 +163,8 @@ Figure \ref{fig:class_structure} shows the simplified class hierarchy of the lib
 % explains what I want to show here 2 - 3sentences
 A instance of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. 
 The activation and deactivation of the extension are global within a scene. 
-Thus, sdScene is also responsible for the extension handling. 
-Each instance of sdEntityCore maintains instances of {\it sdEvent}, that represent events of the entity they are attached to.
+Thus, {\it sdScene} is also responsible for the extension handling. 
+Each instance of {\it sdEntityCore} maintains instances of {\it sdEvent}, that represent events of the entity they are attached to.
 The followings are brief descriptions of the most important classes.
 
 \begin{figure*}[t]
@@ -175,7 +175,7 @@ The followings are brief descriptions of the most important classes.
 \end{figure*}
 
 \subsubsection{sdScene}
-An instance of sdScene maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
+An instance of {\it sdScene} maintains all data associated to a SpatDIF scene. This class offers clients the following three functionalities.
 
 \begin{itemize}[leftmargin=*]
 \item[--] Addition, deletion and modification of entities in the scene
@@ -183,12 +183,12 @@ An instance of sdScene maintains all data associated to a SpatDIF scene. This cl
 \item[--] Activation and deactivation of the extensions in the scene
 \end{itemize}
 
-Once the client activates an extension in a scene, a sdScene automatically adds extended functionalities and allocates extra buffers to all existing and newly created instances of sdEntityCore. 
-By deactivating an extension, sdScene removes all extended functionalities and previously allocated buffers from all existing sdEntitieCores. 
+Once the client activates an extension in a scene, a {\it sdScene} automatically adds extended functionalities and allocates extra buffers to all existing and newly created instances of {\it sdEntityCore}. 
+By deactivating an extension, {\it sdScene} removes all extended functionalities and previously allocated buffers from all existing {\it sdEntitieCores}. 
 Subsequently, all data stored in the extension buffers are discarded.
 
 \subsubsection{sdLoader/sdSaver}
-These two classes provide several utility functions and enable clients to create an instance of sdScene from a XML, JSON, or YAML string and vice versa. 
+These two classes provide several utility functions and enable clients to create an instance of {\it sdScene} from a XML, JSON, or YAML string and vice versa. 
 In order to maintain platform independence and to achieve maximum flexibility, the library does not handle files directly; the client software is responsible for the file management. 
 
 These functions utilise two external libraries for parsing markup formatted strings. TinyXML-2\footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson\footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
@@ -206,16 +206,16 @@ This is a pure abstract class of event, that maintains following three data item
 This is a pure abstract class of entity in SpatDIF scenes. Basic functionalities, such as addition, deletion, and modification of events are implemented.
 
 \subsubsection{sdEntityCore}
-An instance of sdEntityCore maintains events with SpatDIF core descriptors and has a vector to store instances of SpatDIF extensions. 
-This class is also responsible for answering queries from the client conceding its events. For example, if a client asks a sdEntityCore a value of a certain descriptor at a specific time, the sdEntityCore returns value to the client. 
-The client is able to raise an query about multiple events within a certain time frame and filter events by descriptors. If the client requests values of extended descriptors, a sdEntityCore forwards the query to the attached extensions stored in the internal vector.
+An instance of {\it sdEntityCore} maintains events with SpatDIF core descriptors and has a vector to store instances of SpatDIF extensions. 
+This class is also responsible for answering queries from the client conceding its events. For example, if a client asks a {\it sdEntityCore} a value of a certain descriptor at a specific time, the {\it sdEntityCore} returns value to the client. 
+The client is able to raise an query about multiple events within a certain time frame and filter events by descriptors. If the client requests values of extended descriptors, a {\it sdEntityCore} forwards the query to the attached extensions stored in the internal vector.
 
 \subsubsection{sdEntityExtension}
-This is a pure abstract class of extensions. The descendants of this class. e.g. sdEntityExtensionMedia handles the events with extended descriptors. 
-If a client activates an extension in a scene, each existing instance of sdEntityCore instantiates the designated subclass of sdEntityExtension and register it in its internal vector.
+This is a pure abstract class of extensions. The descendants of this class. e.g. {\it sdEntityExtensionMedia} handles the events with extended descriptors. 
+If a client activates an extension in a scene, each existing instance of {\it sdEntityCore} instantiates the designated subclass of {\it sdEntityExtension} and register it in its internal vector.
 
 \subsection{Simple Code Example}
-The following code listing shows how to load an XML-formatted string obtained from a SpatDIF file into an sdScene and query the entity called `insect' for the first occurrence of an event which contains a position and a media descriptor.
+The following code listing shows how to load an XML-formatted string obtained from a SpatDIF file into an {\it sdScene} and query the entity called `insect' for the first occurrence of an event which contains a position and a media descriptor.
 
 \vfill
 
@@ -230,7 +230,7 @@ The following code listing shows how to load an XML-formatted string obtained fr
 The following is taking place in the code example:
 
 \begin{itemize}[leftmargin=*]
-\item[--] Line 1: sdLoader::sceneFromXML static function loads a SpatDIF scene from a XML formatted string.
+\item[--] Line 1: {\it sdLoader::sceneFromXML} static function loads a SpatDIF scene from a XML formatted string.
 \item[--] Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity member function.
 \item[--] Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
 \item[--] Line 6: Querying the `insect' entity for its name
