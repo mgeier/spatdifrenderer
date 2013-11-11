@@ -84,7 +84,7 @@
 The development and specification of SpatDIF, the spatial sound descriptor interchange format, is complemented with an actual software implementation in order to become usable in various environments. 
 In this report, the current state in the development of a software library called `SpatDIFlib' is discussed.
 The design principles derived from the concepts and specifications of SpatDIF, the class structure of the library, and code demonstrating its usage is presented.
-Furthermore, an application that utilises the library is introduced as an exemplary use case.
+Furthermore, an application that utilizes the library is introduced as an exemplary use case.
 
 \end{abstract}
 
@@ -191,7 +191,7 @@ Subsequently, all data stored in the extension buffers are discarded.
 These two classes provide several utility functions and enable clients to create an instance of {\it sdScene} from a XML, JSON, or YAML string and vice versa. 
 In order to maintain platform independence and to achieve maximum flexibility, the library does not handle files directly; the client software is responsible for the file management. 
 
-These functions utilise two external libraries for parsing markup formatted strings. TinyXML-2\footnote{http://www.grinninglizard.com/tinyxml/ accessed Oct. 9. 2013} and libjson\footnote{http://sourceforge.net/projects/libjson/ accessed Oct. 9. 2013}.
+These functions utilise two external libraries for parsing markup formatted strings. TinyXML-2\footnote{http://www.grinninglizard.com/tinyxml, accessed Oct. 9. 2013} and libjson\footnote{http://sourceforge.net/projects/libjson, accessed Oct. 9. 2013}.
 
 \subsubsection{sdEvent}
 This is a pure abstract class of event, that maintains following three data items.
@@ -263,10 +263,10 @@ Currently two mark-up languages are supported, XML and JSON, with more to come i
 
 \subsection{Implementation details}
 
-This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc URI valid 2013/10/23}, which provides a powerful C++ toolset and a thriving community.
+This application is implemented in the creative-coding environment openFrameworks\footnote{http://www.openframeworks.cc, accessed Oct. 23. 2013}, which provides a powerful C++ toolset and a thriving community.
 Since it is not particularly oriented towards sound programming, the provided classes are somewhat rudimentary.
 However -- and that is its strength -- many extensions exist and it is relatively easy to add new functionalities and libraries.
-One of these extension-libraries that is being used for this application is libsndfile\footnote{http://www.mega-nerd.com/libsndfile URI valid 2013/10/23}, which provides a powerful audio file handling toolset.
+One of these extension-libraries that is being used for this application is libsndfile\footnote{http://www.mega-nerd.com/libsndfile, accessed Oct. 23. 2013}, which provides a powerful audio file handling toolset.
 The SpatDIF-library is linked in as a dynamic library, and provides the entire data-structure and methods for handling the scene.
 The renderer runs both a sonic and visual playback of the scene.
 The visual representation is a bare-bones wireframe drawing of the scene in OpenGL.
