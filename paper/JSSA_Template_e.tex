@@ -84,7 +84,7 @@
 The development and specification of SpatDIF, the spatial sound descriptor interchange format, is complemented with an actual software implementation in order to become usable in various environments. 
 In this report, the current state in the development of a software library called `SpatDIFlib' is discussed.
 The design principles derived from the concepts and specifications of SpatDIF, the class structure of the library, and code demonstrating its usage is presented.
-Furthermore, an application that utilizes the library is introduced as an exemplary use case.
+Furthermore, an application that utilises the library is introduced as an exemplary use case.
 
 \end{abstract}
 
@@ -123,7 +123,7 @@ For example, the description of media-streams in the Media extension is necessar
 
 After establishing a coherent specification with example use cases in textual form only, the next step towards usability in a technological manner is the implementation of software that embodies the concepts and stores and executes the SpatDIF descriptors in actual surround sound.
 For this purpose a software library was designed and is being implemented in a platform independent manner. 
-In addition an example application that utilizes this library is developed, in order to demonstrate the usage in a full form that generates actual sound output.
+In addition an example application that utilises this library is developed, in order to demonstrate the usage in a full form that generates actual sound output.
 By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the  strategic goals of the project.
 
 \subsection{Example Scene}
@@ -256,8 +256,8 @@ More importantly however, it demonstrates the power and simplicity of SpatDIF by
 
 In order to provide a relevant example for the application of the `SpatDIFlib', the scope of the application has been limited deliberately.
 The panning algorithm is a simple spatial windowing algorithms named ``ambipanning'' \cite{Neukom:2008ambipan} that %has the advantage of being a one-step calculation (contrary to ambisonics) CHANGED:{not sure if this is an advantage, id rather remove it}, which 
-is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialization situations.
-The application provides a stand-alone implementation, with a basic visualization of the scene, and the possibility to play the scene on a stereo or multichannel speaker setup.
+is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialisation situations.
+The application provides a stand-alone implementation, with a basic visualisation of the scene, and the possibility to play the scene on a stereo or multichannel speaker setup.
 It allows to load a SpatDIF file with associated sound files and play it through a few predefined multichannel speaker layouts.
 Currently two mark-up languages are supported, XML and JSON, with more to come in the future.
 
@@ -296,7 +296,7 @@ The client application is in charge of loading the text files containing the Spa
 It deals with all the audio related processes, such as loading audio files, playing them back, and configuring the audio-system.
 Some of the information necessary to do this is provided by the SpatDIF scene.
 In addition, the client application can open network sockets and forward OSC-formatted data to the library.
-It queries the library for scene information at initialization as well as at runtime, based on its own scheduler.
+It queries the library for scene information at initialisation as well as at runtime, based on its own scheduler.
 
 \section{Availability}% Jasch
 
@@ -305,7 +305,7 @@ Of course, access to the code-base can be granted on demand.
 
 \section{Acknowledgements}% Jasch
 
-This software development would not have been possible without the generous support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts.
+This software development would not have been possible without the generous support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts and the active support by the SpatDIF Group in particular Nils Peters and Trond Lossius.
 
 
 \printbibliography
