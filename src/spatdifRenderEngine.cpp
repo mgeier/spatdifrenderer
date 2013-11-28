@@ -156,26 +156,48 @@ void spatdifApp::draw(){
     // end of camera transform
     ofDisableAntiAliasing();
     ofDisableDepthTest();
+    
+    
     // the GUI
     ofFill();
     ofSetColor(242);
-    ofRect(0, 0, ofGetWidth(), 40);
+    ofRect(0, 0, ofGetWidth(), 44);
     
     ofSetLineWidth(0.5);
     ofSetColor(0, 0, 0, 63);
+    
     ofNoFill();
-    ofRect(5, 5, 60, 16);
+    ofRect(5, 5, 100, 16);
     ofSetColor(0, 0, 0, 63);
     TTF.drawString("open file", 9, 18);
     
-    TTF.drawString(ofToString( (float)( (sndfileObject->framecounter) * bufferSize) / sampleRate), 100, 18);
+    ofRect(5, 23, 100, 16);
+    ofSetColor(0, 0, 0, 63);
+    TTF.drawString("setup speakers", 9, 36);
+
+    float audioTime = (float)((sndfileObject->framecounter) * bufferSize) / sampleRate;
+    TTF.drawString(ofToString( audioTime, 2) , 110, 36);
+    int leftEdge = ofGetWidth()-20;
+    ofLine(130, 5, 130, 22);
+    ofLine(130, 13, leftEdge, 13);
+    ofLine(leftEdge, 5, leftEdge, 22);
+    
+    if(playScene) {
+        
+        ofSetLineWidth(2.0);
+        ofLine( ofGetWidth()-20, 5, leftEdge, 22);
+        ofSetLineWidth(1.0);
+    }
+
+
+
     
     if(!playScene){
-        ofLine(80, 5, 95, 13);
-        ofLine(80, 21, 95, 13);
-        ofLine(80, 5, 80, 21);
+        ofLine(110, 5, 125, 13);
+        ofLine(110, 21, 125, 13);
+        ofLine(110, 5, 110, 21);
     }else{
-    
+        
     }
     
 }
