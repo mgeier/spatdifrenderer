@@ -31,9 +31,10 @@
 
 % Two addresses
 % --------------
-\twoauthors
+\threeauthors %twoauthors
   {Chikashi Miyama} {College of Music Cologne\\Studio for Electronic Music\\ me@chikashi.net }
   {Jan C. Schacher} {Zurich University of the Arts\\ ICST \\ jan.schacher@zhdk.ch}
+  {Nils Peters} {Centre for Interdisciplinary Research\\in Music Media and Technology\\ nils.peters@acm.org}
 
 % Three addresses
 % --------------
@@ -84,7 +85,7 @@
 The development and specification of SpatDIF, the spatial sound descriptor interchange format, is complemented with an actual software implementation in order to become usable in various environments. 
 In this report, the current state in the development of a software library called `SpatDIFlib' is discussed.
 The design principles derived from the concepts and specifications of SpatDIF, the class structure of the library, and code demonstrating its usage is presented.
-Furthermore, an application that utilises the library is introduced as an exemplary use case.
+Furthermore, an application that utilizes the library is introduced as an exemplary use case.
 
 \end{abstract}
 
@@ -95,42 +96,45 @@ The concepts and guidelines are implemented in a C-Library and applied in an exa
 
 SpatDIF, the Spatial Sound Description Interchange Format, presents a structured syntax for describing spatial sound information, addressing the different tasks involved in creating and performing spatial sound.
 
-The goal of the SpatDIF approach is to simplify and enhance the methods of working with and exchanging spatial sound content. 
+The goal of the SpatDIF approach is to simplify and enhance the methods of creating and exchanging spatial sound content. 
 SpatDIF proposes a simple, minimal, and extensible format as well as best-practice implementations for storing and transmitting spatial sound scene descriptions. 
 It encourages portability and the exchange of compositions between venues with different surround sound infrastructures. 
 SpatDIF also fosters collaboration between artists such as composers, musicians, sound installation artists, and sound designers, as well as researchers in the fields of acoustics, musicology, sound engineering and virtual reality.
 
 SpatDIF is developed as a collaborative effort and has evolved over a number of years. 
-The community and all related information can be found at \url{www.spatdif.org}.
+The community and all related information can be found at {\it www.spatdif.org}.
 
 \section{History of the Project} %assigned to Jasch
-SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since the available spatial rendering systems all used self-contained syntax and data-formats at that time. 
+SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since all of the available spatial rendering systems used self-contained syntax and data-formats at that time. 
 Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has been extended, refined, and consolidated. 
 
 After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011 and at a workshop at the TU-Berlin in September 2011.
-The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG specification.
-In addition, many features necessary to make this lightweight standard become functional, such as the capability of dealing with temporal interpolation of scene descriptors as described, were introduced in \cite{Peters:2013SpatDifCMJ}.
+The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG-4 scene description specification \cite{scheirer1999audiobifs}.
+In addition, several functions necessary to make this lightweight standard become functional, such as the capability of dealing with temporal interpolation of scene descriptors as described, were introduced in \cite{Peters:2013SpatDifCMJ}.
 
 \section{Concepts}
 
-One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound might occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
+One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound may occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
 SpatDIF formulates a concise semantic structure that is capable of carrying all the relevant information, without being tied to a specific implementation, thought-model or technical method. 
 SpatDIF is a syntax rather than a programming interface or file-format and may be represented in any of the structured mark-up languages or message systems that are in use today or in the future. 
-It describes only those aspects required for the storage and transmission of \emph{spatial information} regarding the sound.
-However, a complete work typically contains additional dimensions that lie outside the scope of SpatDIF. 
-These are judiciously addressed only to the extent necessary for linking these external sound elements to the descriptions of the spatial dimension. 
-For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
+It describes only those aspects required for the storage and transmission of \emph{spatial sound information}.
+Because a complete work typically contains aspects that are outside the realm of such spatial sound description, SpatDIF judiciously provides interfaces to link these aspects to the spatial dimensions.
+% These are judiciously addressed only to the extent necessary for linking these external sound elements to the descriptions of the spatial dimension. 
+%For example, the description of media-streams in SpatDIF is necessary to define the storage location of the audio objects in the scene.
+For example, to be able to render the audio objects with the correct audio content in the spatial scene, the storage location of the unrendered audio content needs to be defined via SpatDIF's media resources.
+%For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
+\\
+After establishing a coherent specification with example use cases in textual form only, the next development step is the implementation of software that embodies the specified concepts.
+For this purpose a platform-independent software library was designed and is being implemented. 
+Additionally, to demonstrate the usage of SpatDIF, an example application which utilizes this library was created. This application features SpatDIF file-handling and  rendering of SpatDIF sound scenes into multichannel sound files.
 
-After establishing a coherent specification with example use cases in textual form only, the next step towards usability in a technological manner is the implementation of software that embodies the concepts and stores and executes the SpatDIF descriptors in actual surround sound.
-For this purpose a software library was designed and is being implemented in a platform independent manner. 
-In addition an example application that utilises this library is developed, in order to demonstrate the usage in a full form that generates actual sound output.
-By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the  strategic goals of the project.
+By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the strategic goals of the project.
 
 \subsection{Example Scene}
  
 Referring back to the canonical example `Turenas' by John Chowning (see also \cite{Peters:2013SpatDifCMJ}), the beginning of a SpatDIF example scene, including only the `insect' trajectory at second 0:44, contains the following elements in an XML format:
 
-\lstinputlisting[tabsize=3,columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{turenas-insect-extract.xml} 
+\lstinputlisting[tabsize=3,columns=fullflexible,breaklines=true,numbers=none,language=XML,morekeywords={source,sink,time,meta},basicstyle=\scriptsize\ttfamily]{turenas-insect-extract.xml} 
 
 Apart from the SpatDIF-compliant XML file, or other structured markup formatted file, the corresponding sound files have to be stored and transported alongside, in order to permit recreation of the scene.
 It is therefore important to think in terms of `SpatDIF bundles' or projects rather than single files.
@@ -146,7 +150,7 @@ SpatDIFLib is an open source C/C++ multi-platform library, that offers the follo
 
 \begin{itemize}[leftmargin=*]
 \item[--] Loading and storing SpatDIF scenes from/to a XML, JSON, and YAML formatted strings
-\item[--] Addition, deletion, and modification of entities in SpatDIF scenes
+\item[--] Addition, deletion, and modification of entities (e.g.,~sources) in SpatDIF scenes 
 \item[--] Addition, deletion, and modification of events
 \item[--] Associating events with entities
 \item[--] Activation and deactivation of extensions
@@ -161,16 +165,16 @@ Though SpatDIFLib can be controlled by OSC \cite{Wessel_2002, Schmeder_2008} for
 Figure \ref{fig:class_structure} shows the simplified class hierarchy of the library. 
 
 % explains what I want to show here 2 - 3sentences
-A instance of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. 
+An instance of {\it sdScene} class represents a SpatDIF scene and maintains instances of {\it sdEntityCore}. The functionalities of {\it sdEntityCore} may be extended by the descendants of {\it sdEntityExtension}. 
 The activation and deactivation of the extension are global within a scene. 
 Thus, {\it sdScene} is also responsible for the extension handling. 
 Each instance of {\it sdEntityCore} maintains instances of {\it sdEvent}, that represent events of the entity they are attached to.
 The followings are brief descriptions of the most important classes.
 
 \begin{figure*}[t]
-\centerline{
-	\includegraphics[width= 17.5cm]{classes.pdf}}
-\caption{Class Structure}
+\centerline{ 
+	\includegraphics[width= 18cm]{classes.pdf}}
+\caption{Class structure of the library}
 \label{fig:class_structure}
 \end{figure*}
 
@@ -227,11 +231,11 @@ The following code listing shows how to load an XML-formatted string obtained fr
 \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,basicstyle=\scriptsize\ttfamily]{code_output.txt} 
 
 \noindent 
-The following is taking place in the code example:
+The following processes are executed in the example:
 
 \begin{itemize}[leftmargin=*]
 \item[--] Line 1: {\it sdLoader::sceneFromXML} static function loads a SpatDIF scene from a XML formatted string.
-\item[--] Line 2: A pointer to an entity, named `insect' is obtained by scene.getEntity member function.
+\item[--] Line 2: A pointer to an entity, named `insect' is obtained by {\it scene.getEntity} member function.
 \item[--] Lines 3-4: The entity `insect' is requested to return a pointer to the first event with the position and media location descriptor.
 \item[--] Line 6: Querying the `insect' entity for its name
 \item[--] Lines 7-9: Posting the values and time of events to the console
@@ -241,7 +245,7 @@ The following is taking place in the code example:
 
 The above-mentioned basic class hierarchy is already implemented in the library. 
 The library is also able to interpret simple XML, JSON and OSC messages and is currently examined against the example renderer application, in order to further improve its performance.  
-In the next phase of the project, the complete set of extensions defined in the SpatDIF specification 0.3 will be implemented and finally a C interface will be added, which should make this tool applicable to various types of software. 
+In the next phase of the project, the complete set of extensions defined in the SpatDIF specification 0.3 \cite{SpatDIF:Specs} will be implemented and finally a C interface will be added, which will make this tool applicable to various types of software. 
 %The library will be completed by the end of 2014 and released under the MIT, BSD or similar licenses. % mentioned i its own section below
 
 \section{The Example Application}% Jasch
@@ -256,8 +260,8 @@ More importantly however, it demonstrates the power and simplicity of SpatDIF by
 
 In order to provide a relevant example for the application of the `SpatDIFlib', the scope of the application has been limited deliberately.
 The panning algorithm is a simple spatial windowing algorithms named ``ambipanning'' \cite{Neukom:2008ambipan} that %has the advantage of being a one-step calculation (contrary to ambisonics) CHANGED:{not sure if this is an advantage, id rather remove it}, which 
-is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialisation situations.
-The application provides a stand-alone implementation, with a basic visualisation of the scene, and the possibility to play the scene on a stereo or multichannel speaker setup.
+is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialization situations.
+The application provides a stand-alone implementation, with a basic visualization of the scene, and the possibility to play the scene on a stereo or multichannel speaker setup.
 It allows to load a SpatDIF file with associated sound files and play it through a few predefined multichannel speaker layouts.
 Currently two mark-up languages are supported, XML and JSON, with more to come in the future.
 
@@ -276,8 +280,8 @@ After retrieving samples from the sound files via libsndfile, panning and distan
 The signal processing chain is deliberately kept simple, to provide a clear example of the implementation of such a process.
 
 \begin{figure}[h]
-\centerline{
-	\includegraphics[width=\columnwidth]{SpatDIFrenderer_screenshot2}}
+\centerline{ \frame{
+	\includegraphics[width=\columnwidth]{SpatDIFrenderer_screenshot2}}}
 \caption{Graphical User Interface of the example renderer application, displaying the Lissajous trajectory from Chowning's `Turenas'. 
 %\todo{export from OF as SVG/PDF}
 }
@@ -288,7 +292,7 @@ The signal processing chain is deliberately kept simple, to provide a clear exam
 
 The separation of labour between the library and a client application such as the example renderer presented here is very deliberate.
 
-SpatDIFLib builds and maintains in memory the SpatDIF scene, either obtained from an already existing description stored in a file, or on the fly in real-time from elements received via OSC-formatted network packets.
+SpatDIFLib builds and maintains in memory the SpatDIF scene, either obtained from an already existing description stored in a file, or on-the-fly in real time from elements received via OSC-formatted network packets.
 It also provides an application programming interface (API) that hides most of the complexity of handling the scene data.
 Two reading and two writing interfaces are planned for the library, one interfacing the file-system and the other providing the network-interface via OSC-packets.
 
@@ -296,7 +300,7 @@ The client application is in charge of loading the text files containing the Spa
 It deals with all the audio related processes, such as loading audio files, playing them back, and configuring the audio-system.
 Some of the information necessary to do this is provided by the SpatDIF scene.
 In addition, the client application can open network sockets and forward OSC-formatted data to the library.
-It queries the library for scene information at initialisation as well as at runtime, based on its own scheduler.
+It queries the library for scene information at initialization as well as at runtime, based on its own scheduler.
 
 \section{Availability}% Jasch
 
@@ -305,7 +309,7 @@ Of course, access to the code-base can be granted on demand.
 
 \section{Acknowledgements}% Jasch
 
-This software development would not have been possible without the generous support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts and the active support by the SpatDIF Group in particular Nils Peters and Trond Lossius.
+This software development would not have been possible without the generous support of the Institute for Computer Music and Sound Technology ICST of the Zurich University of the Arts.
 
 
 \printbibliography
