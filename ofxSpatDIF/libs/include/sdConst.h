@@ -59,6 +59,7 @@ typedef enum {
  enum for extension. all sdEntityExtension must have one of these enum as a static variable in order to identify themselves
  */
 typedef enum {
+    SD_CORE,
     SD_MEDIA,
     SD_INTERPOLATION,
     SD_DIRECT_TO_ONE,
@@ -164,7 +165,7 @@ inline int stringToInt(string str){
 }
 
 /*!
- utility function that convert a string to a descriptor. 
+ utility function that converts a string to a descriptor. 
  */
 inline const EDescriptor stringToDescriptor(string str, const string *ds, const EDescriptor *dc, const int num){
     for(int i = 0; i<num; i++ ){
@@ -175,14 +176,54 @@ inline const EDescriptor stringToDescriptor(string str, const string *ds, const 
 }
 
 /*!
- utility function that convert a descriptor to a string.
+ utility function that converts a descriptor to a string.
  */
 inline const string descriptorToString(EDescriptor descriptor, const string *ds, const EDescriptor *dc, const int num){
     for(int i = 0; i<num; i++ ){
         if(dc[i] == descriptor)
             return ds[i];
     }
-	return NULL;
+    return NULL;
+}
+
+inline const string extensionToString(EExtension extension){
+    string extensionStr;
+    if(extension == SD_MEDIA){
+        extensionStr = "media";
+    }else if(extension == SD_INTERPOLATION){
+        extensionStr = "interpolation";
+    }else if(extension == SD_DIRECT_TO_ONE){
+        extensionStr = "directo-to-one";
+    }else if(extension == SD_CORE){
+        extensionStr = "core";
+    }else{
+        extensionStr = "error";
+    }
+    return extensionStr;
+}
+
+inline const EExtension stringToExtension(string extensionStr){
+    EExtension ext;
+    if(extensionStr == "media"){
+        ext = SD_MEDIA;
+    }else if(extensionStr == "interpolation"){
+        ext = SD_INTERPOLATION;
+    }else if(extensionStr == "direct-to-one"){
+        ext = SD_DIRECT_TO_ONE;
+    }else{
+        ext = SD_EXTENSION_ERROR;
+    }
+    return ext;
+}
+
+inline const EExtension getRelevantExtension(EDescriptor descriptor){
+    if(SD_TYPE <= descriptor && descriptor <= SD_ORIENTATION){
+        return SD_CORE;
+    }else if(SD_MEDIA_ID <= descriptor && descriptor <= SD_MEDIA_GAIN){
+        return SD_MEDIA;
+    }else{
+        return SD_EXTENSION_ERROR;
+    }
 }
 
 #endif

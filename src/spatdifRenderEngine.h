@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxSpatDIF.h"
 #include "ofxSndfile.h"
+#include "spatDIFPlayer.h"
 
 class spatdifApp : public ofBaseApp{
 
@@ -22,7 +23,6 @@ class spatdifApp : public ofBaseApp{
 //		void gotMessage(ofMessage msg);
     
         ofxSpatDIF * spatDifObject;
-        ofxSndfile * sndfileObject;
     
 //        void loadSndfile(const char * infilename);
         void playSndfile(SNDFILE *infile);
@@ -31,39 +31,53 @@ class spatdifApp : public ofBaseApp{
         void loadSceneInfo(sdScene * myScene);
     
         void audioOut(float * output, int bufferSize, int nChannels);
+    
+        void runSchedule();
 
-        bool playFile();
-        bool stopFile();
-        bool pauseFile();
-        bool resumeFile();
+        bool playScene();
+        bool stopScene();
+        void ambipanning_calc(int ID, int channel);
 
         ofImage logoImg;
         
         string currentFileName;
         string currentFilePath;
+        string rootPath;
     
-        bool haveScene;
-        bool newFileLoaded;
-        bool playScene;
-        
+        bool bHaveScene;
+        bool bNewFileLoaded;
+        bool bPlayScene;
+
+        double sceneFirstEventTime;
+        double sceneLastEventTime;
+    
+        double sceneTime;
+        long long audioTime;
+        long long frameCounter;
+    
         ofEasyCam cam; // add mouse controls for camera movement
-    
-        string entityName;
-        
+            
         ofSoundStream soundStream;
         vector <float> audioSignals[8]; // audio signals
     
         ofPoint locspeakers[8];
         ofPoint locaudio;
         float   audioAmplitudes[8]; // audio volumes for channels
+        float   prevAudioAmplitudes[8]; // audio volumes for channels
         int     bufferSize;
         int     sampleRate;
         float 	volume;
+        double frameDuration;
+        long    numInterpSteps;
 
     
         ofTrueTypeFont TTF;
+        ofTrueTypeFont TTFtiny;
         ofSpherePrimitive sphere;
     
-
+        string entityName;
+        vector <ofxSpatDIFPlayer> player;
+    
+        bool bScheduleLock;
     
 };

@@ -64,6 +64,7 @@ void ofxSpatDIF::loadSceneFromFile(string filePath, int type)
 //            myScene.dump();
         }
     }
+    currentFilePath = filePath;
 }
 
 unsigned int ofxSpatDIF::getNumberOfEntities(sdScene theScene)
