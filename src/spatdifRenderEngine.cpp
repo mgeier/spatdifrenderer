@@ -10,7 +10,8 @@ void spatdifApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);
     ofSetFrameRate(30);    
     logoImg.loadImage("SpatDIF_logo.png");
-    TTF.loadFont("lucidagrande.ttf", 8, 1, 1, 0);
+    TTF.loadFont("lucidagrande.ttf", 8, 1, 1, 1);
+    TTFtiny.loadFont("lucidagrande.ttf", 0.5, 1, 1, 1);
     sphere.setRadius(0.05);
     
     ofEnableDepthTest();
@@ -25,29 +26,15 @@ void spatdifApp::setup(){
     ofBackground(255,255,255);
     
 	ofSetFrameRate(60);
-//    const char	*infilename = "../../../data/insect_simulated.aiff";
-//	const char	*infilename = "../../../data/beating_loop.aiff";
-//  const char	*infilename = "/Users/jasch/Documents/_sounds/pana_03.aif";
-//  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiPax.aiff";
-//    
-//    if( sndfileObject->loadSoundFile(infilename) ) {
-//        sndfileObject->looped = true;
-//        sndfileObject->state = 1;
-//        sndfileObject->framecounter = 0;
-//    }
     
-//    loadSndfile(infilename);
-    
-        
     bufferSize          = 256;
 	sampleRate 			= 44100;
-    
     frameDuration = (double)bufferSize / (double)sampleRate;
-    ofLog(OF_LOG_VERBOSE, "frameDuration is %f", frameDuration);
+//    ofLog(OF_LOG_VERBOSE, "frameDuration is %f", frameDuration);
 
     
 //	volume				= 0.707107f;
-	volume				= 1.0;
+	volume				= 1.41;
     
 	for(int i = 0; i < 2;i++) {
 	
@@ -65,8 +52,11 @@ void spatdifApp::setup(){
     
 //    printf("locspeakers %f %f\n", locspeakers[0].x, locspeakers[0].y );
 //    printf("locspeakers %f %f\n", locspeakers[1].x, locspeakers[1].y );
-	soundStream.listDevices();
-	soundStream.setDeviceID(2);
+    
+    
+    parseDeviceList(soundStream);
+
+    soundStream.setDeviceID(2);
 	soundStream.setup(this, 2 , 0, sampleRate, bufferSize, 4);
 
     sceneTime = 0.0;
@@ -129,13 +119,24 @@ void spatdifApp::draw(){
     
     if(bHaveScene) {
         
+        ofSetColor(0, 63, 127);
+        ofRect(locspeakers[0].x-0.1, locspeakers[0].y-0.1, 0.2, 0.2);
+        ofRect(locspeakers[1].x-0.1, locspeakers[1].y-0.1, 0.2, 0.2);
+//        TTFtiny.drawStringAsShapes("L", locspeakers[0].x-0.2, locspeakers[0].y);
+//        TTFtiny.drawStringAsShapes("R", locspeakers[0].x+0.2, locspeakers[0].y);
+//        
         ofScale(1.0, 1.0, 1.0);
+
+        
         if(!bPlayScene) {
             ofSetColor(191);
         }else{
             ofSetColor(255, 127, 0);
         }
+        
+        
         ofFill();
+        
         ofPoint oldPoint;
         double currentTime = 0.0;
 
@@ -148,7 +149,7 @@ void spatdifApp::draw(){
             oldPoint.y = pos[1];
             oldPoint.z = pos[2];
         }
-        while (true) {
+        while (currentTime < sceneTime) {
             sdEvent* sEvent = entity->getNextEvent(currentTime, SD_POSITION);
             if(sEvent == NULL) break;
             
@@ -166,8 +167,7 @@ void spatdifApp::draw(){
         if(bPlayScene && !bScheduleLock){
             for(int i = 0; i < player.size(); i++){
                 ofSetColor(0, 127, 255, 255);
-                ofRect( player[i].currPosition.x-0.125, player[i].currPosition.y-0.125
-, 0.25, 0.25);
+                ofRect( player[i].currPosition.x-0.125, player[i].currPosition.y-0.125, 0.25, 0.25);
             }
         }
     }
@@ -218,8 +218,12 @@ void spatdifApp::draw(){
         ofSetColor(127);
         ofRect(5, 150-audioAmplitudes[0]*100, 10, audioAmplitudes[0]*100);
         ofRect(17, 150-audioAmplitudes[1]*100, 10, audioAmplitudes[1]*100);
-        
-        TTF.drawString(ofToString(audioAmplitudes[0], 4), 5, 168);
+
+        TTF.drawString(ofToString("L", 4), 5, 168);
+        TTF.drawString(ofToString("R", 4), 17, 168);
+
+        TTF.drawString("L "+ofToString(audioAmplitudes[0], 4), 5, 180);
+        TTF.drawString("R "+ofToString(audioAmplitudes[1], 4), 5, 192);
         
         
     }
@@ -234,6 +238,45 @@ void spatdifApp::draw(){
         ofRect(118, 5, 6, 16);
     }
 
+    
+//    // Menu
+//    ofFill();
+//    ofSetColor(232, 232, 232);
+//    ofRect(5, 3, 188, 18);
+//    ofNoFill();
+//    ofSetColor(127, 127, 127);
+//    ofRect(5, 3, 188, 18);
+//    ofFill();
+//    ofTriangle(5+177,7,5+185, 7, 5+181, 13);
+//    ofSetColor(0, 0, 0);
+//    TTF.drawString(deviceNames[0],5+5, 16);
+
+    
+    
+//    if(menuState) {
+//		int numMenuItems = (int)deviceNames.size();
+//        
+//		ofSetColor(232, 232, 232);
+//		ofFill();
+//		ofRect(5, 21, 188, numMenuItems*18);
+//        
+//		vector<string>::iterator it;
+//		int i;
+//		for ( it = deviceNames.begin(), i = 0 ; it < deviceNames.end(); it++) {
+//				ofNoFill();
+//				ofSetColor(232, 232, 232);
+//				ofRect(5, 21+(i*18), 188, 18);
+//				ofSetColor(0, 0, 0);
+//				TTF.drawString(deviceNames[i], 9, 35+i*18 );
+//				i++;
+//		}
+//		
+//		ofNoFill();
+//		ofSetColor(127, 127, 127);
+//		ofRect(5, 21, 188, numMenuItems*18);
+//	}
+//    
+//    
 }
 
 void spatdifApp::keyPressed  (int key) {
@@ -263,6 +306,16 @@ void spatdifApp::mouseDragged(int x, int y, int button){
 }
 
 void spatdifApp::mousePressed(int x, int y, int button){
+   
+    if(x > 10 && x < 200
+       && y > 3 && y < 21) {
+		if(menuState != 0) {
+			menuState = 0;
+		} else {
+			menuState = 1;
+			parseDeviceList(soundStream);
+		}
+    }
 
 }
 
@@ -583,3 +636,46 @@ void spatdifApp::ambipanning_calc(int ID, int channel)
 // TODO: panning without crackling
 
 
+bool spatdifApp::parseDeviceList(ofSoundStream mySoundStream)
+{
+    
+    // capture the cout of the listdevices into the stringstream
+    streambuf* oldCoutStreamBuf = cout.rdbuf();
+    ostringstream capturedString;
+    cout.rdbuf( capturedString.rdbuf() );
+    
+	mySoundStream.listDevices();
+    
+    cout.rdbuf( oldCoutStreamBuf ); // restoring old cout.
+    
+//    printf("after capture \n %s", capturedString.str().c_str());
+    
+    
+    std::string str1 ("device");
+    std::string str2 ("[notice");
+
+    std::size_t found = 0;
+    std::size_t found2 = 0;
+
+    while (found2 != std::string::npos) {
+        found = capturedString.str().find(str1, found);
+//        if (found != std::string::npos) {
+//            std::cout << "'device' found at: " << found << '\n';
+//            
+//        }
+//        
+        found2 = capturedString.str().find(str2, found+10);
+//        if (found2 != std::string::npos) {
+//            std::cout << "'[notice ]' found at: " << found2 << '\n';
+//        }
+        if(found > capturedString.str().length()){
+            break;
+        }
+        deviceNames.push_back(capturedString.str().substr(found+7, (found2-found)-8).c_str());
+        found = found2+10;
+    }
+    
+    for(int i = 0; i < deviceNames.size();i++){
+        ofLog(OF_LOG_NOTICE, deviceNames[i] );
+    }
+}
