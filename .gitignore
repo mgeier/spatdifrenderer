@@ -10,3 +10,6 @@ JSSA_Template_e.run.xml
 paper
 turenas-insect-extract.xml
 .DS_store
+OpenFrameworks_project/ofxSndfile/build_libsndfile/libsndfile-1.0.25-i386
+OpenFrameworks_project/ofxSndfile/build_libsndfile/libsndfile-1.0.25-x86_64
+OpenFrameworks_project/bin/SpatDIFrendererDebug.app
