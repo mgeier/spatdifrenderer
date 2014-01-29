@@ -104,6 +104,7 @@
 		301C9EE31811827B008C43FB /* ofxSpatDIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSpatDIF.h; sourceTree = "<group>"; };
 		3071F84717FB687900886E7E /* spatdifRenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatdifRenderEngine.h; sourceTree = "<group>"; };
 		3071F84817FB687900886E7E /* spatdifRenderEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatdifRenderEngine.cpp; sourceTree = "<group>"; };
+		30A028101850C92E000A8467 /* spatDIFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spatDIFPlayer.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -331,6 +332,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				30A028101850C92E000A8467 /* spatDIFPlayer.h */,
 				3071F84717FB687900886E7E /* spatdifRenderEngine.h */,
 				3071F84817FB687900886E7E /* spatdifRenderEngine.cpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,

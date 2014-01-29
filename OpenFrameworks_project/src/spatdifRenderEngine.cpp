@@ -26,25 +26,11 @@ void spatdifApp::setup(){
     ofBackground(255,255,255);
     
 	ofSetFrameRate(60);
-//    const char	*infilename = "../../../data/insect_simulated.aiff";
-//	const char	*infilename = "../../../data/beating_loop.aiff";
-//  const char	*infilename = "/Users/jasch/Documents/_sounds/pana_03.aif";
-//  const char	*infilename = "/Users/jasch/Documents/_sounds/scelsiPax.aiff";
-//    
-//    if( sndfileObject->loadSoundFile(infilename) ) {
-//        sndfileObject->looped = true;
-//        sndfileObject->state = 1;
-//        sndfileObject->framecounter = 0;
-//    }
     
-//    loadSndfile(infilename);
-    
-        
     bufferSize          = 256;
 	sampleRate 			= 44100;
-    
     frameDuration = (double)bufferSize / (double)sampleRate;
-    ofLog(OF_LOG_VERBOSE, "frameDuration is %f", frameDuration);
+//    ofLog(OF_LOG_VERBOSE, "frameDuration is %f", frameDuration);
 
     
 //	volume				= 0.707107f;
@@ -66,8 +52,11 @@ void spatdifApp::setup(){
     
 //    printf("locspeakers %f %f\n", locspeakers[0].x, locspeakers[0].y );
 //    printf("locspeakers %f %f\n", locspeakers[1].x, locspeakers[1].y );
-	soundStream.listDevices();
-	soundStream.setDeviceID(2);
+    
+    
+    parseDeviceList(soundStream);
+
+    soundStream.setDeviceID(2);
 	soundStream.setup(this, 2 , 0, sampleRate, bufferSize, 4);
 
     sceneTime = 0.0;
@@ -249,6 +238,45 @@ void spatdifApp::draw(){
         ofRect(118, 5, 6, 16);
     }
 
+    
+//    // Menu
+//    ofFill();
+//    ofSetColor(232, 232, 232);
+//    ofRect(5, 3, 188, 18);
+//    ofNoFill();
+//    ofSetColor(127, 127, 127);
+//    ofRect(5, 3, 188, 18);
+//    ofFill();
+//    ofTriangle(5+177,7,5+185, 7, 5+181, 13);
+//    ofSetColor(0, 0, 0);
+//    TTF.drawString(deviceNames[0],5+5, 16);
+
+    
+    
+//    if(menuState) {
+//		int numMenuItems = (int)deviceNames.size();
+//        
+//		ofSetColor(232, 232, 232);
+//		ofFill();
+//		ofRect(5, 21, 188, numMenuItems*18);
+//        
+//		vector<string>::iterator it;
+//		int i;
+//		for ( it = deviceNames.begin(), i = 0 ; it < deviceNames.end(); it++) {
+//				ofNoFill();
+//				ofSetColor(232, 232, 232);
+//				ofRect(5, 21+(i*18), 188, 18);
+//				ofSetColor(0, 0, 0);
+//				TTF.drawString(deviceNames[i], 9, 35+i*18 );
+//				i++;
+//		}
+//		
+//		ofNoFill();
+//		ofSetColor(127, 127, 127);
+//		ofRect(5, 21, 188, numMenuItems*18);
+//	}
+//    
+//    
 }
 
 void spatdifApp::keyPressed  (int key) {
@@ -278,6 +306,16 @@ void spatdifApp::mouseDragged(int x, int y, int button){
 }
 
 void spatdifApp::mousePressed(int x, int y, int button){
+   
+    if(x > 10 && x < 200
+       && y > 3 && y < 21) {
+		if(menuState != 0) {
+			menuState = 0;
+		} else {
+			menuState = 1;
+			parseDeviceList(soundStream);
+		}
+    }
 
 }
 
@@ -505,8 +543,7 @@ void spatdifApp::runSchedule()
                 }
                 
                 // get next position
-                sdEvent* sEvent = player[i].entity->getNextEvent(sceneTime, SD_POSITION);
-                if(sEvent != NULL) {
+                  if(sEvent != NULL) {
                     pos = static_cast<double*>(player[i].entity->getValue(sEvent->getTime(), SD_POSITION));
                     if(pos != NULL) {
                         player[i].nextPosition.x = pos[0];
@@ -598,3 +635,46 @@ void spatdifApp::ambipanning_calc(int ID, int channel)
 // TODO: panning without crackling
 
 
+bool spatdifApp::parseDeviceList(ofSoundStream mySoundStream)
+{
+    
+    // capture the cout of the listdevices into the stringstream
+    streambuf* oldCoutStreamBuf = cout.rdbuf();
+    ostringstream capturedString;
+    cout.rdbuf( capturedString.rdbuf() );
+    
+	mySoundStream.listDevices();
+    
+    cout.rdbuf( oldCoutStreamBuf ); // restoring old cout.
+    
+//    printf("after capture \n %s", capturedString.str().c_str());
+    
+    
+    std::string str1 ("device");
+    std::string str2 ("[notice");
+
+    std::size_t found = 0;
+    std::size_t found2 = 0;
+
+    while (found2 != std::string::npos) {
+        found = capturedString.str().find(str1, found);
+//        if (found != std::string::npos) {
+//            std::cout << "'device' found at: " << found << '\n';
+//            
+//        }
+//        
+        found2 = capturedString.str().find(str2, found+10);
+//        if (found2 != std::string::npos) {
+//            std::cout << "'[notice ]' found at: " << found2 << '\n';
+//        }
+        if(found > capturedString.str().length()){
+            break;
+        }
+        deviceNames.push_back(capturedString.str().substr(found+7, (found2-found)-8).c_str());
+        found = found2+10;
+    }
+    
+    for(int i = 0; i < deviceNames.size();i++){
+        ofLog(OF_LOG_NOTICE, deviceNames[i] );
+    }
+}
