@@ -1,0 +1,8 @@
+spatDIF renderer notes 20131011
+
+
+
+- samplerate of renderer
+
+soundfiles should be set to the same samplerate
+or use libsamplerate in concjuntion with libsndfile to change the playback speed 

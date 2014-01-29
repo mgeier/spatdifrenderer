@@ -1,0 +1,321 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 1.7 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{2008ICMCpanel}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kendall}{K.}%
+     {Gary~S.}{G.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Geier}{G.}%
+     {Matthias}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{spatialisation, SpatDIF, Jamoma}
+  \strng{namehash}{KGSPNGM1}
+  \strng{fullhash}{KGSPNGM1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proc. of the International Computer Music Conference}
+  \field{pages}{295\bibrangedash 296}
+  \field{title}{Towards an Interchange Format for Spatial Audio Scenes}
+  \list{location}{1}{%
+    {Belfast, UK}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{Neukom:2008ambipan}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Neukom}{N.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schacher}{S.}%
+     {Jan}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{ambisonics, Max, SMC09}
+  \strng{namehash}{NMSJ1}
+  \strng{fullhash}{NMSJ1}
+  \field{sortinit}{N}
+  \field{abstract}{%
+  In Ambisonics sound is encoded and stored in multichannel sound files and is
+  decoded for playback. In the en- and decoding process complicated functions
+  are used. In this paper panning functions equivalent to the result of en- and
+  decoding are presented which can be used for real-time panning in an
+  arbitrary high ambisonic order. In the function equivalent to the socalled
+  in-phase decoding the order of ambisonic resolution is just a variable that
+  can be any positive number not restricted to integers and that can be changed
+  during playback. The limitations and advantages of the technique are
+  mentioned, real time applications are described and the computational costs
+  are estimated. The described procedure offers a new intuitive understanding
+  of Ambisonics.%
+  }
+  \field{booktitle}{Proc. of the International Computer Music Conference}
+  \field{pages}{592\bibrangedash 595}
+  \field{title}{Ambisonics equivalent panning}
+  \list{location}{1}{%
+    {Belfast, UK}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{Peters:2008spatdif}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{spatialisation, SpatDIF, Jamoma}
+  \strng{namehash}{PN1}
+  \strng{fullhash}{PN1}
+  \field{sortinit}{P}
+  \field{booktitle}{Proc. of the International Computer Music Conference}
+  \field{pages}{299\bibrangedash 300}
+  \field{title}{{Proposing SpatDIF - The Spatial Sound Description Interchange
+  Format}}
+  \list{location}{1}{%
+    {Belfast, UK}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{peters_caa07}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ferguson}{F.}%
+     {Sean}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McAdams}{M.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PNFSMS1}
+  \strng{fullhash}{PNFSMS1}
+  \field{sortinit}{P}
+  \field{number}{3}
+  \field{pages}{64\bibrangedash 65}
+  \field{title}{{Towards a Spatial Sound Description Interchange Format
+  (SpatDIF)}}
+  \field{volume}{35}
+  \field{journaltitle}{Canadian Acoustics}
+  \field{year}{2007}
+\endentry
+
+\entry{Peters:2013SpatDifCMJ}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lossius}{L.}%
+     {Trond}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schacher}{S.}%
+     {Jan~C}{J.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {MIT Press}%
+  }
+  \strng{namehash}{PNLTSJC1}
+  \strng{fullhash}{PNLTSJC1}
+  \field{sortinit}{P}
+  \verb{doi}
+  \verb 10.1162/COMJ_a_00167
+  \endverb
+  \field{number}{1}
+  \field{pages}{11\bibrangedash 22}
+  \field{title}{{The Spatial Sound Description Interchange Format: Principles,
+  Specification, and Examples}}
+  \field{volume}{37}
+  \field{journaltitle}{Computer Music Journal}
+  \field{year}{2013}
+\endentry
+
+\entry{SpatDIF:Specs}{misc}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Peters}{P.}%
+     {Nils}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schacher}{S.}%
+     {Jan~C.}{J.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lossius}{L.}%
+     {Trond}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PNSJCLT1}
+  \strng{fullhash}{PNSJCLT1}
+  \field{sortinit}{P}
+  \field{howpublished}{\url{http://redmine.spatdif.org/projects/spatdif/files}}
+  \field{title}{Specification of the Spatial Sound Description Interchange
+  Format ({SpatDIF}) V. 0.3}
+  \field{year}{2010-2012}
+\endentry
+
+\entry{scheirer1999audiobifs}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Scheirer}{S.}%
+     {E.D.}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vaananen}{V.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Huopaniemi}{H.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE}%
+  }
+  \strng{namehash}{SEVRHJ1}
+  \strng{fullhash}{SEVRHJ1}
+  \field{sortinit}{S}
+  \field{number}{3}
+  \field{pages}{237\bibrangedash 250}
+  \field{title}{{AudioBIFS}: Describing audio scenes with the {MPEG-4}
+  multimedia standard}
+  \field{volume}{1}
+  \field{journaltitle}{IEEE Transactions on Multimedia}
+  \field{year}{1999}
+\endentry
+
+\entry{Schmeder_2008}{report}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Schmeder}{S.}%
+     {Andy}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{2}{%
+    {Center for New Music}%
+    {Audio Technologies, University of California, Berkeley}%
+  }
+  \strng{namehash}{SA1}
+  \strng{fullhash}{SA1}
+  \field{sortinit}{S}
+  \field{abstract}{%
+  Since its introduction in 1997 by CNMAT researchers Matt Wright and Adrian
+  Freed, the Open Sound Control (OSC) protocol has been successfully integrated
+  into dozens of hardware and software products, and used in thousands of
+  performances and installations. OSC goes beyond MIDI by addressing needs
+  specific to musical performance with new electronic instruments such as
+  high-bandwidth connectivity, precise temporal semantics and temporal
+  regularization, extensibility and rich type support, human readability and
+  state-free operation. The OSC protocol itself has a simple structure making
+  it easy to integrate into new applications, but an appreciation for the
+  underlying design principles is necessary to leverage its full capabilities.
+  This talk covers the basics of using and programming OSC with demonstrations
+  of hardware and software implementations. We will then dive into the details
+  and discuss best-practices for creating OSC implementations that relate to
+  issues in musical control, with an emphasis on temporal semantics and related
+  algorithms. The conclusion will include an overview of recent research and
+  anticipated future developments.%
+  }
+  \field{title}{Everything you ever wanted to know about Open Sound Control}
+  \field{type}{techreport}
+  \field{month}{03}
+  \field{year}{2008}
+\endentry
+
+\entry{Wessel_2002}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Wessel}{W.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wright}{W.}%
+     {Matthew}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schott}{S.}%
+     {John}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WDWMSJ1}
+  \strng{fullhash}{WDWMSJ1}
+  \field{sortinit}{W}
+  \field{abstract}{%
+  In this demonstration we will show a variety of computer-based musical
+  instruments designed for live performance. Our design criteria include
+  initial ease of use coupled with a long term potential for virtuosity,
+  minimal and low variance latency, and clear and simple strategies for
+  programming the relationship between gesture and musical result. We present
+  custom controllers and unique adaptations of standard gestural interfaces, a
+  programmable connectivity processor, a communications protocol called Open
+  Sound Control (OSC), and a variety of metaphors for musical control.%
+  }
+  \field{booktitle}{Proceedings of the Conference on New Interfaces for Musical
+  Expression}
+  \field{pages}{192\bibrangedash 194}
+  \field{title}{Intimate musical control of computers with a variety of
+  controllers and gesture mapping metaphors}
+  \list{location}{1}{%
+    {Dublin, Ireland}%
+  }
+  \field{year}{2002}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
