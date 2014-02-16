@@ -6,7 +6,7 @@
 #include "ext.h"							// standard Max include, always required
 #include "ext_obex.h"						// required for new style Max object
 
-//#include "sdMain.h"
+#include "sdMain.h"
 
 typedef struct _spatdif 
 {
