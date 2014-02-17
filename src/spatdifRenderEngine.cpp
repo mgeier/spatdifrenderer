@@ -543,8 +543,7 @@ void spatdifApp::runSchedule()
                 }
                 
                 // get next position
-                sdEvent* sEvent = player[i].entity->getNextEvent(sceneTime, SD_POSITION);
-                if(sEvent != NULL) {
+                  if(sEvent != NULL) {
                     pos = static_cast<double*>(player[i].entity->getValue(sEvent->getTime(), SD_POSITION));
                     if(pos != NULL) {
                         player[i].nextPosition.x = pos[0];

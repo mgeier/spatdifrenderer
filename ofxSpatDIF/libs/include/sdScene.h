@@ -24,7 +24,7 @@ private:
     /*! a vector of sdEntityCores */
     vector <sdEntityCore*> entityVector;
     
-    /*! a vector of activated extensions. A sdScene automatically creates sdEntityExtensions stored in this vector and attached to a sdEntityCore, when instantiated. */
+    /*! a vector of activated extensions. A sdScene automatically instantiates the descendants of sdEntityExtensions and attached to a sdEntityCore, when it is instantiated. */
     vector <EExtension> activatedExtensionVector;
     
     /*! ordering flag */
@@ -33,8 +33,6 @@ private:
     /*! contains "info" part of the meta section*/
     sdInfo info;
 
-    /*! internal function for conversion*/
-    EExtension convertExtensionString(string extension);
 
 public:
     
@@ -91,6 +89,11 @@ public:
     /*! @name Entity handling
      @{
      */
+    
+    /*! return name of the entity at the specified index
+     @param index
+     */
+    string getEntityName(int index);
     
     /*! search an entity in the entity vector by its name and return the pointer. returns null if the entity can not be found.
      @param name the name of a designated entity
@@ -156,8 +159,8 @@ public:
      @{
      */
     
-    /*! returns a vector of activated extensions. The vector contains EExtensions declared in sdConst.h */
-    vector <EExtension> getActivatedExtensionVector(void);
+    /*! return an enum EExtension at the specified index */
+    EExtension getActivatedExtension(int index);
     
     /*! returns number of activated Extensions*/
     int getNumberOfActivatedExtensions(void);
@@ -166,13 +169,27 @@ public:
      @param extension enum EExtension of extension to be added
      */
     void addExtension(EExtension extension);
+    
+    /*! activate an extension specified by a string. 
+     @param extension string of extension to be added
+     */
     void addExtension(string extension);
 
+    /*! check if the specified extension is activated
+     @param extension enum EExtension of extension to be checked
+     */
+    bool isExtensionActivated(EExtension extension);
+
+    
     /*! deactivate an extension specified by enum EExtension. This function removes instances of the designated extension (i.e. a subclass of sdEntityExtension )  attached  to all existing sdEntityCores in the scene.
         Thus, all events data stored in the extension will be lost.
      @param extension enum EExtension of extension to be removed
      */
     void removeExtension(EExtension extension);
+    
+    /*! deactivate an extension specified by a string
+     @param extension string of extension to be removed
+     */
     void removeExtension(string extension);
 
     /*! 

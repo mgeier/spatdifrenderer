@@ -25,6 +25,7 @@ bool ofxSndfile::loadSoundFile(const char *infilename) {
         return false;
 	} else{
         ofLogVerbose("SF OPEN : file loaded:", infilename);
+        sf_seek(infile, 0, 0);
         dumpInfo();
         framecounter = 0;
         return true;
@@ -64,7 +65,7 @@ int ofxSndfile::getNextFrame(SNDFILE *infile, float * buffer, int blocksize) {
     return readcount;
 }
 
-int seekSoundFile(SNDFILE *infile, sf_count_t frames, int whence = SEEK_CUR){
+int ofxSndfile::seekSoundFile(SNDFILE *infile, sf_count_t frames, int whence = SEEK_SET){
 
     return sf_seek(infile, frames, whence) ;
     
