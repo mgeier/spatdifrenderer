@@ -5,7 +5,6 @@
 
 #include "ext.h"							// standard Max include, always required
 #include "ext_obex.h"						// required for new style Max object
-
 #include "sdMain.h"
 
 typedef struct _spatdif 
@@ -110,6 +109,16 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 	buffer = sysmem_newptr(size);
 	sysfile_read(filehandle, &size, buffer); 	// read in the file
 	
+    string sceneData(buffer);
+    
+    sdScene scene = sdLoader::sceneFromXML(sceneData);
+    
+    int numExtensions = scene.getNumberOfActivatedExtensions();
+    cout << "number of active extensions: " << numExtensions << endl;
+    
+    scene.dump();
+
+    
 //	new_node = datatree_from_xml(buffer);		// build scene from data in buffer
     
 //	if(!node) {

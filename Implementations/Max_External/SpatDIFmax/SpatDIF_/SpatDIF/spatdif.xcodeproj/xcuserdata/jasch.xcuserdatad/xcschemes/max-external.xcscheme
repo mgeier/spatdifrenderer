@@ -39,6 +39,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <PathRunnable
+         FilePath = "/Applications/Max 6.1/Max Runtime.app">
+      </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/jasch/Documents/_icst/_research/SpatDIF/SpatDIF_API/spatdifrenderer/spatdifrenderer/Implementations/Max_External/SpatDIFmax/SpatDIF_/SpatDIF/build/spatdif.maxhelp"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

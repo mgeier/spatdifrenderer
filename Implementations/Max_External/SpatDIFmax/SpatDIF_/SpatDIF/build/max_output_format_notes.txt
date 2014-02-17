@@ -1,0 +1,14 @@
+
+		spatdif/source/insect/position 0.0 8.0 0.0
+		spatdif source insect position 0.0 8.0 0.0
+		
+spatdif source insect media location insect_simulated.aiff
+spatdif source insect media id sound_0001
+spatdif source insect media type file
+spatdif source insect media channel 1 
+
+
+source insect media location insect_simulated.aiff
+source insect media id sound_0001
+source insect media type file
+source insect media channel 1 
