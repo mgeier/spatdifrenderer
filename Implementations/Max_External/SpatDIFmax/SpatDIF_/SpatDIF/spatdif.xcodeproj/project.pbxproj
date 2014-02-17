@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3039A31518B0DE66006DAA28 /* sdConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30618B0DE66006DAA28 /* sdConst.h */; };
+		3039A31618B0DE66006DAA28 /* sdDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30718B0DE66006DAA28 /* sdDate.h */; };
+		3039A31718B0DE66006DAA28 /* sdEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30818B0DE66006DAA28 /* sdEntity.h */; };
+		3039A31818B0DE66006DAA28 /* sdEntityCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30918B0DE66006DAA28 /* sdEntityCore.h */; };
+		3039A31918B0DE66006DAA28 /* sdEntityExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30A18B0DE66006DAA28 /* sdEntityExtension.h */; };
+		3039A31A18B0DE66006DAA28 /* sdEntityExtensionMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30B18B0DE66006DAA28 /* sdEntityExtensionMedia.h */; };
+		3039A31B18B0DE66006DAA28 /* sdInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30C18B0DE66006DAA28 /* sdInfo.h */; };
+		3039A31C18B0DE66006DAA28 /* sdLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30D18B0DE66006DAA28 /* sdLoader.h */; };
+		3039A31D18B0DE66006DAA28 /* sdMain.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30E18B0DE66006DAA28 /* sdMain.h */; };
+		3039A31E18B0DE66006DAA28 /* sdOSCResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A30F18B0DE66006DAA28 /* sdOSCResponder.h */; };
+		3039A31F18B0DE66006DAA28 /* sdSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A31018B0DE66006DAA28 /* sdSaver.h */; };
+		3039A32018B0DE66006DAA28 /* sdScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A31118B0DE66006DAA28 /* sdScene.h */; };
+		3039A32118B0DE66006DAA28 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A31318B0DE66006DAA28 /* libspatdif.dylib */; };
+		3039A32418B0DF61006DAA28 /* spatdif_external.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039A32318B0DF61006DAA28 /* spatdif_external.cpp */; };
+		3039A32618B0E8E5006DAA28 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A32518B0E8E5006DAA28 /* libstdc++.dylib */; };
+		3039A32A18B21933006DAA28 /* libspatdif.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3039A31318B0DE66006DAA28 /* libspatdif.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3039A32918B21929006DAA28 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				3039A32A18B21933006DAA28 /* libspatdif.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
+		2FBBEAE508F335360078DB84 /* spatdif.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spatdif.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		3039A30618B0DE66006DAA28 /* sdConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdConst.h; sourceTree = "<group>"; };
+		3039A30718B0DE66006DAA28 /* sdDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdDate.h; sourceTree = "<group>"; };
+		3039A30818B0DE66006DAA28 /* sdEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntity.h; sourceTree = "<group>"; };
+		3039A30918B0DE66006DAA28 /* sdEntityCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityCore.h; sourceTree = "<group>"; };
+		3039A30A18B0DE66006DAA28 /* sdEntityExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtension.h; sourceTree = "<group>"; };
+		3039A30B18B0DE66006DAA28 /* sdEntityExtensionMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdEntityExtensionMedia.h; sourceTree = "<group>"; };
+		3039A30C18B0DE66006DAA28 /* sdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdInfo.h; sourceTree = "<group>"; };
+		3039A30D18B0DE66006DAA28 /* sdLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdLoader.h; sourceTree = "<group>"; };
+		3039A30E18B0DE66006DAA28 /* sdMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdMain.h; sourceTree = "<group>"; };
+		3039A30F18B0DE66006DAA28 /* sdOSCResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdOSCResponder.h; sourceTree = "<group>"; };
+		3039A31018B0DE66006DAA28 /* sdSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdSaver.h; sourceTree = "<group>"; };
+		3039A31118B0DE66006DAA28 /* sdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdScene.h; sourceTree = "<group>"; };
+		3039A31318B0DE66006DAA28 /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libspatdif.dylib; sourceTree = "<group>"; };
+		3039A32318B0DF61006DAA28 /* spatdif_external.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatdif_external.cpp; sourceTree = "<group>"; };
+		3039A32518B0E8E5006DAA28 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FBBEADC08F335360078DB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3039A32618B0E8E5006DAA28 /* libstdc++.dylib in Frameworks */,
+				3039A32118B0DE66006DAA28 /* libspatdif.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* iterator */ = {
+			isa = PBXGroup;
+			children = (
+				3039A32518B0E8E5006DAA28 /* libstdc++.dylib */,
+				3039A32318B0DF61006DAA28 /* spatdif_external.cpp */,
+				3039A30318B0D8AA006DAA28 /* Resources */,
+				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = iterator;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FBBEAE508F335360078DB84 /* spatdif.mxo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3039A30318B0D8AA006DAA28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3039A30518B0DE66006DAA28 /* include */,
+				3039A31218B0DE66006DAA28 /* lib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3039A30518B0DE66006DAA28 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3039A30618B0DE66006DAA28 /* sdConst.h */,
+				3039A30718B0DE66006DAA28 /* sdDate.h */,
+				3039A30818B0DE66006DAA28 /* sdEntity.h */,
+				3039A30918B0DE66006DAA28 /* sdEntityCore.h */,
+				3039A30A18B0DE66006DAA28 /* sdEntityExtension.h */,
+				3039A30B18B0DE66006DAA28 /* sdEntityExtensionMedia.h */,
+				3039A30C18B0DE66006DAA28 /* sdInfo.h */,
+				3039A30D18B0DE66006DAA28 /* sdLoader.h */,
+				3039A30E18B0DE66006DAA28 /* sdMain.h */,
+				3039A30F18B0DE66006DAA28 /* sdOSCResponder.h */,
+				3039A31018B0DE66006DAA28 /* sdSaver.h */,
+				3039A31118B0DE66006DAA28 /* sdScene.h */,
+			);
+			name = include;
+			path = ../../../lib/include;
+			sourceTree = "<group>";
+		};
+		3039A31218B0DE66006DAA28 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3039A31318B0DE66006DAA28 /* libspatdif.dylib */,
+			);
+			name = lib;
+			path = ../../../lib/lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2FBBEAD708F335360078DB84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3039A31518B0DE66006DAA28 /* sdConst.h in Headers */,
+				3039A31618B0DE66006DAA28 /* sdDate.h in Headers */,
+				3039A31718B0DE66006DAA28 /* sdEntity.h in Headers */,
+				3039A31818B0DE66006DAA28 /* sdEntityCore.h in Headers */,
+				3039A31918B0DE66006DAA28 /* sdEntityExtension.h in Headers */,
+				3039A31A18B0DE66006DAA28 /* sdEntityExtensionMedia.h in Headers */,
+				3039A31B18B0DE66006DAA28 /* sdInfo.h in Headers */,
+				3039A31C18B0DE66006DAA28 /* sdLoader.h in Headers */,
+				3039A31D18B0DE66006DAA28 /* sdMain.h in Headers */,
+				3039A31E18B0DE66006DAA28 /* sdOSCResponder.h in Headers */,
+				3039A31F18B0DE66006DAA28 /* sdSaver.h in Headers */,
+				3039A32018B0DE66006DAA28 /* sdScene.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2FBBEAD608F335360078DB84 /* max-external */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */;
+			buildPhases = (
+				2FBBEAD708F335360078DB84 /* Headers */,
+				2FBBEAD808F335360078DB84 /* Resources */,
+				2FBBEADA08F335360078DB84 /* Sources */,
+				2FBBEADC08F335360078DB84 /* Frameworks */,
+				3039A32818B20C93006DAA28 /* ShellScript */,
+				3039A32918B21929006DAA28 /* CopyFiles */,
+				2FBBEADF08F335360078DB84 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "max-external";
+			productName = iterator;
+			productReference = 2FBBEAE508F335360078DB84 /* spatdif.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "spatdif" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FBBEAD608F335360078DB84 /* max-external */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FBBEAD808F335360078DB84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		2FBBEADF08F335360078DB84 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3039A32818B20C93006DAA28 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FBBEADA08F335360078DB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3039A32418B0DF61006DAA28 /* spatdif_external.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2FBBEAD008F335010078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = spatdif;
+				WRAPPER_EXTENSION = .mxo;
+			};
+			name = Development;
+		};
+		2FBBEAD108F335010078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = spatdif;
+				WRAPPER_EXTENSION = .mxo;
+			};
+			name = Deployment;
+		};
+		2FBBEAE108F335360078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = "$(SRCROOT)/build";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/Developer/Headers/FlatCarbon,
+					"\"$(C74SUPPORT)/max-includes\"",
+					"\"$(C74SUPPORT)/msp-includes\"",
+					"\"$(C74SUPPORT)/jit-includes\"",
+					"\"$(SRCROOT)/../../../lib/include/**",
+				);
+				LD_DYLIB_INSTALL_NAME = "@loader_path/../Resources/libspatdif.dylib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../lib/lib\"",
+					"\"$(SDKROOT)/usr/lib/gcc/i686-apple-darwin10/4.0.1\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(C74_SYM_LINKER_FLAGS)",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = spatdif;
+				SDKROOT = macosx10.6;
+			};
+			name = Development;
+		};
+		2FBBEAE208F335360078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = "$(SRCROOT)/build";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/Developer/Headers/FlatCarbon,
+					"\"$(C74SUPPORT)/max-includes\"",
+					"\"$(C74SUPPORT)/msp-includes\"",
+					"\"$(C74SUPPORT)/jit-includes\"",
+					"\"$(SRCROOT)/../../../lib/include/**",
+				);
+				LD_DYLIB_INSTALL_NAME = "@loader_path/../Resources/libspatdif.dylib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../lib/lib\"",
+					"\"$(SDKROOT)/usr/lib/gcc/i686-apple-darwin10/4.0.1\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(C74_SYM_LINKER_FLAGS)",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = spatdif;
+				SDKROOT = macosx10.6;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "spatdif" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAD008F335010078DB84 /* Development */,
+				2FBBEAD108F335010078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAE108F335360078DB84 /* Development */,
+				2FBBEAE208F335360078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
