@@ -1,0 +1,24 @@
+#N canvas 549 320 570 466 10;
+#X msg 139 46 dump;
+#X obj 173 169 spatdif;
+#X msg 205 28 /spatdifcmd/setWriteTime 3;
+#X msg 245 62 /spatdifcmd/setPosition myEntity 0 0.5 2;
+#X obj 172 293 print;
+#X msg 212 236 done!!;
+#X msg 274 90 /spatdifcmd/setQueryTime 3;
+#X msg 275 126 /spatdifcmd/getPosition myEntity;
+#X msg 66 125 read \$1;
+#X obj 66 98 openpanel;
+#X obj 65 64 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 1 1 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
