@@ -69,14 +69,14 @@ pd_darwin: spatdif.pd_darwin
 
 .SUFFIXES: .pd_darwin
 
-DARWINCFLAGS = -arch i386 -arch x86_64 -x c++  -DPD -O0 -Wall # -W -Wstrict-prototypes -Wno-unused
+DARWINCFLAGS = -arch i386 -arch x86_64 -x c++  -DPD -O0 -Wall -W -Wstrict-prototypes -Wno-unused
 
 SPATDIFINCLUDE = -I ../../../spatdiflib/src
-LIBRARY_PATH = -L /usr/lib
-LIBS =  -lstdc++ # -lspatdif
+LIBRARY_PATH = -L /usr/local/lib
+LIBS =  -lstdc++ -lspatdif
 
 .c.pd_darwin:
-	cc $(DARWINCFLAGS) $(LINUXINCLUDE) $(SPATDIFINCLUDE) $(LIBRARY_PATH) -o $*.o -c $*.c $(LIBS)
-	cc -arch i386 -arch x86_64 -bundle -undefined suppress -flat_namespace -o $*.pd_darwin $*.o 
+	cc $(DARWINCFLAGS) $(LINUXINCLUDE) $(SPATDIFINCLUDE) -o $*.o -c $*.c
+	cc -arch i386 -arch x86_64 -bundle -flat_namespace -undefined suppress  $(LIBRARY_PATH) $(LIBS) -o $*.pd_darwin $*.o 
 	rm -f $*.o
 
