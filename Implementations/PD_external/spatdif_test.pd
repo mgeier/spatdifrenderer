@@ -13,7 +13,6 @@
 #X text 329 26 set commands;
 #X msg 362 101 /spatdifcmd/setOrientation myEntity 3 2 1;
 #X msg 487 519 /spatdifcmd/getPresent myEntity;
-#X msg 58 237 dump;
 #X msg 382 130 /spatdifcmd/setPresent myEntity true;
 #X msg 492 541 /spatdifcmd/getNumberOfEntities;
 #X msg 401 244 /spatdifcmd/getOrdering;
@@ -29,6 +28,15 @@
 #X msg 498 419 /spatdifcmd/getNextOrientation myEntity;
 #X msg 515 440 /spatdifcmd/getPreviousOrientation myEntity;
 #X msg 35 60 /spatdifcmd/setQueryTime 10;
+#X obj 33 296 openpanel;
+#X obj 27 357 savepanel;
+#X msg 29 379 save \$1;
+#X obj 29 268 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 8 329 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 35 322 load \$1;
+#X msg 58 236 dump;
 #X connect 0 0 2 0;
 #X connect 0 1 3 0;
 #X connect 1 0 0 0;
@@ -56,4 +64,10 @@
 #X connect 26 0 0 0;
 #X connect 27 0 0 0;
 #X connect 28 0 0 0;
-#X connect 29 0 0 0;
+#X connect 29 0 34 0;
+#X connect 30 0 31 0;
+#X connect 31 0 0 0;
+#X connect 32 0 29 0;
+#X connect 33 0 30 0;
+#X connect 34 0 0 0;
+#X connect 35 0 0 0;

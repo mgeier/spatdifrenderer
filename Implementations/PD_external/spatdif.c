@@ -4,6 +4,7 @@
 #include "sdMain.h"
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 typedef struct spatdif
@@ -46,6 +47,34 @@ vector<string> splitAddress(string &str){
     return res;
 }
 
+
+
+void spatdif_save(t_spatdif *x, t_symbol *s){
+    ofstream ofs(s->s_name);
+    if(!ofs){
+        post("spatdif: unable to open file %s", s->s_name);
+        return;
+    }
+    ofs << sdSaver::XMLFromScene(&x->scene); // file closed automatically by the destructor of ofstream
+}
+
+void spatdif_load(t_spatdif *x, t_symbol *s){
+    ifstream ifs(s->s_name);
+    if(!ifs.is_open()){
+        post("spatdif: unable to open file %s", s->s_name);
+        return;
+    }
+    string xmlString;
+    while ( ifs.good() )
+    {
+        string str;
+        getline(ifs,str);
+        xmlString.append(str);
+    }
+    //post(xmlString.c_str());
+    x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
+}
+
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
 {
     int i, count = 0, rargc = 0, argCount = 0, ttCount = 1;
@@ -56,11 +85,17 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     
     string str, returnedStr;
     str = s->s_name;
+    
+
     if(str == "dump"){
-        
         post(x->scene.dump().c_str());
         return;
-        
+    }else if(str == "load"){
+        spatdif_load(x, argv[0].a_w.w_symbol);
+        return;
+    }else if(str == "save"){
+        spatdif_save(x, argv[0].a_w.w_symbol);
+        return;
     }
     
     for ( i = 0; i < argc; i++)
@@ -137,6 +172,7 @@ void spatdif_setup(void)
 {
     spatdif_class = class_new(gensym("spatdif"), (t_newmethod)spatdif_new,
     	0, sizeof(t_spatdif), 0, A_GIMME, 0);
+
     class_addanything(spatdif_class, (t_method)spatdif_interpret);
 }
 
