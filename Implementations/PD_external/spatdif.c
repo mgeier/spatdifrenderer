@@ -55,7 +55,7 @@ void spatdif_save(t_spatdif *x, t_symbol *s){
         post("spatdif: unable to open file %s", s->s_name);
         return;
     }
-    ofs << sdSaver::XMLFromScene(&x->scene); // file closed automatically by the destructor of ofstream
+    ofs << sdSaver::XMLFromScene(&x->scene)<< endl; // file closed automatically by the destructor of ofstream
 }
 
 void spatdif_load(t_spatdif *x, t_symbol *s){
