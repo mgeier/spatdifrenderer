@@ -48,7 +48,7 @@ vector<string> splitAddress(string &str){
 
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
 {
-    int i, count = 0, rargc = 0, argCount = 0, ttCount = 0;
+    int i, count = 0, rargc = 0, argCount = 0, ttCount = 1;
     const char* typetags;
     vector<string> addressVector, elementVector;
 
