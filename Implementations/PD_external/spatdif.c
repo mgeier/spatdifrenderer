@@ -83,7 +83,8 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
 
     t_atom *rargv;
     
-    string str, returnedStr;
+    string str;
+    vector<string> returnedStrings;
     str = s->s_name;
     
 
@@ -106,55 +107,65 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         else if (argv[i].a_type == A_SYMBOL)
             str += argv[i].a_w.w_symbol->s_name;
     }
+    
+    // !! send OSC message to the spatdiflibrary and get response!!
+    returnedStrings = x->responder.forwardOSCMessage(str);
 
-    returnedStr = x->responder.forwardOSCMessage(str);
+    vector<string>::iterator it = returnedStrings.begin();
     
-    elementVector = splitMessage(returnedStr);
-    addressVector = splitAddress(elementVector[0]);
-    if(elementVector.size() > 1){
-        typetags = elementVector[1].c_str();
-    }
-    
-    count = elementVector.size() + addressVector.size() -1; // avoid counting twice
-    if(elementVector.size() > 1){ // with arguments
-        count -= 1; // type tag
-    }
-    count -= 2; // ommit spatdif +  the first element is not counted as an argument
-    
-    if(count < 0) count = 0;
-    
-    rargv = (t_atom*)malloc(sizeof(t_atom) * count);
-    
-    vector<string>::iterator it = addressVector.begin() + 2; // skip spatdif header and second element
-    while (it != addressVector.end()) {
-        string element = *it;
-        SETSYMBOL(&rargv[argCount], gensym(element.c_str()));
-        it++;argCount++;
-    }
-    
-    if (elementVector.size() > 1) { // with arguments
+    while (it != returnedStrings.end()) {
+        string returnedStr = *it;
+        //post(returnedStr.c_str());
         
-        it = elementVector.begin() + 2;
-        while (it != elementVector.end()) {
-            string tmpStr = *it;
-            switch (typetags[ttCount]) {
-                case 'i':
-                case 'f':
-                case 'd':
-                    SETFLOAT(&rargv[argCount], (float)(stringToDouble(tmpStr)));
-                    break;
-                case 's':
-                    SETSYMBOL(&rargv[argCount], gensym(tmpStr.c_str()));
-                    break;
-            }
-            it++; argCount++; ttCount++;
+        elementVector = splitMessage(returnedStr);
+        addressVector = splitAddress(elementVector[0]);
+        if(elementVector.size() > 1){
+            typetags = elementVector[1].c_str();
         }
+        
+        count = elementVector.size() + addressVector.size() -1; // avoid counting twice
+        if(elementVector.size() > 1){ // with arguments
+            count -= 1; // type tag
+        }
+        count -= 2; // ommit spatdif +  the first element is not counted as an argument
+        
+        if(count < 0) count = 0;
+        
+        rargv = (t_atom*)malloc(sizeof(t_atom) * count);
+        
+        vector<string>::iterator ait = addressVector.begin() + 2; // skip spatdif header and second element
+        while (ait != addressVector.end()) {
+            string element = *ait;
+            SETSYMBOL(&rargv[argCount], gensym(element.c_str()));
+            ait++;argCount++;
+        }
+        
+        if (elementVector.size() > 1) { // with arguments
+            vector<string>::iterator eit;
+            eit = elementVector.begin() + 2;
+            while (eit != elementVector.end()) {
+                string tmpStr = *eit;
+                switch (typetags[ttCount]) {
+                    case 'i':
+                    case 'f':
+                    case 'd':
+                        SETFLOAT(&rargv[argCount], (float)(stringToDouble(tmpStr)));
+                        break;
+                    case 's':
+                        SETSYMBOL(&rargv[argCount], gensym(tmpStr.c_str()));
+                        break;
+                }
+                eit++; argCount++; ttCount++;
+            }
+        }
+        
+        outlet_anything(x->m_out, gensym(addressVector[1].c_str()), count, rargv);
+        if(rargv){
+            free(rargv);
+        }
+        it++;
     }
-
-    outlet_anything(x->m_out, gensym(addressVector[1].c_str()), count, rargv);
-    if(rargv){
-        free(rargv);
-    }
+    //done bang from the second outlet
     outlet_bang(x->b_out);
 }
 
