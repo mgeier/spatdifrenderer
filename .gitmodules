@@ -1,3 +1,6 @@
 [submodule "Implementations/Max_External/Max_SDK"]
 	path = Implementations/Max_External/Max_SDK
 	url = https://github.com/Cycling74/max6-sdk.git
+[submodule "spatdiflib"]
+	path = spatdiflib
+	url = http://code.zhdk.ch/git/spatdiflib.git
