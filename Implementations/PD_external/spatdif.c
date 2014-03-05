@@ -104,7 +104,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         addressVector = splitAddress(address); // separate elements in the address pattern
 
         // how many atoms to be sent out from the outlet ?
-		numAtoms += addressVector.size() - 1; // because we will omit the header /spatdif
+		numAtoms += (addressVector.size() - 2); // because we will omit the header /spatdif and the 
 		numArguments = returnedMessage.getNumberOfArgument(); 
 		numAtoms += numArguments; // one arg one atom
         rargv = (t_atom*)malloc(sizeof(t_atom) * numAtoms); // allocate buffers
@@ -118,15 +118,17 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
             atomCount++;
         }
 
-		// put typetag
-        SETSYMBOL(&rargv[atomCount], gensym(returnedMessage.getTypetagsAsString().c_str()));
-
         for(int i = 1; i < typetags.size(); i++){
         	switch(typetags[i]){
+                case 'i':{
+                    SETFLOAT(&rargv[atomCount], static_cast<float>(returnedMessage.getArgumentAsInt(argCount)));
+                    break;
+                }
             	case 'f':{
                 	SETFLOAT(&rargv[atomCount], returnedMessage.getArgumentAsFloat(argCount));
                 	break;
-                } case 's':{
+                } 
+                case 's':{
                     SETSYMBOL(&rargv[atomCount], gensym(returnedMessage.getArgumentAsString(argCount).c_str()));
                     break;
                 }
@@ -134,7 +136,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         	atomCount++;
         }
         
-        outlet_anything(x->m_out, gensym(addressVector[1].c_str()), atomCount, rargv);
+        outlet_anything(x->m_out, gensym(addressVector[1].c_str()), numAtoms, rargv);
         if(rargv){
             free(rargv);
         }
