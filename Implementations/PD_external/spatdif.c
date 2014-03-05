@@ -13,8 +13,6 @@ typedef struct spatdif
     t_outlet *m_out, *b_out;
     sdScene scene;
     sdOSCResponder responder;
-    double writeTime;
-    double queryTime;
 } t_spatdif;
 
 t_class *spatdif_class;
@@ -22,17 +20,6 @@ t_class *spatdif_class;
 extern "C" {
     #include <string.h>
     void spatdif_setup(void);
-}
-
-vector<string> splitMessage(string &str){
-    vector<string> res;
-    size_t current = 0, found;
-    while((found = str.find_first_of(' ', current)) != string::npos){
-        res.push_back(string(str, current, found - current));
-        current = found + 1;
-    }
-    res.push_back(string(str, current, str.size() - current));
-    return res;
 }
 
 vector<string> splitAddress(string &str){
@@ -46,8 +33,6 @@ vector<string> splitAddress(string &str){
     res.push_back(string(str, current, str.size() - current));
     return res;
 }
-
-
 
 void spatdif_save(t_spatdif *x, t_symbol *s){
     ofstream ofs(s->s_name);
@@ -71,95 +56,85 @@ void spatdif_load(t_spatdif *x, t_symbol *s){
         getline(ifs,str);
         xmlString.append(str);
     }
-    //post(xmlString.c_str());
     x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
 }
 
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
 {
-    int i, count = 0, rargc = 0, argCount = 0, ttCount = 1;
+    int i, rargc = 0;
     const char* typetags;
-    vector<string> addressVector, elementVector;
-
     t_atom *rargv;
-    
-    string str;
-    vector<string> returnedStrings;
-    str = s->s_name;
-    
+    string command;
+    vector<sdOSCMessage> returnedMessageVector;
+    vector<string> addressVector;
 
-    if(str == "dump"){
+    command = s->s_name;
+    
+    // handle non OSC Message
+    if(command == "dump"){
         post(x->scene.dump().c_str());
         return;
-    }else if(str == "load"){
+    }else if(command == "load"){
         spatdif_load(x, argv[0].a_w.w_symbol);
         return;
-    }else if(str == "save"){
+    }else if(command == "save"){
         spatdif_save(x, argv[0].a_w.w_symbol);
         return;
     }
+    // if OSC message
+    sdOSCMessage message(command);
     
-    for ( i = 0; i < argc; i++)
-    {
-        str += ' ';
+    for ( i = 0; i < argc; i++){
         if (argv[i].a_type == A_FLOAT)
-            str += doubleToString((double)(argv[i].a_w.w_float));
+            message.appendFloat(argv[i].a_w.w_float);
         else if (argv[i].a_type == A_SYMBOL)
-            str += argv[i].a_w.w_symbol->s_name;
+            message.appendString(argv[i].a_w.w_symbol->s_name);
     }
     
-    // !! send OSC message to the spatdiflibrary and get response!!
-    returnedStrings = x->responder.forwardOSCMessage(str);
+    // access the SpatDIF Library and get answer(s)!
+    returnedMessageVector = x->responder.forwardOSCMessage(message);
 
-    vector<string>::iterator it = returnedStrings.begin();
-    
-    while (it != returnedStrings.end()) {
-        string returnedStr = *it;
-        //post(returnedStr.c_str());
+    // examine each returned message
+    vector<sdOSCMessage>::iterator it = returnedMessageVector.begin();
+    while (it != returnedMessageVector.end()) { 
+    	int numAtoms = 0, numArguments = 0, atomCount = 0, argCount = 0;
+        sdOSCMessage returnedMessage = *it;
+        vector<unsigned char> typetags = returnedMessage.getTypetags();
+        string address = returnedMessage.getAddressAsString();
+        addressVector = splitAddress(address); // separate elements in the address pattern
+
+        // how many atoms to be sent out from the outlet ?
+		numAtoms += addressVector.size() - 1; // because we will omit the header /spatdif
+		numArguments = returnedMessage.getNumberOfArgument(); 
+		numAtoms += numArguments; // one arg one atom
+        rargv = (t_atom*)malloc(sizeof(t_atom) * numAtoms); // allocate buffers
         
-        elementVector = splitMessage(returnedStr);
-        addressVector = splitAddress(elementVector[0]);
-        if(elementVector.size() > 1){
-            typetags = elementVector[1].c_str();
-        }
-        
-        count = elementVector.size() + addressVector.size() -1; // avoid counting twice
-        if(elementVector.size() > 1){ // with arguments
-            count -= 1; // type tag
-        }
-        count -= 2; // ommit spatdif +  the first element is not counted as an argument
-        
-        if(count < 0) count = 0;
-        
-        rargv = (t_atom*)malloc(sizeof(t_atom) * count);
-        
+        // put address
         vector<string>::iterator ait = addressVector.begin() + 2; // skip spatdif header and second element
         while (ait != addressVector.end()) {
             string element = *ait;
-            SETSYMBOL(&rargv[argCount], gensym(element.c_str()));
-            ait++;argCount++;
+            SETSYMBOL(&rargv[atomCount], gensym(element.c_str()));
+            ait++;
+            atomCount++;
         }
-        
-        if (elementVector.size() > 1) { // with arguments
-            vector<string>::iterator eit;
-            eit = elementVector.begin() + 2;
-            while (eit != elementVector.end()) {
-                string tmpStr = *eit;
-                switch (typetags[ttCount]) {
-                    case 'i':
-                    case 'f':
-                    case 'd':
-                        SETFLOAT(&rargv[argCount], (float)(stringToDouble(tmpStr)));
-                        break;
-                    case 's':
-                        SETSYMBOL(&rargv[argCount], gensym(tmpStr.c_str()));
-                        break;
+
+		// put typetag
+        SETSYMBOL(&rargv[atomCount], gensym(returnedMessage.getTypetagsAsString().c_str()));
+
+        for(int i = 1; i < typetags.size(); i++){
+        	switch(typetags[i]){
+            	case 'f':{
+                	SETFLOAT(&rargv[atomCount], returnedMessage.getArgumentAsFloat(argCount));
+                	break;
+                } case 's':{
+                    SETSYMBOL(&rargv[atomCount], gensym(returnedMessage.getArgumentAsString(argCount).c_str()));
+                    break;
                 }
-                eit++; argCount++; ttCount++;
-            }
+        	}
+        	atomCount++;
         }
         
-        outlet_anything(x->m_out, gensym(addressVector[1].c_str()), count, rargv);
+        outlet_anything(x->m_out, gensym(addressVector[1].c_str()), atomCount, rargv);
         if(rargv){
             free(rargv);
         }
