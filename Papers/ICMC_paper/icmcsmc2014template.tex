@@ -25,10 +25,10 @@
 
 
 %user defined variables
-\def\papertitle{Paper Template for the Joint ICMC$\vert$SMC 2014}
-\def\firstauthor{First author}
-\def\secondauthor{Second author}
-\def\thirdauthor{Third author}
+\def\papertitle{Implementing SpatDIF: practical usage in DSP software$\vert$SMC 2014}
+\def\firstauthor{Jan C. Schacher}
+\def\secondauthor{Chikashi Miyama}
+\def\thirdauthor{Trond Lossius}
 
 % adds the automatic
 % Saves a lot of ouptut space in PDF... after conversion with the distiller
@@ -116,7 +116,7 @@
    {\firstauthor} {Affiliation1 \\ %
      {\tt \href{mailto:author1@smcnetwork.org}{author1@smcnetwork.org}}}
    {\secondauthor} {Affiliation2 \\ %
-     {\tt \href{mailto:author2@smcnetwork.org}{author2@smcnetwork.org}}}
+     {\tt \href{mailto:me@chikashi.net}{author2@smcnetwork.org}}}
    {\thirdauthor} { Affiliation3 \\ %
      {\tt \href{mailto:author3@smcnetwork.org}{author3@smcnetwork.org}}}
 
@@ -129,128 +129,73 @@
 \capstarttrue
 %
 \begin{abstract}
-The abstract should be placed at the top left column and should contain about 150–-200 words.
+The development and specification of SpatDIF, the spatial sound descriptor interchange format, is complemented with an actual software implementation in order to become usable in various environments. 
+In this report, the current state in the development of a software library called `SpatDIFlib' is discussed.
+The design principles derived from the concepts and specifications of SpatDIF, the class structure of the library, and code demonstrating its usage is presented.
+Furthermore, an application that utilizes the library is introduced as an exemplary use case.
 \end{abstract}
 %
+\section{Backgroud}
 
-\section{Introduction}\label{sec:introduction}
-This template includes all the information about formatting manuscripts for the Joint ICMC$\vert$SMC 2014 Conference. Please use either MS-Office or \LaTeX{} templates when preparing your submission. Please follow these guidelines to give the final proceedings a uniform look. If you have any questions, please contact the ICMC$\vert$SMC 2014 Organizers.
+In this article we present the development of a software tool aimed at simple integration of SpatDIF into existing software.
+The concepts and guidelines are implemented in a C-Library and applied in an example surround-playback application.
 
-This template can be downloaded from the ICMC$\vert$SMC 2014 web site (\url{http://www.icmc14-smc14.net/}).
+SpatDIF, the Spatial Sound Description Interchange Format, presents a structured syntax for describing spatial sound information, addressing the different tasks involved in creating and performing spatial sound.
 
-\section{Page size and format}\label{sec:page_size}
-The proceedings will be formatted as \underline{portrait A4-size paper} \underline{(21.0~cm x 29.7~cm)}. All material on each page should fit within a rectangle of 17.2~cm x 25.2~cm, centered on the page, beginning 2.0~cm from the top of the page and ending with 2.5~cm from the bottom. The left and right margins should be 1.9~cm. The text should be in two 8.2~cm columns with a 0.8~cm gutter. All  \emph{text} must be in a two-column format, and justified.
+The goal of the SpatDIF approach is to simplify and enhance the methods of creating and exchanging spatial sound content. 
+SpatDIF proposes a simple, minimal, and extensible format as well as best-practice implementations for storing and transmitting spatial sound scene descriptions. 
+It encourages portability and the exchange of compositions between venues with different surround sound infrastructures. 
+SpatDIF also fosters collaboration between artists such as composers, musicians, sound installation artists, and sound designers, as well as researchers in the fields of acoustics, musicology, sound engineering and virtual reality.
 
-\section{Typeset Text}\label{sec:typeset_text}
+SpatDIF is developed as a collaborative effort and has evolved over a number of years. 
+The community and all related information can be found at {\it www.spatdif.org}.
 
-\subsection{Normal or Body Text}\label{subsec:body}
-Please use a 10~pt (point) Times font. Sans-serif or non-proportional fonts can be used only for special purposes, such as distinguishing source code text.
+SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since all of the available spatial rendering systems used self-contained syntax and data-formats at that time. 
+Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has been extended, refined, and consolidated. 
 
-The first paragraph in each section should not be indented, but all other paragraphs should be.
-
-\subsection{Title and Authors}
-The title is 16~pt Times, bold, caps, upper case, centered. Authors’ names are centered. The lead author’s name is to be listed first (left-most), and the co-authors’ names after. If the addresses for all authors are the same, include the address only once, centered. If the authors have different addresses, put the addresses, evenly spaced, under each authors' name.
-
-\subsection{First Page Copyright Notice}
-Please include the copyright notice exactly as it appears here in the lower 
-left-hand corner of the first page. It is set in 8~pt Times.
-
-\subsection{Page Numbering, Headers and Footers}
-Do not include headers, footers or page numbers in your submission. These will be added electronically at a later stage, when the publications are assembled.
-
-\section{Headings}
-First level headings are in Times 12~pt bold, centered with 1 line of space above the section head, and 1/2 space below it.
-For a section header immediately followed by a subsection header, the space should be merged.
-
-\subsection{Second Level Headings}
-Second level headings are in Times 10~pt bold, flush left,
-with 1 line of space above the section head, and 1/2 space below it.
-The first letter of each significant word is capitalized.
-
-\subsubsection{Third and further Level Headings}
-Third level headings are in Times 10~pt italics, flush left,
-with 1/2 line of space above the section head, and 1/2 space below it.
-The first letter of significant words is capitalized.
-
-Using more than three levels of headings is strongly discouraged.
-
-\section{Floats and equations}
-
-\subsection{Equations}
-Equations should be placed on separated lines and numbered.
-The number should be on the right side, in parentheses.
-\begin{equation}
-E=mc^{2}.
-\label{eq:Emc2}
-\end{equation}
-
-\pagebreak
-
-\subsection{Figures, Tables and Captions}
-All artwork must be centered, neat, clean, and legible. All lines should be very dark for purposes of reproduction and artwork should not be hand-drawn. The proceedings will be distributed in electronic form only, therefore color figures are allowed. However, you may want to check that your figures are understandable even if they are printed in black-and-white.
-\begin{table}[h]
- \begin{center}
- \begin{tabular}{|l|l|}
-  \hline
-  String value & Numeric value \\
-  \hline
-  Hello ICMC SMC  & 2014 \\
-  \hline
- \end{tabular}
-\end{center}
- \caption{Table captions should be placed below the table.}
- \label{tab:example}
-\end{table}
-
-Numbers and captions of figures and tables always appear below the figure/table. Leave 1 line space between the figure or table and the caption. Figure and tables are numbered consecutively. Captions should be Times 10~pt. Place tables/figures in text as close to the reference as possible, and preferably at the top of the page.
-
-\begin{figure}[httb]
-\centering
-	\includegraphics[width=0.9\columnwidth]{Athens_University_main_building}
-	\caption{Figure captions should be placed below the figure, exactly like this. This photo shows the main building of the University of Athens.\label{fig:example}}
-\end{figure}
-
-Always refer to tables and figures in the main text, for example:
-see Figure \ref{fig:example} and \tabref{tab:example}.
-Figures and tables may extend across both columns to a maximum width of 17.2~cm.
-
-Vectorial figures are preferred, e.g., eps.
-When using \texttt{Matlab}, 
-export using either Postscript or PDF format. 
-Also, in order to optimize readability, the font size of text within a figure should be at list identical to footnote font size. If bitmap figures are used, please make sure that the resolution is enough for print quality. 
-%\begin{figure}[t]
-%\figbox{
-%\subfloat[][]{\includegraphics[width=60mm]{figure}\label{fig:subfigex_a}}\\
-%\subfloat[][]{\includegraphics[width=80mm]{figure}\label{fig:subfigex_b}}
-%}
-%\caption{Here's an example using the subfig package.\label{fig:subfigex} }
-%\end{figure}
-
-\subsection{Footnotes}
-Indicate footnotes with a number in the text \footnote{This is a footnote.}.
-Use 8~pt size for footnotes. Place the footnotes at the bottom of the page 
-on which they appear. 
-Precede the footnote with a 0.5~pt horizontal rule.
-
-\newpage
-
-\section{Citations}
-All bibliographical references should be listed at the end, inside a section named ``REFERENCES''.
-
-References must be numbered in order of appearance. Please avoid listing references that do not appear in the text.
-
-Reference numbers in the text should appear within square brackets, such as 
-in~\cite{Someone:13} or~\cite{Someone:04,Someone:09}.
-
-The reference format is the standard IEEE one. We recommend using BibTeX to create the reference list.
+After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011 and at a workshop at the TU-Berlin in September 2011.
+The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG-4 scene description specification \cite{scheirer1999audiobifs}.
+In addition, several functions necessary to make this lightweight standard become functional, such as the capability of dealing with temporal interpolation of scene descriptors as described, were introduced in \cite{Peters:2013SpatDifCMJ}.
 
 
-\section{Conclusions}
-Please, submit full-length papers. Submission is fully electronic and automated through the Conference Management System. 
-\underline{Do not} send papers directly by e-mail.
+One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound may occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
+SpatDIF formulates a concise semantic structure that is capable of carrying all the relevant information, without being tied to a specific implementation, thought-model or technical method. 
+SpatDIF is a syntax rather than a programming interface or file-format and may be represented in any of the structured mark-up languages or message systems that are in use today or in the future. 
+It describes only those aspects required for the storage and transmission of \emph{spatial sound information}.
+Because a complete work typically contains aspects that are outside the realm of such spatial sound description, SpatDIF judiciously provides interfaces to link these aspects to the spatial dimensions.
+% These are judiciously addressed only to the extent necessary for linking these external sound elements to the descriptions of the spatial dimension. 
+%For example, the description of media-streams in SpatDIF is necessary to define the storage location of the audio objects in the scene.
+For example, to be able to render the audio objects with the correct audio content in the spatial scene, the storage location of the unrendered audio content needs to be defined via SpatDIF's media resources.
+%For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
+\\
+After establishing a coherent specification with example use cases in textual form only, the next development step is the implementation of software that embodies the specified concepts.
+For this purpose a platform-independent software library was designed and is being implemented. 
+Additionally, to demonstrate the usage of SpatDIF, an example application which utilizes this library was created. This application features SpatDIF file-handling and  rendering of SpatDIF sound scenes into multichannel sound files.
+
+By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the strategic goals of the project.
+
+
+\section{Class Structure}\label{sec:class_structure}
+Half page??
+
+\section{Intruction to externals}
+example text
+
+\subsection{concepts and practical usage}\label{subsec:concepts}
+example text
+
+\subsection{Playback}\label{sec:Playback}
+example text
+
+\subsection{Recording}\label{sub:body}
+example text
+
+\section{future work}
+example text
+
 
 \begin{acknowledgments}
-At the end of the Conclusions, acknowledgements to people, projects, funding agencies, etc. can be included after the second-level heading ``Acknowledgments'' (with no numbering).
+example text
 \end{acknowledgments} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
