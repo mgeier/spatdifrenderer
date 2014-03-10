@@ -1,5 +1,3 @@
-
-
 #include "m_pd.h"
 #include "sdMain.h"
 #include <string>
@@ -20,6 +18,7 @@ t_class *spatdif_class;
 extern "C" {
     #include <string.h>
     void spatdif_setup(void);
+
 }
 
 vector<string> splitAddress(string &str){
@@ -59,10 +58,13 @@ void spatdif_load(t_spatdif *x, t_symbol *s){
     x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
 }
 
+
+
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
 {
     int i, rargc = 0;
     const char* typetags;
+    bool autoAdvance = false;
     t_atom *rargv;
     string command;
     vector<sdOSCMessage> returnedMessageVector;
@@ -80,6 +82,9 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     }else if(command == "save"){
         spatdif_save(x, argv[0].a_w.w_symbol);
         return;
+    }else if(command == "bang"){ // recursive call
+        command = "/spatdifcmd/getEventSetsFromAllEntities";
+        autoAdvance = true;
     }
     // if OSC message
     sdOSCMessage message(command);
@@ -134,6 +139,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
                 }
         	}
         	atomCount++;
+            argCount++;
         }
         
         outlet_anything(x->m_out, gensym(addressVector[1].c_str()), numAtoms, rargv);
@@ -143,6 +149,9 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         it++;
     }
     //done bang from the second outlet
+    if(autoAdvance){
+        x->responder.setQueryTime(x->responder.getQueryTime() + x->responder.getInterval());
+    }
     outlet_bang(x->b_out);
 }
 
