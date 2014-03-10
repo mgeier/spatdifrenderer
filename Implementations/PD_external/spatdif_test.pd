@@ -1,19 +1,16 @@
-#N canvas 300 22 910 681 10;
+#N canvas 127 104 838 675 10;
 #X obj 145 277 spatdif;
 #X obj 144 401 print;
 #X msg 184 344 done.;
-#X obj 55 176 openpanel;
+#X obj 24 69 openpanel;
 #X obj 54 268 savepanel;
 #X msg 54 293 save \$1;
-#X obj 55 153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 24 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 54 245 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 55 201 load \$1;
-#X msg 145 207 dump;
-#X obj 261 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 180 198 r tospatdif;
+#X msg 99 185 dump;
+#X obj 134 176 r tospatdif;
 #N canvas 364 73 770 591 core_descriptors 0;
 #X msg 64 68 /spatdifcmd/setPosition myEntity 0 0.5 2;
 #X msg 81 93 /spatdifcmd/setOrientation myEntity 3 2 1;
@@ -108,57 +105,61 @@ of a SpatDIF scene;
 #X connect 19 0 21 0;
 #X connect 20 0 21 0;
 #X restore 227 57 pd scenedata;
-#X text 51 71 read/write scene;
-#X text 340 159 bang outputs all events between querytime and querytime
-+ interval and update querytime by adding interval;
-#X floatatom 371 421 5 0 0 0 x - -;
-#X floatatom 424 420 5 0 0 0 y - -;
-#X floatatom 472 421 5 0 0 0 z - -;
-#X floatatom 614 355 5 0 0 0 current_queryTime - -;
-#X msg 464 239 /spatdifcmd/setQueryTime 0 \, /spatdifcmd/setInterval
-0.01;
-#X obj 464 215 loadbang;
-#X obj 260 170 metro 10;
-#X obj 257 139 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 262 211 t b b;
-#X msg 272 239 /spatdifcmd/getQueryTime;
-#X obj 332 347 route position;
-#X obj 433 283 route source queryTime;
-#X obj 329 321 route insect;
-#X obj 337 375 unpack 0 0 0 0;
-#X floatatom 310 421 5 0 0 0 time - -;
-#X obj 437 475 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
+#X floatatom 296 452 5 0 0 0 x - -;
+#X floatatom 349 451 5 0 0 0 y - -;
+#X floatatom 440 452 5 0 0 0 z - -;
+#X obj 236 176 loadbang;
+#X obj 300 378 route position;
+#X obj 297 352 route insect;
+#X obj 405 506 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 2540 1;
-#X obj 302 588 hsl 128 15 -10 10 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 270 619 hsl 128 15 -10 10 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 6350 1;
+#X obj 305 406 unpack 0 0 0;
+#X obj 450 504 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6350 1;
+#X obj 515 377 * 1000;
+#X obj 516 401 del;
+#X obj 513 543 s tospatdif;
+#X text 464 231 < ---- start the playback;
+#X obj 441 291 moses 0;
+#X msg 219 203 /spatdifcmd/setQueryTime -1;
+#X obj 514 434 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 514 345 5 0 0 0 - - -;
+#X obj 351 264 route source deltaTime;
+#X msg 515 461 /spatdifcmd/setQueryTimeToNextEvent \, /spatdifcmd/getEventSetsFromAllEntities
+\, /spatdifcmd/getDeltaTimeToNextEvent;
+#X msg 248 228 /spatdifcmd/getDeltaTimeToNextEvent;
+#X msg 22 112 load \$1;
 #X connect 0 0 1 0;
-#X connect 0 0 31 0;
+#X connect 0 0 34 0;
 #X connect 0 1 2 0;
 #X connect 2 0 1 0;
-#X connect 3 0 8 0;
+#X connect 3 0 37 0;
 #X connect 4 0 5 0;
 #X connect 5 0 0 0;
 #X connect 6 0 3 0;
 #X connect 7 0 4 0;
 #X connect 8 0 0 0;
 #X connect 9 0 0 0;
-#X connect 10 0 28 0;
-#X connect 11 0 0 0;
-#X connect 20 0 36 0;
-#X connect 21 0 35 0;
-#X connect 24 0 0 0;
-#X connect 25 0 24 0;
-#X connect 26 0 10 0;
-#X connect 27 0 26 0;
-#X connect 28 0 0 0;
-#X connect 28 1 29 0;
-#X connect 29 0 0 0;
-#X connect 30 0 33 0;
-#X connect 31 0 32 0;
-#X connect 31 1 23 0;
-#X connect 32 0 30 0;
-#X connect 33 0 34 0;
-#X connect 33 1 20 0;
-#X connect 33 2 21 0;
-#X connect 33 3 22 0;
+#X connect 16 0 23 0;
+#X connect 17 0 22 0;
+#X connect 18 0 25 0;
+#X connect 19 0 31 0;
+#X connect 20 0 24 0;
+#X connect 21 0 20 0;
+#X connect 24 0 16 0;
+#X connect 24 1 17 0;
+#X connect 24 2 18 0;
+#X connect 26 0 27 0;
+#X connect 27 0 32 0;
+#X connect 30 1 33 0;
+#X connect 31 0 0 0;
+#X connect 32 0 35 0;
+#X connect 33 0 26 0;
+#X connect 34 0 21 0;
+#X connect 34 1 30 0;
+#X connect 35 0 28 0;
+#X connect 36 0 0 0;
+#X connect 37 0 0 0;

@@ -123,7 +123,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
             atomCount++;
         }
 
-        for(int i = 1; i < typetags.size(); i++){
+        for(int i = 1; i < static_cast<int>(typetags.size()); i++){
         	switch(typetags[i]){
                 case 'i':{
                     SETFLOAT(&rargv[atomCount], static_cast<float>(returnedMessage.getArgumentAsInt(argCount)));
