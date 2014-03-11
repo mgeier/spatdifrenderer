@@ -20,7 +20,6 @@
 		3039A31F18B0DE66006DAA28 /* sdSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A31018B0DE66006DAA28 /* sdSaver.h */; };
 		3039A32018B0DE66006DAA28 /* sdScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 3039A31118B0DE66006DAA28 /* sdScene.h */; };
 		3039A32118B0DE66006DAA28 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A31318B0DE66006DAA28 /* libspatdif.dylib */; };
-		3039A32218B0DE66006DAA28 /* libspatdif.dylib.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 3039A31418B0DE66006DAA28 /* libspatdif.dylib.dSYM */; };
 		3039A32418B0DF61006DAA28 /* spatdif_external.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039A32318B0DF61006DAA28 /* spatdif_external.cpp */; };
 		3039A32618B0E8E5006DAA28 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3039A32518B0E8E5006DAA28 /* libstdc++.dylib */; };
 		3039A32C18B26558006DAA28 /* libspatdif.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3039A31318B0DE66006DAA28 /* libspatdif.dylib */; };
@@ -55,7 +54,6 @@
 		3039A31018B0DE66006DAA28 /* sdSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdSaver.h; sourceTree = "<group>"; };
 		3039A31118B0DE66006DAA28 /* sdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdScene.h; sourceTree = "<group>"; };
 		3039A31318B0DE66006DAA28 /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libspatdif.dylib; sourceTree = "<group>"; };
-		3039A31418B0DE66006DAA28 /* libspatdif.dylib.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = libspatdif.dylib.dSYM; sourceTree = "<group>"; };
 		3039A32318B0DF61006DAA28 /* spatdif_external.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatdif_external.cpp; sourceTree = "<group>"; };
 		3039A32518B0E8E5006DAA28 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk/usr/lib/gcc/i686-apple-darwin10/4.0.1/libstdc++.dylib"; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -126,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				3039A31318B0DE66006DAA28 /* libspatdif.dylib */,
-				3039A31418B0DE66006DAA28 /* libspatdif.dylib.dSYM */,
 			);
 			name = lib;
 			path = ../../../lib/lib;
@@ -206,7 +203,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3039A32218B0DE66006DAA28 /* libspatdif.dylib.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

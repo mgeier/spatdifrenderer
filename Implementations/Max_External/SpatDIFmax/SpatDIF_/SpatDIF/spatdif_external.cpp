@@ -15,8 +15,10 @@ typedef struct _spatdif
 {
 	t_object ob;			// the object itself (must be first)
     
-    sdScene * scene;
+    sdScene scene;
     bool sceneLoaded;
+    
+    sdOSCResponder responder;
     
 } t_spatdif;
 
@@ -140,8 +142,7 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
         sysfile_read(filehandle, &size, buffer); 	// read in the file
         
         string sceneBuffer(buffer);
-        sdScene scene = sdLoader::sceneFromXML(sceneBuffer);
-        x->scene = &scene;
+         x->scene = sdLoader::sceneFromXML(sceneBuffer);
         
         // TODO make the scene a member of the instance-class
         
@@ -180,23 +181,23 @@ string getEntityName(sdScene * theScene, int ID)
     return NULL;
 }
 
-extern "C" void spatdif_dumpScene(t_spatdif *x)
+void spatdif_dumpScene(t_spatdif *x)
 {
     cout << "--------------- SpatDIF scene Dump ---------------" << endl;
 
     if(x->sceneLoaded) {
-        int numExtensions = x->scene->getNumberOfActivatedExtensions();
+        int numExtensions = x->scene.getNumberOfActivatedExtensions();
         cout << "number of active extensions: " << numExtensions << endl;
         
-        int numEntities = getNumberOfEntities(*x->scene);
+        int numEntities = getNumberOfEntities(x->scene);
         cout << "number of entities: " << numEntities << endl;
         
         
         for(int i = 0; i < numEntities; i++) {
-            string result = getEntityName(x->scene, i);
+            string result = x->scene.getEntityName(i);
             cout << "entity name " << i<< ":" << result << endl;
         }
         
-        x->scene->dump();
+        x->scene.dump();
     }
 }
