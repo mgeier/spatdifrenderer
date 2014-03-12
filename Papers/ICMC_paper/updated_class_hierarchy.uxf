@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>265</x>
+      <y>535</y>
+      <w>264</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>255;15;255;100;15;100;15;145</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>490</x>
+      <y>455</y>
+      <w>240</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>*sdEntityCore*
+--
+- name:string
+- extensionVector:vector&lt;sdEntityExtension*&gt;
+- redirectorVector:vector&lt;sdRedirector&gt;
+- kind: EKind
+- type: EType
+--
++addEvent(time:double, descriptor:EDescriptor, value:void* ):sdEvent*
++removeEvent(time:double, descriptor:EDescriptor)
++getEvent(time:double, descriptor:EDescriptor):sdEvent*
++getNextEvent(time:double, descriptor:EDescriptor):sdEvent* 
++getValue(time:double, descriptor:EDescriptor):void*
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>385</x>
+      <y>265</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;utility&gt;&gt;
+*sdSaver*
+--
+--
+_+ XMLFromScene(scene:sdScene*):string_
+_+ JSONFromScene(scene:sdScene*):string_
+_+ YAMLFromScene(scene:sdScene*):string_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>675</x>
+      <y>350</y>
+      <w>274</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>15;15;15;75;265;75;265;180</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>680</y>
+      <w>245</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>*sdEntityExtensionMedia*
+--
+_+ extensionName:EExtension_
+_+ extensionNameAsString:string_
+_+ numberOfRelevantDescriptors:int_
+_+ relevantDescriptors[]:EDescriptor_
+_+ relevantDescriptorStrings[]:string_
+--
+
++ addEvent(time:string, descriptor:string, value:string):sdEvent* 
++ addEvent(time:double, descriptor:EDescriptor, value:void*):sdEvent* 
++ removeEvent(time:string, descriptor:string)
++ getExtensionName():EExtension 
++ getExtensionNameAsString():string </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>350</y>
+      <w>260</w>
+      <h>255</h>
+    </coordinates>
+    <panel_attributes>*sdScene*
+--
+- entityVector:vector&lt;sdEntityCore*&gt;
+- activatedExtensionVector:vector&lt;enum EExtension&gt;
+- ordering:EOrdering
+- info:sdInfo
+--
++ setInfo(info:sdInfo)
++ getInfo():sdInfo
++ setOrdering(ordering:EOrdering)
++ getOrdering():EOrdering
+
++ getEntityVector(void):vector&lt;sdEntityCore*&gt;
++ getEntity(name:string):sdEntityCore*
++ addEntity(name:string, kind:EKind):sdEntityCore*
++ removeEntity(name:string)
++ removeAllEntities()
++ getNumberOfEntities():unsigned int
+
++ getNextEventSetsFromAllEntities(double time):vector&lt;sdReport&gt; 
++ getPreviousEventSetsFromAllEntities(double time):vector&lt;sdReport&gt; 
++ getFirstEventSetsFromAllEntities():vector&lt;sdReport&gt;
++ getLastEventSetsFromAllEntities():vector&lt;sdReport&gt;
++ getEventSetsFromAllEntities(double time):vector&lt;sdReport&gt;
++ getEventSetsFromAllEntities(double start, double end):vector&lt;sdReport&gt;
++ getFirstEventSets():vector&lt;sdReport&gt;
++ getNextEventSets(double time):vector&lt;sdReport&gt;
++ getNextEventTime(double time):double
++ getDeltaTimeToNextEvent(double time):double
+
++ getActivatedExtensionVector():vector&lt;EExtension&gt; 	
++ addExtension(extension:EExtension)
++ removeExtension(extension:EExtension)
++ removeAllExtensions()
++ getNumberOfActivatedExtensions():int
++ dump()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>210</x>
+      <y>265</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;utility&gt;&gt;
+*sdLoader*
+--
+--
+_+ sceneFromXML(xmlString:string):sdScene*_
+_+ sceneFromJSON(jsonString:string):sdScene*_
+_+ sceneFromYAML(yamlString:string):sdScene*_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>660</x>
+      <y>410</y>
+      <w>39</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>30;15;15;15;15;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>455</x>
+      <y>485</y>
+      <w>44</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;15;35;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>640</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>*sdOSCResponder*
+--
+- scene:*sdScene
+- sdScene *scene
+- queryTime:double
+- writeTime:double
+- interval:double
+--
++setScene(sdScene *scene)
++sdScene* getScene(void)
++forwardOSCMessage(vector&lt;unsigned char&gt; message) 
++forwardOSCMessage(sdOSCMessage message) 
++setQueryTime(double time)
++setWriteTime(double time)
++setInterval(double time)
++getQueryTime(void):double
++getWriteTime(void):double
++getInterval(void):double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>555</x>
+      <y>265</y>
+      <w>280</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>*/sdEntity/*
+--
+＃ eventSet::multiset&lt;sdEvent*, sdEventCompare&gt;
+--
++ getEventSet():multiset&lt;sdEvent*, sdEventCompare&gt;
++ getEventSet(start:double, end:double):multiset&lt;sdEvent*, sdEventCompare&gt;
+
++ getNumberOfEvents():int
++ getEvent(time:double, descriptor:EDescriptor):sdEvent*
++ getNextEvent(time:double, descriptor:EDescriptor):sdEvent*
++ addEvent(time:double, descriptor:EDescriptor, value:void*):sdEvent*;
++ removeEvent(time:double, descriptor:EDescriptor)
++ removeAllEvents()
+
++ getValue(time:double, descriptor:EDescriptor):void*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>845</x>
+      <y>530</y>
+      <w>145</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*/sdEntityExtension/*
+--
+# extensionType:EExtension
+- descriptors:vector&lt;EDescriptor&gt;
+--
+_+ getDescriptors():vector&lt;EDescriptor&gt;_
++ getExtensionName():EExtension
++ getExtensionNameAsString()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>275</x>
+      <y>300</y>
+      <w>104</w>
+      <h>59</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15;15;15;25;95;25;95;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>365</x>
+      <y>300</y>
+      <w>99</w>
+      <h>59</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>90;15;90;25;15;25;15;50</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>675</x>
+      <y>680</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*sdEnityExtensionDirectToOne*
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>805</x>
+      <y>680</y>
+      <w>115</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*sdEntityExtensionInterpolation*
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>920</x>
+      <y>665</y>
+      <w>95</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>Other extensions.
+To be implemented soon.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>920</x>
+      <y>680</y>
+      <w>25</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>...</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>245</x>
+      <y>250</y>
+      <w>255</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>Utility classes for storing and loading sdScene from/to formatted strings.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>150</x>
+      <y>560</y>
+      <w>69</w>
+      <h>89</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>60;15;15;15;15;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>475</x>
+      <y>330</y>
+      <w>75</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*sdInfo*
+--
+- author
+- host
+- date
+- session
+- location
+- annotation
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>745</x>
+      <y>450</y>
+      <w>185</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>*sdEventCore*
+--
+
+--
++ getDescriptorAsString():string
++ getValueAsString():string
+- setValue(descriptor:EDescriptor, value:void* ):bool
+- setValue(descriptor:string, value:string):bool
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>470</x>
+      <y>680</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>*sdEventExtensionMedia*
+--
+--
++ getDescriptorAsString():string
++ getValueAsString():string;
++ setValue(descriptor:EDescriptor, value:void*):bool
++ setValue(descriptor:string, value:string):bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>670</x>
+      <y>730</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*sdEventExtensionDirectToOne*
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>275</x>
+      <y>575</y>
+      <w>664</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>655;15;655;85;15;85;15;105</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>840</x>
+      <y>265</y>
+      <w>200</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>*/sdEvent/*
+--
+# time:double 
+# descriptor:enum EDescriptor
+# value:void*
+--
++ set(time:double,descriptor:EDescriptor, value:void*)
++ setTime(time:double);
++ getTime():double
++ setValue(descriptor:EDescriptor, value:void*):bool = 0
++ getValue():void* 
++ getDescriptor():EDescriptor
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>815</x>
+      <y>340</y>
+      <w>149</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140;15;140;70;15;70;15;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>805</x>
+      <y>730</y>
+      <w>115</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*sdEventExtensionInterpolation*
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>715</x>
+      <y>695</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>845</x>
+      <y>695</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>705</x>
+      <y>485</y>
+      <w>79</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;65;15;95;70;95;70;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>845</x>
+      <y>645</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>455</x>
+      <y>375</y>
+      <w>59</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;25;50;25;50;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>545</x>
+      <y>575</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*sdRedirector*
+--
++descriptor:EDescriptor
++descriptorString:string
++responsibleExtension:sdEntityExtension*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>600</x>
+      <y>535</y>
+      <w>24</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>15;15;15;40</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>530</x>
+      <y>340</y>
+      <w>489</w>
+      <h>349</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>445;15;445;70;480;70;480;300;15;300;15;340</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>715</x>
+      <y>645</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>440</x>
+      <y>715</y>
+      <w>119</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>110;15;110;45;15;45</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>710</x>
+      <y>625</y>
+      <w>309</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>300;15;300;155;15;155;15;135</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>845</x>
+      <y>745</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15;15;15;35</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>265</y>
+      <w>200</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;utility&gt;&gt;
+*sdOSCConverter*
+--
+_+intToBlock(int value):vector&lt;unsigned char&gt;_
+_+blockToInt(vector&lt;unsigned char&gt; block):int_
+_+floatToBlock(float value):vector&lt;unsigned char&gt;_
+_+blockToFloat(vector&lt;unsigned char&gt; block):float_
+_+stringToBlocks(string str):vector&lt;unsigned char&gt;_
+_+blocksToString(vector&lt;unsigned char&gt; blocks):string_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>400</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>*sdOSCMessage*
+--
+-address:vector&lt;unsigned char&gt;
+-typetags:vector&lt;unsgined char&gt;
+-arguments:vector&lt;unsigned char&gt;
+--
++getAddress(void):vector&lt;unsigned char&gt; 
++getTypetags(void):vector&lt;unsigned char&gt; 
++getArguments(void):vector&lt;unsigned char&gt; 
++getDelimiters(void):vector&lt;int&gt; 
++getAddressAsString(void):string
++getTypetagsAsString(void):string
++getDelimitersAsString(void):string
+
++ appendInt(value:int)
++ appendFloat(value:float)
++ appendString(str:string)
++ getOSCMessage:vector&lt;unsigned char&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>80</x>
+      <y>325</y>
+      <w>24</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>15;15;15;75</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>85</x>
+      <y>515</y>
+      <w>24</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>15;15;15;125</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>490</x>
+      <y>415</y>
+      <w>175</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*sdReport*
+--
+- entity:sdEntityCore*
+- eventSet:multiset&lt;sdEvent*, sdEventCompare&gt;
+
+
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>455</x>
+      <y>420</y>
+      <w>44</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>35;15;15;15</additional_attributes>
+  </element>
+</diagram>
