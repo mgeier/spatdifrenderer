@@ -72,7 +72,7 @@ pd_darwin: spatdif.pd_darwin
 DARWINCFLAGS = -arch i386 -arch x86_64 -x c++  -DPD -O0 -Wall -W -Wstrict-prototypes -Wno-unused
 
 SPATDIFINCLUDE = -I ../../spatdiflib/src
-LIBRARY_PATH = -L /usr/local/lib
+LIBRARY_PATH = -L ../../spatdiflib/src
 LIBS =  -lstdc++ -lspatdif
 
 .c.pd_darwin:
