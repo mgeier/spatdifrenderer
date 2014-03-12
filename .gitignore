@@ -1,3 +1,8 @@
+# User-data in Xcode projects
+xcuserdata
+
+
+# Files relatign to appers:
 paper/example_code.cpp
 paper/JSSA_Template_e-blx.bib
 paper/JSSA_Template_e.aux
