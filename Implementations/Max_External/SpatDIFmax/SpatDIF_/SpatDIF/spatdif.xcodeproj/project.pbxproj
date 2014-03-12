@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3039A32418B0DF61006DAA28 /* spatdif_external.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039A32318B0DF61006DAA28 /* spatdif_external.cpp */; };
-		30F86C6818CF56B300BFC840 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F86C6718CF56B300BFC840 /* libspatdif.dylib */; };
+		30CE5AC418D06B4A0019F1A9 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CE5AC318D06B4A0019F1A9 /* libspatdif.dylib */; };
 		30F86C7818CF56CF00BFC840 /* sdConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6A18CF56CF00BFC840 /* sdConst.h */; };
 		30F86C7918CF56CF00BFC840 /* sdDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6B18CF56CF00BFC840 /* sdDate.h */; };
 		30F86C7A18CF56CF00BFC840 /* sdEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6C18CF56CF00BFC840 /* sdEntity.h */; };
@@ -41,7 +41,7 @@
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
 		2FBBEAE508F335360078DB84 /* spatdif.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spatdif.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		3039A32318B0DF61006DAA28 /* spatdif_external.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spatdif_external.cpp; sourceTree = "<group>"; };
-		30F86C6718CF56B300BFC840 /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libspatdif.dylib; path = ../../../../spatdiflib/src/libspatdif.dylib; sourceTree = "<group>"; };
+		30CE5AC318D06B4A0019F1A9 /* libspatdif.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libspatdif.dylib; path = ../../../../../spatdiflib/src/libspatdif.dylib; sourceTree = "<group>"; };
 		30F86C6A18CF56CF00BFC840 /* sdConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdConst.h; path = ../../../../../spatdiflib/src/sdConst.h; sourceTree = "<group>"; };
 		30F86C6B18CF56CF00BFC840 /* sdDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdDate.h; path = ../../../../../spatdiflib/src/sdDate.h; sourceTree = "<group>"; };
 		30F86C6C18CF56CF00BFC840 /* sdEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdEntity.h; path = ../../../../../spatdiflib/src/sdEntity.h; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30F86C6818CF56B300BFC840 /* libspatdif.dylib in Frameworks */,
+				30CE5AC418D06B4A0019F1A9 /* libspatdif.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +73,7 @@
 		089C166AFE841209C02AAC07 /* iterator */ = {
 			isa = PBXGroup;
 			children = (
+				30CE5AC318D06B4A0019F1A9 /* libspatdif.dylib */,
 				3039A32318B0DF61006DAA28 /* spatdif_external.cpp */,
 				3039A30318B0D8AA006DAA28 /* Resources */,
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
@@ -93,18 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				30F86C6918CF56C400BFC840 /* includes */,
-				3039A31218B0DE66006DAA28 /* lib */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		3039A31218B0DE66006DAA28 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				30F86C6718CF56B300BFC840 /* libspatdif.dylib */,
-			);
-			name = lib;
-			path = ../../../lib/lib;
 			sourceTree = "<group>";
 		};
 		30F86C6918CF56C400BFC840 /* includes */ = {

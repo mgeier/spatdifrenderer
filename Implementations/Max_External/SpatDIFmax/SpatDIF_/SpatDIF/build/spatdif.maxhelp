@@ -8,7 +8,7 @@
 			"architecture" : "x64"
 		}
 ,
-		"rect" : [ -2.0, 44.0, 913.0, 700.0 ],
+		"rect" : [ 23.0, 61.0, 913.0, 700.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 10.0,
@@ -28,6 +28,38 @@
 		"digest" : "",
 		"tags" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Verdana",
+					"fontsize" : 10.0,
+					"frozen_object_attributes" : 					{
+						"scalarmode" : 1
+					}
+,
+					"id" : "obj-16",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 22.0, 425.0, 81.0, 19.0 ],
+					"text" : "vexpr $f1*0.1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Verdana",
+					"fontsize" : 10.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 22.0, 451.0, 82.0, 19.0 ],
+					"text" : "prepend xyz 1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Verdana",
 					"fontsize" : 18.0,
@@ -51,7 +83,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 524.0, 530.0, 226.0, 19.0 ],
-					"presentation_rect" : [ 580.0, 531.0, 0.0, 0.0 ],
 					"text" : "combined messages to step through scene"
 				}
 
@@ -66,7 +97,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 489.0, 372.0, 58.0, 19.0 ],
-					"presentation_rect" : [ 489.0, 372.0, 0.0, 0.0 ],
 					"text" : "deltatime"
 				}
 
@@ -81,7 +111,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 327.0, 375.0, 61.0, 19.0 ],
-					"presentation_rect" : [ 172.0, 375.0, 0.0, 0.0 ],
 					"text" : "descriptor"
 				}
 
@@ -96,7 +125,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 327.0, 341.0, 71.0, 19.0 ],
-					"presentation_rect" : [ 208.0, 341.0, 0.0, 0.0 ],
 					"text" : "entity name"
 				}
 
@@ -110,7 +138,6 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 345.0, 461.0, 20.0, 140.0 ],
-					"presentation_rect" : [ 340.0, 404.0, 0.0, 0.0 ],
 					"setminmax" : [ -8.0, 8.0 ]
 				}
 
@@ -139,7 +166,6 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 245.0, 613.0, 138.0, 18.0 ],
-					"presentation_rect" : [ 262.0, 489.0, 0.0, 0.0 ],
 					"setminmax" : [ -8.0, 8.0 ]
 				}
 
@@ -196,7 +222,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 630.0, 68.0, 218.0, 31.0 ],
-					"presentation_rect" : [ 630.0, 66.0, 0.0, 0.0 ],
 					"text" : "How to access meta data section and general info mation of a SpatDIF scene"
 				}
 
@@ -630,7 +655,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 190.0, 369.0, 58.0, 17.0 ],
-									"presentation_rect" : [ 202.0, 385.0, 0.0, 0.0 ],
 									"text" : "s tospatdif"
 								}
 
@@ -714,7 +738,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 202.0, 122.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 202.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getOrdering"
 								}
 
@@ -729,7 +752,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 177.0, 117.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 177.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getSession"
 								}
 
@@ -744,7 +766,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 151.0, 132.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 151.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getAnnotation"
 								}
 
@@ -759,7 +780,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 127.0, 120.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 127.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getLocation"
 								}
 
@@ -774,7 +794,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 98.0, 103.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 98.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getHost"
 								}
 
@@ -789,7 +808,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 70.0, 104.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 70.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getDate"
 								}
 
@@ -804,7 +822,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 304.0, 43.0, 113.0, 15.0 ],
-									"presentation_rect" : [ 304.0, 43.0, 0.0, 0.0 ],
 									"text" : "/spatdifcmd/getAuthor"
 								}
 
@@ -1328,7 +1345,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 512.0, 258.0, 64.0, 19.0 ],
-					"presentation_rect" : [ 640.0, 265.0, 0.0, 0.0 ],
 					"text" : "s tospatdif"
 				}
 
@@ -1344,7 +1360,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 512.0, 221.0, 204.0, 29.0 ],
-					"presentation_rect" : [ 707.0, 507.0, 0.0, 0.0 ],
 					"text" : "/spatdifcmd/setQueryTime 0., /spatdifcmd/getDeltaTimeToNextEvent"
 				}
 
@@ -1597,7 +1612,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 431.0, 485.0, 218.0, 41.0 ],
+					"patching_rect" : [ 431.0, 485.0, 222.0, 41.0 ],
 					"text" : "/spatdifcmd/setQueryTimeToNextEvent, /spatdifcmd/getEventSetsFromAllEntities, /spatdifcmd/getDeltaTimeToNextEvent"
 				}
 
@@ -1825,6 +1840,32 @@
 				}
 
 			}
+, 			{
+				"box" : 				{
+					"background" : 1,
+					"bgcolor" : [ 0.155399, 0.220798, 0.443076, 1.0 ],
+					"circle_color" : [ 0.179089, 0.340064, 0.604492, 0.45 ],
+					"coord_color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"coord_font_size" : 10.0,
+					"coordinates" : 2,
+					"grid" : 2,
+					"grid_color" : [ 0.392157, 0.392157, 0.392157, 1.0 ],
+					"hi_grid_color" : [ 0.633632, 0.633632, 0.633632, 1.0 ],
+					"id" : "obj-3",
+					"ignoreclick" : 1,
+					"maxclass" : "ambimonitor",
+					"name_color" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"numbers" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 22.0, 478.0, 200.0, 200.0 ],
+					"point_color" : [ 0.999996, 0.42188, 0.0, 1.0 ],
+					"point_size" : 10.17,
+					"presentation_rect" : [ 0.0, 0.0, 20.0, 20.0 ]
+				}
+
+			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
@@ -1873,6 +1914,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-15", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -1904,6 +1954,15 @@
 					"disabled" : 0,
 					"hidden" : 0,
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-16", 0 ]
 				}
 
 			}
@@ -2035,6 +2094,15 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
 					"disabled" : 0,
 					"hidden" : 0,
@@ -2089,6 +2157,10 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "ambimonitor.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "spatdif.mxo",
 				"type" : "iLaX"
 			}

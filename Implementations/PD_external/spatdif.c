@@ -9,7 +9,7 @@ typedef struct spatdif
 {
     t_object x_obj;
     t_outlet *m_out, *b_out;
-    sdScene scene;
+    sdScene * scene;
     sdOSCResponder responder;
 } t_spatdif;
 
@@ -39,7 +39,7 @@ void spatdif_save(t_spatdif *x, t_symbol *s){
         post("spatdif: unable to open file %s", s->s_name);
         return;
     }
-    ofs << sdSaver::XMLFromScene(&x->scene)<< endl; // file closed automatically by the destructor of ofstream
+    ofs << sdSaver::XMLFromScene(x->scene)<< endl; // file closed automatically by the destructor of ofstream
 }
 
 void spatdif_load(t_spatdif *x, t_symbol *s){
@@ -55,7 +55,14 @@ void spatdif_load(t_spatdif *x, t_symbol *s){
         getline(ifs,str);
         xmlString.append(str);
     }
-    x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
+	if(x->scene) {
+		free(x->scene); // free scene instance if a scene existed before
+	}
+	x->scene = new(sdScene); // dynmically instanciate scene
+			
+    *x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
+    x->responder.setScene(x->scene); // tie responder to scene
+	
 }
 
 
@@ -74,7 +81,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     
     // handle non OSC Message
     if(command == "dump"){
-        post(x->scene.dump().c_str());
+        post(x->scene->dump().c_str());
         return;
     }else if(command == "load"){
         spatdif_load(x, argv[0].a_w.w_symbol);
@@ -155,20 +162,27 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     outlet_bang(x->b_out);
 }
 
+void spatdif_free(t_spatdif *x)
+{
+	if(x->scene){
+		free(x->scene);
+	}
+}
+
 void *spatdif_new(void)
 {
     t_spatdif *x = (t_spatdif *)pd_new(spatdif_class);
     x->m_out = outlet_new(&x->x_obj, gensym("anything"));
     x->b_out = outlet_new(&x->x_obj, gensym("bang"));
     
-    x->responder.setScene(&x->scene);
+    // x->responder.setScene(&x->scene); // moved to loading function
     return (void *)x;
 }
 
 void spatdif_setup(void)
 {
     spatdif_class = class_new(gensym("spatdif"), (t_newmethod)spatdif_new,
-    	0, sizeof(t_spatdif), 0, A_GIMME, 0);
+    	(t_method)spatdif_free, sizeof(t_spatdif), 0, A_GIMME, 0);
 
     class_addanything(spatdif_class, (t_method)spatdif_interpret);
 }
