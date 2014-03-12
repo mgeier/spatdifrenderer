@@ -1,17 +1,17 @@
-#N canvas 127 104 838 675 10;
-#X obj 145 277 spatdif;
-#X obj 144 401 print;
-#X msg 184 344 done.;
-#X obj 24 69 openpanel;
-#X obj 54 268 savepanel;
-#X msg 54 293 save \$1;
-#X obj 24 46 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#N canvas 747 42 848 812 10;
+#X obj 176 342 spatdif;
+#X obj 175 466 print;
+#X msg 215 409 done.;
+#X obj 77 151 openpanel;
+#X obj 77 232 savepanel;
+#X msg 77 257 save \$1;
+#X obj 77 128 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 54 245 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 77 209 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 99 185 dump;
-#X obj 134 176 r tospatdif;
-#N canvas 364 73 770 591 core_descriptors 0;
+#X msg 79 298 dump;
+#X obj 176 211 r tospatdif;
+#N canvas 797 89 770 591 core_descriptors 0;
 #X msg 64 68 /spatdifcmd/setPosition myEntity 0 0.5 2;
 #X msg 81 93 /spatdifcmd/setOrientation myEntity 3 2 1;
 #X msg 101 122 /spatdifcmd/setPresent myEntity true;
@@ -40,32 +40,30 @@
 #X connect 12 0 8 0;
 #X connect 13 0 8 0;
 #X connect 14 0 8 0;
-#X restore 228 91 pd core_descriptors;
-#X text 367 50 How to access meta data section and general info mation
+#X restore 259 156 pd core_descriptors;
+#X text 398 115 How to access meta data section and general info mation
 of a SpatDIF scene;
-#X text 364 91 How to access core descriptors of entities;
+#X text 395 156 How to access core descriptors of entities;
 #N canvas 862 195 450 300 internal_variables 0;
 #X msg 10 68 /spatdifcmd/getQueryTime;
-#X msg 21 146 /spatdifcmd/getWriteTime;
 #X msg 190 72 /spatdifcmd/getInterval;
 #X msg 14 125 /spatdifcmd/setWriteTime 3;
 #X msg 189 47 /spatdifcmd/setInterval 1;
 #X msg 10 43 /spatdifcmd/setQueryTime 0;
 #X obj 237 164 s tospatdif;
-#X connect 0 0 6 0;
-#X connect 1 0 6 0;
-#X connect 2 0 6 0;
-#X connect 3 0 6 0;
-#X connect 4 0 6 0;
-#X connect 5 0 6 0;
-#X restore 229 22 pd internal_variables;
-#X text 367 20 get/set internal variables;
-#N canvas 428 52 746 807 scenedata 0;
+#X msg 21 146 /spatdifcmd/getWriteTime;
+#X connect 0 0 5 0;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 6 0 5 0;
+#X restore 260 87 pd internal_variables;
+#X text 398 85 get/set internal variables;
+#N canvas 942 161 746 807 scenedata 0;
 #X obj 22 246 s tospatdif;
 #X msg 82 135 /spatdifcmd/setAnnotation Test;
 #X msg 79 51 /spatdifcmd/setDate 2014-4-7;
-#X msg 82 105 /spatdifcmd/setLocationTokyo;
-#X msg 80 77 /spatdifcmd/setHost host;
 #X msg 345 5 /spatdifcmd/getAuthor;
 #X msg 345 31 /spatdifcmd/getDate;
 #X msg 345 135 /spatdifcmd/getHost;
@@ -73,7 +71,6 @@ of a SpatDIF scene;
 #X msg 345 83 /spatdifcmd/getAnnotation;
 #X msg 345 109 /spatdifcmd/getSession;
 #X obj 274 261 s tospatdif;
-#X msg 83 161 /spatdifcmd/setSession v2.3;
 #X msg 83 191 /spatdifcmd/setOrdering time;
 #X msg 345 161 /spatdifcmd/getOrdering;
 #X msg 77 28 /spatdifcmd/setAuthor Chikashi;
@@ -85,53 +82,61 @@ of a SpatDIF scene;
 #X obj 93 481 s tospatdif;
 #X text -3 367 Entity Management;
 #X text -37 127 Meta data;
+#X msg 80 77 /spatdifcmd/setHost host;
+#X msg 82 105 /spatdifcmd/setLocation Tokyo;
+#X msg 83 161 /spatdifcmd/setSession v2.3;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
-#X connect 3 0 0 0;
-#X connect 4 0 0 0;
-#X connect 5 0 11 0;
-#X connect 6 0 11 0;
-#X connect 7 0 11 0;
-#X connect 8 0 11 0;
-#X connect 9 0 11 0;
-#X connect 10 0 11 0;
+#X connect 3 0 9 0;
+#X connect 4 0 9 0;
+#X connect 5 0 9 0;
+#X connect 6 0 9 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 10 0 0 0;
+#X connect 11 0 9 0;
 #X connect 12 0 0 0;
-#X connect 13 0 0 0;
-#X connect 14 0 11 0;
-#X connect 15 0 0 0;
-#X connect 16 0 11 0;
-#X connect 17 0 11 0;
-#X connect 18 0 21 0;
-#X connect 19 0 21 0;
-#X connect 20 0 21 0;
-#X restore 227 57 pd scenedata;
-#X floatatom 296 452 5 0 0 0 x - -;
-#X floatatom 349 451 5 0 0 0 y - -;
-#X floatatom 440 452 5 0 0 0 z - -;
-#X obj 236 176 loadbang;
-#X obj 300 378 route position;
-#X obj 297 352 route insect;
-#X obj 405 506 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 2540 1;
-#X obj 270 619 hsl 128 15 -10 10 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6350 1;
-#X obj 305 406 unpack 0 0 0;
-#X obj 450 504 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6350 1;
-#X obj 515 377 * 1000;
-#X obj 516 401 del;
-#X obj 513 543 s tospatdif;
-#X text 464 231 < ---- start the playback;
-#X obj 441 291 moses 0;
-#X msg 219 203 /spatdifcmd/setQueryTime -1;
-#X obj 514 434 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X connect 13 0 9 0;
+#X connect 14 0 9 0;
+#X connect 15 0 18 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 21 0 0 0;
+#X connect 22 0 0 0;
+#X connect 23 0 0 0;
+#X restore 258 122 pd scenedata;
+#X floatatom 286 552 5 0 0 0 x - -;
+#X floatatom 339 551 5 0 0 0 y - -;
+#X floatatom 392 551 5 0 0 0 z - -;
+#X obj 267 241 loadbang;
+#X obj 286 472 route position;
+#X obj 286 434 route insect;
+#X obj 339 584 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 289 729 hsl 128 15 -10 10 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 286 506 unpack 0 0 0;
+#X obj 392 583 vsl 15 128 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 468 502 * 1000;
+#X obj 469 526 del;
+#X obj 469 644 s tospatdif;
+#X text 494 284 < ---- start the playback;
+#X obj 428 437 moses 0;
+#X msg 267 264 /spatdifcmd/setQueryTime -1;
+#X obj 469 553 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X floatatom 514 345 5 0 0 0 - - -;
-#X obj 351 264 route source deltaTime;
-#X msg 515 461 /spatdifcmd/setQueryTimeToNextEvent \, /spatdifcmd/getEventSetsFromAllEntities
+#X floatatom 467 470 5 0 0 0 - - -;
+#X obj 286 397 route source deltaTime;
+#X msg 469 581 /spatdifcmd/setQueryTimeToNextEvent \, /spatdifcmd/getEventSetsFromAllEntities
 \, /spatdifcmd/getDeltaTimeToNextEvent;
-#X msg 248 228 /spatdifcmd/getDeltaTimeToNextEvent;
-#X msg 22 112 load \$1;
+#X msg 267 286 /spatdifcmd/getDeltaTimeToNextEvent;
+#X msg 77 175 load \$1;
+#X msg 537 337 /spatdifcmd/setQueryTime 0 \, /spatdifcmd/getDeltaTimeToNextEvent
+;
+#X obj 537 374 s tospatdif;
+#X text 538 313 v;
+#X text 538 302 |;
 #X connect 0 0 1 0;
 #X connect 0 0 34 0;
 #X connect 0 1 2 0;
@@ -163,3 +168,4 @@ of a SpatDIF scene;
 #X connect 35 0 28 0;
 #X connect 36 0 0 0;
 #X connect 37 0 0 0;
+#X connect 38 0 39 0;
