@@ -1,7 +1,17 @@
-/**
-
- 
-*/
+/** @file
+ *
+ * @ingroup spatdif external
+ *
+ * @brief
+ *
+ * @details
+ *
+ * @authors Jan Schacher Chikashi Miyama
+ *
+ * @copyright Copyright (C) 2014 Zurich University of the Arts, Institute for Computer Music and Sound Technology @n
+ * This code is licensed under the terms of the "New BSD License" @n
+ * http://creativecommons.org/licenses/BSD/
+ */
 
 extern "C" { // c-headers
     #include "ext.h"							// standard Max include, always required
@@ -35,6 +45,7 @@ void spatdif_dowrite(t_spatdif *x, t_symbol *s, short ac, t_atom *av);
 int getNumberOfEntities(t_spatdif *x);
 string getEntityName(t_spatdif *x, int ID);
 void spatdif_dumpScene(t_spatdif *x);
+
 vector<string> splitAddress(string &str);
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv);
 
@@ -73,7 +84,7 @@ void spatdif_assist(t_spatdif *x, void *b, long m, long a, char *s)
 void spatdif_free(t_spatdif *x)
 {
     if(x->scene) {
-        free(x->scene);
+        free(x->scene); // free the scene instance
     }
 }
 
@@ -81,11 +92,9 @@ void *spatdif_new(t_symbol *s, long argc, t_atom *argv)
 {
 	t_spatdif *x = NULL;
 
-	// object instantiation, NEW STYLE
 	if ((x = (t_spatdif *)object_alloc((t_class *) spatdif_class))) {
         
         x->sceneLoaded = false;
-        
         x->outlet2 = outlet_new((t_object *)x, 0L);
         x->outlet1 = outlet_new((t_object *)x, 0L);
 	}
@@ -105,7 +114,6 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 	t_filehandle filehandle = 0;
 	char        filename[MAX_FILENAME_CHARS];
 	char        filename2[MAX_FILENAME_CHARS];
-    
 	short       path_id;
 	t_fourcc	outtype;
 	char        *buffer;
@@ -149,10 +157,9 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
         string sceneBuffer(buffer);
         
         if(x->scene) {
-            free(x->scene);
+            free(x->scene); // free scene instance if a scene existed before
         }
-        x->scene = new(sdScene);
-
+        x->scene = new(sdScene); // dynmically instanciate scene
         *x->scene = sdLoader::sceneFromXML(sceneBuffer);
 
         x->sceneLoaded = true;
@@ -241,6 +248,9 @@ string getEntityName(t_spatdif *x, int ID)
 
 void spatdif_dumpScene(t_spatdif *x)
 {
+    
+    // TODO: should dump to outlet not console
+    
     cout << "--------------- SpatDIF scene Dump ---------------" << endl;
 
     if(x->sceneLoaded) {
@@ -285,37 +295,31 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     vector<sdOSCMessage> returnedMessageVector;
     vector<string> addressVector;
     
-    
-    
     command = s->s_name;
-    
-    object_post((t_object *)x, "spatdif-command is \"%s\"", command.c_str() );
     
     // handle non OSC Message
     if(command == "dump"){
         spatdif_dumpScene(x);
         return;
-    }else if(command == "load"){
-        if(argc > 0) {
-            spatdif_read(x, argv[0].a_w.w_sym);
-        }else{
-            spatdif_read(x, NULL);
-        }
-        return;
-    }else if(command == "save"){
-        if(argc > 0) {
-            spatdif_write(x, argv[0].a_w.w_sym);
-        }else{
-            spatdif_write(x, NULL);
-        }        return;
+//    }else if(command == "load"){
+//        if(argc > 0) {
+//            spatdif_read(x, argv[0].a_w.w_sym);
+//        }else{
+//            spatdif_read(x, NULL);
+//        }
+//        return;
+//    }else if(command == "save"){
+//        if(argc > 0) {
+//            spatdif_write(x, argv[0].a_w.w_sym);
+//        }else{
+//            spatdif_write(x, NULL);
+//        }        return;
     }else if(command == "bang"){ // recursive call
         command = "/spatdifcmd/getEventSetsFromAllEntities";
         autoAdvance = true;
     }
     // if OSC message
     sdOSCMessage message(command);
-    
-
     
     for ( i = 0; i < argc; i++){
         if (argv[i].a_type == A_LONG) {
