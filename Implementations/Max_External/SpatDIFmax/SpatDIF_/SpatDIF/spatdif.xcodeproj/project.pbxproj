@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3039A32418B0DF61006DAA28 /* spatdif_external.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3039A32318B0DF61006DAA28 /* spatdif_external.cpp */; };
 		30CE5AC418D06B4A0019F1A9 /* libspatdif.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CE5AC318D06B4A0019F1A9 /* libspatdif.dylib */; };
+		30F72F4918D1C3C900E8D7BF /* libspatdif.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 30CE5AC318D06B4A0019F1A9 /* libspatdif.dylib */; };
 		30F86C7818CF56CF00BFC840 /* sdConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6A18CF56CF00BFC840 /* sdConst.h */; };
 		30F86C7918CF56CF00BFC840 /* sdDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6B18CF56CF00BFC840 /* sdDate.h */; };
 		30F86C7A18CF56CF00BFC840 /* sdEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F86C6C18CF56CF00BFC840 /* sdEntity.h */; };
@@ -32,6 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				30F72F4918D1C3C900E8D7BF /* libspatdif.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +156,7 @@
 				2FBBEAD808F335360078DB84 /* Resources */,
 				2FBBEADA08F335360078DB84 /* Sources */,
 				2FBBEADC08F335360078DB84 /* Frameworks */,
+				30F72F4A18D1C4D200E8D7BF /* ShellScript */,
 				3039A32B18B26545006DAA28 /* CopyFiles */,
 				2FBBEADF08F335360078DB84 /* Rez */,
 			);
@@ -172,7 +175,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "spatdif" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -210,6 +213,22 @@
 		};
 /* End PBXRezBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30F72F4A18D1C4D200E8D7BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -id @loader_path/../Resources/libspatdif.dylib ../../../../../spatdiflib/src/libspatdif.dylib";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2FBBEADA08F335360078DB84 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,6 +246,7 @@
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = spatdif;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = .mxo;
 			};
 			name = Development;
@@ -236,6 +256,7 @@
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = spatdif;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = .mxo;
 			};
 			name = Deployment;
