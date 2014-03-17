@@ -23,8 +23,8 @@ extern "C" { // c-headers
 
 typedef struct _spatdif 
 {
-	t_object ob;			// the object itself (must be first)
-    sdScene * scene;        // pointer is dynamically allocated in the loading function
+	t_object ob;
+    sdScene * scene; // pointer is dynamically allocated in the loading function
     bool sceneLoaded;
     sdOSCResponder responder;
     void *outlet1;
@@ -55,14 +55,15 @@ int C74_EXPORT main(void)
 {	
 	t_class *c;
 	
-	c = class_new("spatdif", (method)spatdif_new, (method)spatdif_free, (long)sizeof(t_spatdif), 0L, A_GIMME, 0);
+	c = class_new("spatdif", (method)spatdif_new, (method)spatdif_free,
+                  (long)sizeof(t_spatdif), 0L, A_GIMME, 0);
 	   
     
-    class_addmethod(c, (method)spatdif_read,            "read",     A_DEFSYM, 0);
-    class_addmethod(c, (method)spatdif_write,           "write",    A_DEFSYM, 0);
-    class_addmethod(c, (method)spatdif_interpret,       "anything", A_GIMME, 0);
+    class_addmethod(c, (method)spatdif_read,        "read",     A_DEFSYM, 0);
+    class_addmethod(c, (method)spatdif_write,       "write",    A_DEFSYM, 0);
+    class_addmethod(c, (method)spatdif_interpret,   "anything", A_GIMME, 0);
     
-    class_addmethod(c, (method)spatdif_assist,			"assist",		A_CANT, 0);
+    class_addmethod(c, (method)spatdif_assist,		"assist",	A_CANT, 0);
     
     class_register(CLASS_BOX, c);
 	spatdif_class = c;
@@ -200,7 +201,9 @@ void spatdif_dowrite(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
     }
 	
 	if (!s->s_name[0]) {
-		if(saveasdialog_extended(filename, &path, &outtype, &filetype, 1)) // non-zero: user cancelled
+		// non-zero: user cancelled
+        if(saveasdialog_extended(filename, &path, &outtype, &filetype, 1))
+        
 			return;
 	} else {
 		strcpy(filename, s->s_name);
@@ -210,7 +213,8 @@ void spatdif_dowrite(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
     sceneBuffer = sdSaver::XMLFromScene(x->scene);
 
 	if (path_createsysfile(filename, path, 'TEXT', &file)) {
-		object_error((t_object *)x, "%s: couldn't write data to file \"%s\"", filename);
+		object_error((t_object *)x, "%s: couldn't write data to file \"%s\"",
+                     filename);
 		return;
 	}
 	
@@ -341,16 +345,19 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         sdOSCMessage returnedMessage = *it;
         vector<unsigned char> typetags = returnedMessage.getTypetags();
         string address = returnedMessage.getAddressAsString();
-        addressVector = splitAddress(address); // separate elements in the address pattern
+        // separate elements in the address pattern
+        addressVector = splitAddress(address);
         
         // how many atoms to be sent out from the outlet ?
-		numAtoms += (addressVector.size() - 2); // because we will omit the header /spatdif and the
+        // because we will omit the header /spatdif and the
+		numAtoms += (addressVector.size() - 2);
 		numArguments = returnedMessage.getNumberOfArgument();
 		numAtoms += numArguments; // one arg one atom
         rargv = (t_atom*)malloc(sizeof(t_atom) * numAtoms); // allocate buffers
         
         // put address
-        vector<string>::iterator ait = addressVector.begin() + 2; // skip spatdif header and second element
+        // skip spatdif header and second element
+        vector<string>::iterator ait = addressVector.begin() + 2;
         while (ait != addressVector.end()) {
             string element = *ait;
             atom_setsym(&rargv[atomCount], gensym(element.c_str()));
@@ -361,15 +368,18 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         for(int i = 1; i < typetags.size(); i++){
         	switch(typetags[i]){
                 case 'i':{
-                    atom_setfloat(&rargv[atomCount], static_cast<float>(returnedMessage.getArgumentAsInt(argCount)));
+                    atom_setfloat(&rargv[atomCount],
+                                  static_cast<float>(returnedMessage.getArgumentAsInt(argCount)));
                     break;
                 }
             	case 'f':{
-                	atom_setfloat(&rargv[atomCount], returnedMessage.getArgumentAsFloat(argCount));
+                	atom_setfloat(&rargv[atomCount],
+                                  returnedMessage.getArgumentAsFloat(argCount));
                 	break;
                 }
                 case 's':{
-                    atom_setsym(&rargv[atomCount], gensym(returnedMessage.getArgumentAsString(argCount).c_str()));
+                    atom_setsym(&rargv[atomCount],
+                                gensym(returnedMessage.getArgumentAsString(argCount).c_str()));
                     break;
                 }
         	}

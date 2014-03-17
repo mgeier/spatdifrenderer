@@ -5,6 +5,8 @@
 
 \documentclass{article}
 \usepackage{icmcsmc2014}
+\usepackage[]{biblatex}
+\addbibresource{SpatDIF.bib}
 \usepackage{times}
 \usepackage{ifpdf}
 \usepackage[english]{babel}
@@ -25,7 +27,7 @@
 
 
 %user defined variables
-\def\papertitle{Implementing SpatDIF: practical usage in DSP software$\vert$SMC 2014}
+\def\papertitle{Implementing SpatDIF: Practical Application in Audio Software}
 \def\firstauthor{Jan C. Schacher}
 \def\secondauthor{Chikashi Miyama}
 \def\thirdauthor{Trond Lossius}
@@ -113,8 +115,9 @@
 % Three addresses
 % --------------
  \threeauthors
-   {\firstauthor} {Affiliation1 \\ %
-     {\tt \href{mailto:author1@smcnetwork.org}{author1@smcnetwork.org}}}
+   {\firstauthor} {Zurich University of the Arts\\
+   Institute for Computer Music\\ and Sound Technology\\
+     {\tt \href{jan.schacher@zhdk.ch}{jan.schacher@zhdk.ch}}}
    {\secondauthor} {Affiliation2 \\ %
      {\tt \href{mailto:me@chikashi.net}{author2@smcnetwork.org}}}
    {\thirdauthor} { Affiliation3 \\ %
@@ -130,12 +133,12 @@
 %
 \begin{abstract}
 The development and specification of SpatDIF, the spatial sound descriptor interchange format, is complemented with an actual software implementation in order to become usable in various environments. 
-In this report, the current state in the development of a software library called `SpatDIFlib' is discussed.
+In this article, the current state in the development of a software library called `SpatDIFlib' is discussed.
 The design principles derived from the concepts and specifications of SpatDIF, the class structure of the library, and code demonstrating its usage is presented.
-Furthermore, an application that utilizes the library is introduced as an exemplary use case.
+Furthermore, an application that utilises the library is introduced as an exemplary use case.
 \end{abstract}
 %
-\section{Backgroud}
+\section{Background}
 
 In this article we present the development of a software tool aimed at simple integration of SpatDIF into existing software.
 The concepts and guidelines are implemented in a C-Library and applied in an example surround-playback application.
@@ -151,7 +154,7 @@ SpatDIF is developed as a collaborative effort and has evolved over a number of 
 The community and all related information can be found at {\it www.spatdif.org}.
 
 SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters stated the necessity for a format to describe spatial sound scenes in a structured way, since all of the available spatial rendering systems used self-contained syntax and data-formats at that time. 
-Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has been extended, refined, and consolidated. 
+Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the concept of SpatDIF has been extended, refined, and consolidated.
 
 After a long and thoughtful process, the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011 and at a workshop at the TU-Berlin in September 2011.
 The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which could contrast the complex MPEG-4 scene description specification \cite{scheirer1999audiobifs}.
@@ -178,11 +181,17 @@ By providing a software library rather than just a complete software application
 \section{Class Structure}\label{sec:class_structure}
 Half page??
 
-\section{Intruction to externals}
-example text
+\section{Introduction to externals}
+Even though the SpatDIF syntax is an implementation-independent specification, rather than a concrete software interface, the actual value of using it only becomes evident in concrete applications. Although SpatDIF was developed with a number of different usage scenarios in mind, the ones most closely associated with these authors' practices are electro-acoustic surround audio compositions for concerts or installations or real-time spatialisation in computer music performance.
+Therefore the primary application for the SpatDIF library lies in an implementation in real-time capable audio software, such as MaxMSP or Pure Data.
 
-\subsection{concepts and practical usage}\label{subsec:concepts}
-example text
+\subsection{Concepts and Practical usage}\label{subsec:concepts}
+In order to explore the methods and actual handling of the libspatdif in a real situation a dual testbed was implemented as externals for MaxMSP and Pure Data. In addition an example application with a limited feature-set was tested in OpenFrameworks, mainly to establish and test a workflow purely in C++.
+
+When implementing thelibspatdif in these software environments a number of decisions had to be made about the level of encapsulation and the degree of control given to the library on the one hand and the client-application on the other hand. The main idea is that libspatdif serves as a memory store for the client (external host) and provides an interface to get or set the events present within the scene. 
+
+
+
 
 \subsection{Playback}\label{sec:Playback}
 example text
@@ -190,7 +199,7 @@ example text
 \subsection{Recording}\label{sub:body}
 example text
 
-\section{future work}
+\section{Future work}
 example text
 
 
@@ -200,6 +209,7 @@ example text
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %bibliography here
-\bibliography{icmcsmc2014template}
+% \bibliography{SpatDIF.bib}
+\printbibliography
 
 \end{document}
