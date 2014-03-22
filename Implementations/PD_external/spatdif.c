@@ -81,7 +81,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     
     // handle non OSC Message
     if(command == "dump"){
-        post(x->scene->dump().c_str());
+        post(x->scene->dump(false).c_str());
         return;
     }else if(command == "load"){
         spatdif_load(x, argv[0].a_w.w_symbol);
