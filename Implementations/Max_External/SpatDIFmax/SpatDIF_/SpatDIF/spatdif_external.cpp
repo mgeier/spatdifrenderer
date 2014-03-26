@@ -253,6 +253,7 @@ string getEntityName(t_spatdif *x, int ID)
 void spatdif_dumpScene(t_spatdif *x)
 {
     
+    
     // TODO: should dump to outlet not console
     
     cout << "--------------- SpatDIF scene Dump ---------------" << endl;
@@ -270,7 +271,10 @@ void spatdif_dumpScene(t_spatdif *x)
             cout << "entity name " << i<< ":" << result << endl;
         }
         
-        x->scene->dump();
+//        x->scene->dump();
+        
+        object_post((t_object *)x, x->scene->dump(false).c_str() );
+
     }
 }
 
@@ -306,18 +310,11 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         spatdif_dumpScene(x);
         return;
 //    }else if(command == "load"){
-//        if(argc > 0) {
-//            spatdif_read(x, argv[0].a_w.w_sym);
-//        }else{
-//            spatdif_read(x, NULL);
-//        }
+//        spatdif_load(x, argv[0].a_w.w_symbol);
 //        return;
 //    }else if(command == "save"){
-//        if(argc > 0) {
-//            spatdif_write(x, argv[0].a_w.w_sym);
-//        }else{
-//            spatdif_write(x, NULL);
-//        }        return;
+//        spatdif_save(x, argv[0].a_w.w_symbol);
+//        return;
     }else if(command == "bang"){ // recursive call
         command = "/spatdifcmd/getEventSetsFromAllEntities";
         autoAdvance = true;
@@ -368,7 +365,7 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         for(int i = 1; i < typetags.size(); i++){
         	switch(typetags[i]){
                 case 'i':{
-                    atom_setfloat(&rargv[atomCount],
+                    atom_setlong(&rargv[atomCount],
                                   static_cast<float>(returnedMessage.getArgumentAsInt(argCount)));
                     break;
                 }

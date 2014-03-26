@@ -1959,7 +1959,9 @@
     <bcf:citekey order="3">2008ICMCpanel</bcf:citekey>
     <bcf:citekey order="3">Peters:2008spatdif</bcf:citekey>
     <bcf:citekey order="4">scheirer1999audiobifs</bcf:citekey>
-    <bcf:citekey order="5">Peters:2013SpatDifCMJ</bcf:citekey>
+    <bcf:citekey order="5">SpatDIF_03</bcf:citekey>
+    <bcf:citekey order="6">SpatDIF_SMC12</bcf:citekey>
+    <bcf:citekey order="7">Peters:2013SpatDifCMJ</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nty">
   <bcf:sorting>

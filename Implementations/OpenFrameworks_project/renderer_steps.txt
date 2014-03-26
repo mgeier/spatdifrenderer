@@ -1,0 +1,29 @@
+[x] open SpatDIF file
+
+[x] unload old scene
+	and all entities/players
+
+[x] load scene
+	get rootPath
+	
+[x] initialize entities 
+	intialize player
+	load soundfiles
+	get start-time
+	get end-time
+
+[x] get limits of scene
+
+---
+
+press start
+	reset scheduler to 0
+	set playScene Flag	
+	run scheduler
+	
+run scheduler
+	get scene-time from audio
+	get next event for each entity
+	calc interpolating factor for each parameter (panning, gain)
+	
+	
