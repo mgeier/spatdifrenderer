@@ -145,7 +145,8 @@ This article discusses the current state of the development of a software librar
 In addition, the design principles derived from the concepts and specifications of SpatDIF, the class structure of the software library, and the concrete implementations demonstrating its usage in computer music applications is presented.
 \end{abstract}
 
-\section{Background}
+\section{Background}\label{sec:Background}
+
 SpatDIF, the Spatial Sound Description Interchange Format, presents a structured syntax for describing spatial audio information, addressing the different tasks involved in creating and performing spatial sound scenes.
 The goal of the SpatDIF approach is to simplify and enhance the methods of creating spatial sound content and to enable the exchange of between otherwise incompatible software. 
 SpatDIF proposes a simple and extensible format as well as best-practice examples for storing and transmitting spatial sound scene descriptions. 
@@ -176,7 +177,7 @@ Because a complete work typically contains aspects that are outside the realm of
 % For example, to be able to render the audio objects with the correct audio content in the spatial scene, the storage location of the audio content needs to be defined via SpatDIF's media resources.
 For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
 
-\section{libspatdif Concepts}\label{sec:libspatdif_concepts}
+\section{Library Concepts}\label{sec:libspatdif_concepts}
 
 In this article we present the development and implementation of software tools aimed at easy integration of SpatDIF into existing software and workflows.
 The concepts and guidelines laid down in the SpatDIF specifications are implemented in a software-library.
@@ -237,28 +238,29 @@ These functions use two external libraries for parsing of markup formatted strin
 \end{itemize}
 
 % TODO @Trond/Chikashi decide if the code-examples should stay in this paper, since this paper is mainly about the externals an should be different enough from the JSSA paper from last december. Perhaps an extract from the turena's file would be more appropriate here? [jasch]
-\subsection{Simple Code Example}
-The following code listing shows the native C++ calls used to load an XML-formatted string obtained from a SpatDIF file into an \emph{sdScene} and query the entity called `insect' for the first occurrence of an event which contains a position and a media descriptor.
+% \subsection{Simple Code Example}
+% The following code listing shows the native C++ calls used to load an XML-formatted string obtained from a SpatDIF file into an \emph{sdScene} and query the entity called `insect' for the first occurrence of an event which contains a position and a media descriptor.
+% 
+% \lstinputlisting[columns=fullflexible, breaklines=true, numbers=left,xleftmargin=3.0em,frame=none,framexleftmargin=0.0em, basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
+% 
+% \noindent The code produces this console-output: 
+% \lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,xleftmargin=1.0em, basicstyle=\scriptsize\ttfamily]{code_output.txt} 
+% 
+% \noindent 
+% The following processes are executed in the example:
+% 
+% \noindent Line 1: the \emph{sdLoader::sceneFromXML} function loads a scene from an XML formatted string.
+% 
+% \noindent Line 2: A pointer to an entity named `insect' is obtained by the \emph{scene.getEntity} function.
+% 
+% \noindent Lines 3 -- 4: Entity `insect' is requested for the first event with position and media location descriptor.
+% 
+% \noindent Line 5: Query `insect' entity for its name.
+% 
+% \noindent Lines 6 -- 8: Post values and time of events.
 
-\lstinputlisting[columns=fullflexible, breaklines=true, numbers=left,xleftmargin=3.0em,frame=none,framexleftmargin=0.0em, basicstyle=\scriptsize\ttfamily]{example_code2.cpp} 
 
-\noindent The code produces this console-output: 
-\lstinputlisting[columns=fullflexible,breaklines=true,numbers=none,xleftmargin=1.0em, basicstyle=\scriptsize\ttfamily]{code_output.txt} 
-
-\noindent 
-The following processes are executed in the example:
-
-\noindent Line 1: the \emph{sdLoader::sceneFromXML} function loads a scene from an XML formatted string.
-
-\noindent Line 2: A pointer to an entity named `insect' is obtained by the \emph{scene.getEntity} function.
-
-\noindent Lines 3 -- 4: Entity `insect' is requested for the first event with position and media location descriptor.
-
-\noindent Line 5: Query `insect' entity for its name.
-
-\noindent Lines 6 -- 8: Post values and time of events.
-
-\section{Introducing the SpatDIF External}
+\section{Introducing the SpatDIF External}\label{sec:Intro}
 Even though the SpatDIF syntax is an implementation-independent specification, rather than a concrete software interface, the actual value of using it only becomes evident in real applications. And even if SpatDIF was developed with a number of different usage scenarios in mind, the ones most closely associated with the authors' practices are electro-acoustic surround audio compositions for concerts and installations or real-time spatialisation in computer music performance.
 Therefore, the first implementations of the SpatDIF library are made with tools for real-time audio software.
 
@@ -287,7 +289,7 @@ It is the externals in MaxMSP and PureData that implement the required file load
  % TODO: maybe a switch could be implemented to change this behavior back and forth?
 
 
-\subsection{Playback}\label{sec:Playback}
+\subsection{Playback}\label{sec:playback}
 
 \begin{figure}[httb]
 	\includegraphics[width=\columnwidth]{recording_maxpatch.png}
@@ -295,19 +297,19 @@ It is the externals in MaxMSP and PureData that implement the required file load
 	\label{fig:screenshot}
 \end{figure}
 
-The first example shown here centres around SpatDIF file-handling and playback of a scene in a multichannel setup.
-Figure \ref{fig:screenshot} shows a simplified monophonic setup in MaxMSP.
+The first example shown here centres around file-handling and the playback of a SpatDIF scene in a multichannel setup.
+Figure \ref{fig:screenshot} shows this with a simplified monophonic setup in MaxMSP.
 This workflow makes a few assumptions which are not limitations of libspatdif as such, but help to clarify the concepts.
-The program demonstrates the rendering of an existing scene, which is in this instance the `insect' trajectory from John Chowning's ``Turenas'' (1972) \cite{chowningturenas}.
+The program demonstrates the rendering of an existing scene, which in this instance is the `insect' trajectory from John Chowning's ``Turenas'' (1972) \cite{chowningturenas}.
 The scene is stored on disk in a SpatDIF-formatted XML-file together with the audio content as sound-file.
 After reading the scene from disk, the meta section can be parsed to obtain annotation information, as shown in the lower right.
 
 In a fully dynamic system, additional information is required to set up the rendering algorithm.
 For this purpose queries are made to the library to obtain information about the number of entities present in the scene and the names of the entities as well as the extensions that are present.\footnote{For more specific information about the concept of extensions in SpatDIF, please refer to \cite{SpatDIF_SMC12, Peters:2013SpatDifCMJ, SpatDIF_03}. }
-This allows determine the number of playback voices and to set up the hierarchical message routing according to the names of entities.
-In this example this step is omitted and only one playback voice is implemented with a hard-coded message routing set to the entity-type of \emph{source} and the entity-name called \emph{insect}.
+This allows to determine the number of playback voices needed and then to set up the hierarchical message routing according to the names of entities.
+In this example this step is omitted and only one playback voice is implemented with a hard-coded message-routing set to the entity-type of \emph{source} and the entity-name called \emph{insect}.
 Subsequently, the messages are routed to obtain the \emph{position} core-descriptor required for the spatialisation process as well as the \emph{media} extension with the \emph{location} descriptor necessary to load files for playback.
-The sound-file player, visualisation and spatialisation algorithms \cite{schacher7Years} shown here represent the minimal case and should of course be more fully implemented.
+The sound-file player, visualisation and spatialisation algorithms \cite{schacher7Years} shown here represent the minimal case and of course would normally be more fully implemented.
 
 As mentioned earlier the library does not have its own scheduling mechanism. 
 In this example this becomes apparent and therefore the method for time-based playback is demonstrated.
@@ -315,30 +317,15 @@ In the right half of the example are shown the \emph{spatdifmds} necessary to ru
 The basic action is to ask with \emph{getDeltaTimeToNextEvent} for the delta times between subsequent events.
 Since a scene can contain sparse data at no fixed intervals, it is crucial to have a dynamic timing mechanism for playback.
 The command \emph{setQueryTimeToNextEvent} sets the query time variable to the next event, then the library gets queried for all the events at that point in time with \emph{getEventSetsFromAllEntities}, and finally the time to wait until the next event is queried again.
-These commands form a loop that steps through the scene, which is made apparent in the figure with the orange connection flowing back to the spatdif-external.
+These commands form a loop that steps through the scene, which is rendered visible in the figure through the orange connection flowing back to the spatdif-external.
 The timing is executed by a delay which waits the appropriate amount of time to the next event before re-triggering the same sequence.
+These commands are global to the scene, so that all events associated with any entity in the scene are retrieved.
+If only events from selected entities are desired, this can be achieved by filtering in the message routing system, or as will be shown below with more specific commands to the library. %TODO find out if we we provide other interface calls to the library across the OSC-cmd interface.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\subsection{Recording}\label{sub:body}
+\subsection{Recording}\label{sec:recording}
 example text
 
-\section{Future work}
+\section{Future work}\label{sec:future_work}
 example text
 
 

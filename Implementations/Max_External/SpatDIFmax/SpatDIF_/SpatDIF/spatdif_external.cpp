@@ -48,6 +48,7 @@ void spatdif_dumpScene(t_spatdif *x);
 
 vector<string> splitAddress(string &str);
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv);
+bool spatdif_createscene(t_spatdif *x);
 
 void *spatdif_class;
 
@@ -173,7 +174,6 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
         object_error((t_object *)x, "%s not a valid file", filename);
         return;
     }
-    
 }
 
 #pragma mark -
@@ -181,6 +181,7 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 
 void spatdif_write(t_spatdif *x, t_symbol *s)
 {
+    spatdif_createscene(x);
     defer_low(x,(method)spatdif_dowrite, s, 0, 0L);
 }
 
@@ -231,11 +232,14 @@ void spatdif_dowrite(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 
 int getNumberOfEntities(t_spatdif * x)
 {
+    spatdif_createscene(x);
     return x->scene->getNumberOfEntities();
 }
 
 string getEntityName(t_spatdif *x, int ID)
 {
+    spatdif_createscene(x);
+    
     int counter = 0;
     vector <sdEntityCore*> myEntityVector = x->scene->getEntityVector();
     vector <sdEntityCore*>::iterator it = myEntityVector.begin();
@@ -253,7 +257,7 @@ string getEntityName(t_spatdif *x, int ID)
 void spatdif_dumpScene(t_spatdif *x)
 {
     
-    
+    spatdif_createscene(x);
     // TODO: should dump to outlet not console
     
     cout << "--------------- SpatDIF scene Dump ---------------" << endl;
@@ -302,6 +306,8 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     string command;
     vector<sdOSCMessage> returnedMessageVector;
     vector<string> addressVector;
+    
+    spatdif_createscene(x);
     
     command = s->s_name;
     
@@ -395,4 +401,15 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
         x->responder.setQueryTime(x->responder.getQueryTime() + x->responder.getInterval());
     }
     outlet_bang(x->outlet2);
+}
+
+bool spatdif_createscene(t_spatdif *x)
+{
+    if(x->scene == NULL) {
+        x->scene = new(sdScene); // dynmically instanciate scene
+        x->responder.setScene(x->scene); // tie responder to scene
+        x->sceneLoaded = true;
+        return true;
+    }
+    return false;
 }
