@@ -1,0 +1,36 @@
+0   ???                           	0x0000000000000200 0 + 512
+1   libspatdif.dylib              	0x000000011ba24a48 tinyxml2::XMLNode::DeleteChildren() + 104
+2   libspatdif.dylib              	0x000000011ba24952 tinyxml2::XMLNode::~XMLNode() + 34
+3   libspatdif.dylib              	0x000000011ba26cae tinyxml2::XMLElement::~XMLElement() + 206
+4   libspatdif.dylib              	0x000000011ba26bd5 tinyxml2::XMLElement::~XMLElement() + 21
+5   libspatdif.dylib              	0x000000011ba24a48 tinyxml2::XMLNode::DeleteChildren() + 104
+6   libspatdif.dylib              	0x000000011ba24952 tinyxml2::XMLNode::~XMLNode() + 34
+7   libspatdif.dylib              	0x000000011ba26cae tinyxml2::XMLElement::~XMLElement() + 206
+8   libspatdif.dylib              	0x000000011ba26bd5 tinyxml2::XMLElement::~XMLElement() + 21
+9   libspatdif.dylib              	0x000000011ba24a48 tinyxml2::XMLNode::DeleteChildren() + 104
+10  libspatdif.dylib              	0x000000011ba27f22 tinyxml2::XMLDocument::~XMLDocument() + 34
+11  libspatdif.dylib              	0x000000011ba27ef5 tinyxml2::XMLDocument::~XMLDocument() + 21
+12  libspatdif.dylib              	0x000000011ba658f8 sdSaver::XMLFromScene(sdScene*) + 9992
+13  org.spatdif.spatdif           	0x000000011b9f77c4 spatdif_dowrite(_spatdif*, symbol*, short, atom*) + 372 (spatdif_external.cpp:212)
+14  com.cycling74.Max             	0x000000010003ba66 defer_exec + 83
+15  com.cycling74.Max             	0x0000000100033467 sched_dequeue + 276
+16  com.cycling74.Max             	0x00000001000120a0 max_tick + 89
+17  com.cycling74.Max             	0x00000001003896b7 juce::InternalTimerThread::callTimers() + 155
+18  com.cycling74.Max             	0x00000001003885a3 juce::MessageManager::deliverMessage(juce::Message*) + 123
+19  com.cycling74.Max             	0x0000000100473be9 juce::AppDelegateRedirector::runLoopCallback() + 113
+20  com.apple.CoreFoundation      	0x00007fff88a88b31 __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__ + 17
+21  com.apple.CoreFoundation      	0x00007fff88a88455 __CFRunLoopDoSources0 + 245
+22  com.apple.CoreFoundation      	0x00007fff88aab7f5 __CFRunLoopRun + 789
+23  com.apple.CoreFoundation      	0x00007fff88aab0e2 CFRunLoopRunSpecific + 290
+24  com.apple.HIToolbox           	0x00007fff90961eb4 RunCurrentEventLoopInMode + 209
+25  com.apple.HIToolbox           	0x00007fff90961c52 ReceiveNextEventCommon + 356
+26  com.apple.HIToolbox           	0x00007fff90961ae3 BlockUntilNextEventMatchingListInMode + 62
+27  com.apple.AppKit              	0x00007fff86938533 _DPSNextEvent + 685
+28  com.apple.AppKit              	0x00007fff86937df2 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 128
+29  com.apple.AppKit              	0x00007fff8692f1a3 -[NSApplication run] + 517
+30  com.cycling74.Max             	0x00000001004655de juce::MessageManager::runDispatchLoop() + 86
+31  com.cycling74.Max             	0x00000001003390fd juce::JUCEApplication::main(juce::StringArray const&) + 69
+32  com.cycling74.Max             	0x0000000100339220 juce::JUCEApplication::main(int, char const**) + 68
+33  com.cycling74.Max             	0x000000010025bcfe main + 637
+34  com.cycling74.Max             	0x0000000100001a82 _start + 224
+35  com.cycling74.Max             	0x00000001000019a1 start + 33

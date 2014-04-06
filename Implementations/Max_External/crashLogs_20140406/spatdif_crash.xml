@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<spatdif version="0.3">
+    <meta>
+        <info>
+            <date>2014-04-06</date>
+        </info>
+        <extensions>media</extensions>
+        <ordering>time</ordering>
+    </meta>
+    <time>0</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.327895 -0.207368 0</position>
+        <media>
+            <location>oboe.aiff</location>
+            <location>oboe.aiff</location>
+            <type>file</type>
+            <type>file</type>
+        </media>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>0.351579 -0.245263 0</position>
+        <media>
+            <location>bagatelle2.aiff</location>
+            <location>bagatelle2.aiff</location>
+            <type>file</type>
+            <type>file</type>
+        </media>
+    </source>
+    <time>1</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.387895 -0.157368 0</position>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>0.521579 -0.195263 0</position>
+    </source>
+    <time>2</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.467895 -0.0173684 0</position>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>0.681579 -0.0752632 0</position>
+    </source>
+    <time>3</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.547895 0.102632 0</position>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>0.831579 -0.0752632 0</position>
+    </source>
+    <time>4</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.757895 0.152632 0</position>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>0.931579 0.00473684 0</position>
+    </source>
+    <time>5</time>
+    <source>
+        <name>voice1</name>
+        <position>-0.887895 0.152632 0</position>
+    </source>
+    <source>
+        <name>voice2</name>
+        <position>1 0.00473684 0</position>
+    </source>
+</spatdif>
