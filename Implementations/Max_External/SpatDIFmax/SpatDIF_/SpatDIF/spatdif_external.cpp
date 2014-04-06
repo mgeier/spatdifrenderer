@@ -35,7 +35,7 @@ typedef struct _spatdif
 void *spatdif_new(t_symbol *s, long argc, t_atom *argv);
 void spatdif_free(t_spatdif *x);
 void spatdif_assist(t_spatdif *x, void *b, long m, long a, char *s);
-
+void spatdif_clear(t_spatdif *x);
 void spatdif_read(t_spatdif *x, t_symbol *s);
 void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av);
 
@@ -48,7 +48,6 @@ void spatdif_dumpScene(t_spatdif *x);
 
 vector<string> splitAddress(string &str);
 void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv);
-bool spatdif_createscene(t_spatdif *x);
 
 void *spatdif_class;
 
@@ -59,7 +58,7 @@ int C74_EXPORT main(void)
 	c = class_new("spatdif", (method)spatdif_new, (method)spatdif_free,
                   (long)sizeof(t_spatdif), 0L, A_GIMME, 0);
 	   
-    
+//    class_addmethod(c, (method)spatdif_clear,       "/spatdifcmd/clear",    0);
     class_addmethod(c, (method)spatdif_read,        "read",     A_DEFSYM, 0);
     class_addmethod(c, (method)spatdif_write,       "write",    A_DEFSYM, 0);
     class_addmethod(c, (method)spatdif_interpret,   "anything", A_GIMME, 0);
@@ -96,7 +95,11 @@ void *spatdif_new(t_symbol *s, long argc, t_atom *argv)
 
 	if ((x = (t_spatdif *)object_alloc((t_class *) spatdif_class))) {
         
-        x->sceneLoaded = false;
+
+        x->scene = new(sdScene); // dynmically instanciate scene
+        x->responder.setScene(x->scene); // tie responder to scene
+        x->sceneLoaded = true;
+
         x->outlet2 = outlet_new((t_object *)x, 0L);
         x->outlet1 = outlet_new((t_object *)x, 0L);
 	}
@@ -158,10 +161,6 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
         
         string sceneBuffer(buffer);
         
-        if(x->scene) {
-            free(x->scene); // free scene instance if a scene existed before
-        }
-        x->scene = new(sdScene); // dynmically instanciate scene
         *x->scene = sdLoader::sceneFromXML(sceneBuffer);
 
         x->sceneLoaded = true;
@@ -181,7 +180,6 @@ void spatdif_doread(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 
 void spatdif_write(t_spatdif *x, t_symbol *s)
 {
-    spatdif_createscene(x);
     defer_low(x,(method)spatdif_dowrite, s, 0, 0L);
 }
 
@@ -232,13 +230,11 @@ void spatdif_dowrite(t_spatdif *x, t_symbol *s, short ac, t_atom *av)
 
 int getNumberOfEntities(t_spatdif * x)
 {
-    spatdif_createscene(x);
     return x->scene->getNumberOfEntities();
 }
 
 string getEntityName(t_spatdif *x, int ID)
 {
-    spatdif_createscene(x);
     
     int counter = 0;
     vector <sdEntityCore*> myEntityVector = x->scene->getEntityVector();
@@ -257,7 +253,6 @@ string getEntityName(t_spatdif *x, int ID)
 void spatdif_dumpScene(t_spatdif *x)
 {
     
-    spatdif_createscene(x);
     // TODO: should dump to outlet not console
     
     cout << "--------------- SpatDIF scene Dump ---------------" << endl;
@@ -274,13 +269,29 @@ void spatdif_dumpScene(t_spatdif *x)
             string result = x->scene->getEntityName(i);
             cout << "entity name " << i<< ":" << result << endl;
         }
-        
-//        x->scene->dump();
-        
-        object_post((t_object *)x, x->scene->dump(false).c_str() );
 
+        // needed to fix max-window output
+        char * dumpString = (char *)x->scene->dump(false).c_str();
+        stringstream in(dumpString);
+        string out;
+        if (dumpString != NULL) {
+            while( getline(in, out, '\n') ) {
+                object_post((t_object *)x, out.c_str() );
+
+            }
+        }
     }
 }
+
+void spatdif_clear(t_spatdif *x)
+{
+    // todo what is resetwhen we clear a scene
+    if(x->scene) {
+        free(x->scene); // free scene instance if a scene existed before
+    }
+    x->scene = new(sdScene); // dynmically instanciate scene
+}
+
 
 #pragma mark -
 #pragma mark utilities
@@ -306,8 +317,6 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     string command;
     vector<sdOSCMessage> returnedMessageVector;
     vector<string> addressVector;
-    
-    spatdif_createscene(x);
     
     command = s->s_name;
     
@@ -403,13 +412,3 @@ void spatdif_interpret(t_spatdif *x, t_symbol *s, int argc, t_atom *argv)
     outlet_bang(x->outlet2);
 }
 
-bool spatdif_createscene(t_spatdif *x)
-{
-    if(x->scene == NULL) {
-        x->scene = new(sdScene); // dynmically instanciate scene
-        x->responder.setScene(x->scene); // tie responder to scene
-        x->sceneLoaded = true;
-        return true;
-    }
-    return false;
-}
