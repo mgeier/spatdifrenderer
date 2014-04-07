@@ -58,7 +58,6 @@ int C74_EXPORT main(void)
 	c = class_new("spatdif", (method)spatdif_new, (method)spatdif_free,
                   (long)sizeof(t_spatdif), 0L, A_GIMME, 0);
 	   
-//    class_addmethod(c, (method)spatdif_clear,       "/spatdifcmd/clear",    0);
     class_addmethod(c, (method)spatdif_read,        "read",     A_DEFSYM, 0);
     class_addmethod(c, (method)spatdif_write,       "write",    A_DEFSYM, 0);
     class_addmethod(c, (method)spatdif_interpret,   "anything", A_GIMME, 0);
@@ -95,7 +94,6 @@ void *spatdif_new(t_symbol *s, long argc, t_atom *argv)
 
 	if ((x = (t_spatdif *)object_alloc((t_class *) spatdif_class))) {
         
-
         x->scene = new(sdScene); // dynmically instanciate scene
         x->responder.setScene(x->scene); // tie responder to scene
         x->sceneLoaded = true;
@@ -282,16 +280,6 @@ void spatdif_dumpScene(t_spatdif *x)
         }
     }
 }
-
-void spatdif_clear(t_spatdif *x)
-{
-    // todo what is resetwhen we clear a scene
-    if(x->scene) {
-        free(x->scene); // free scene instance if a scene existed before
-    }
-    x->scene = new(sdScene); // dynmically instanciate scene
-}
-
 
 #pragma mark -
 #pragma mark utilities
