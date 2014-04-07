@@ -17,7 +17,7 @@
 \setlist[itemize]{itemsep=0.0pt, topsep=1.5pt}
 
 %user defined variables
-\def\papertitle{The SpatDIF library - Concepts and Practical Applications in Audio Software}
+\def\papertitle{The SpatDIF library -- Concepts and Practical Applications in Audio Software}
 \def\firstauthor{Jan C. Schacher}
 \def\secondauthor{Chikashi Miyama}
 \def\thirdauthor{Trond Lossius}
@@ -102,10 +102,12 @@ In order to make SpatDIF usable in audio workflows, two types of code implementa
 The first is a C/C++ software library called `libspatdif', whose purpose is to provide a reference implementation of SpatDIF.
 We show the class structure of this library and discuss its main components and how they embody the principles derived from the concepts and specifications of SpatDIF.
 The second type of tool are specific implementations in audio programming environments, which demonstrate the methods and best-use practices for working with SpatDIF.
-Two practical scenarios are shown in functional examples, demonstrating the use of externals in MaxMSP and Pure Data as well as the implementation of the same example in C++ .
+Two practical scenarios are shown in functional examples, demonstrating the use of externals in MaxMSP and Pure Data as well as the implementation of the same example in C++.
 Finally, the article addresses the possible evolution of the syntax and further development of the software system for spatial sound description.
 
 \end{abstract}
+
+% keywords: spatial sound, scene description, software implementations, best-practice
 
 \section{Background}\label{sec:background}
 
@@ -260,7 +262,7 @@ Therefore, the first code implementations of the SpatDIF library are made with t
 
 In order to explore the methods and actual handling of the `libspatdif' in a real situation, a dual testbed was implemented as externals for MaxMSP and Pure Data.
 Apart from small differences in the two environments, mainly concerning the handling of files, the two implementations are identical.
-In addition, an example application with a limited feature-set was written in openFrameworks, mainly to establish and test a workflow done entirely in the C++ language.
+In addition, an example application with a limited feature-set was written in openFrameworks, in order to establish and test a workflow done entirely in the C++ language.
 
 There are a number of concepts that need to be taken into account when using the library, which inform the design of the implementations shown here.
 
