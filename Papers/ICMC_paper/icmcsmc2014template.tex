@@ -162,19 +162,19 @@ For this purpose a platform-independent software library written in C/C++ was de
 By providing a software library rather than just a finished software application, implementations in many different software environments are facilitated, which represents one of the goals of the project.
 The library is in charge of holding one or more spatial audio scenes and provides ways to read and write elements to and from these scenes, either directly from native code or via OSC-formatted messages, that may originate from within the application or come in from an external source via the network.
 
-\subsection{Separation between Library and Client}\label{subsec:separation}
+\subsection{Scope of Library Tasks}\label{subsec:separation}
 
-The separation of tasks between the library and a client application is deliberate.
+In order to facilitate implementations in many different environments without making any assumptions about their capabilities, the types of tasks given to the library is carefully selected.
+There is a deliberate division of tasks between the library and the client application.
 
-On the one hand, it is the library that builds and maintains in memory the SpatDIF scene, either obtained from an already existing description stored in a file, or on-the-fly in real time from elements received via OSC-formatted messages.
+On the one hand, the library builds and maintains in memory the SpatDIF scene, either obtained from an already existing description stored in a file, or on-the-fly in real time from elements received via OSC-formatted commands or native code calls.
 It provides an application programming interface (API) that hides most of the complexity of handling the scene data.
+Through this interface all the information is queried or written.
 
-The client application, on the other hand, is in charge of loading the file containing the SpatDIF-scene from the file system and handing it to the library in a text buffer.
-In addition, the client application opens network sockets and forwards OSC-formatted data to the library.
-It queries the library for scene information at initialisation as well as at runtime, based on its own scheduler, thereby actively playing the scene.
-The client application also deals with all the audio related processes, such as loading audio files, playing them back, configuring the audio-system and rendering the audio to generate an immersive audio experience.
-More details are discussed below in the sections describing the specific software tools.
-
+The client application, on the other hand, is in charge of connecting to the file-system, managing the networking interfaces as well as running the audio-system.
+All time-based operations are done in the client-application, since they may be driven by audio-rate, a control-rate scheduler or even an external sync source. 
+The client application deals with all audio-related processes, such as loading audio files, playing them back, configuring the audio-system and rendering the audio to generate an immersive audio experience.
+More details of how the tasks are divided are shown below in the sections describing the specific examples.
 
 \subsection{Library Class Structure}\label{subsec:class_structure}
 
@@ -186,8 +186,7 @@ More details are discussed below in the sections describing the specific softwar
 
 \end{figure}
 
-
-The class hierarchy shown here describes the relationship between the scene and its contents, as well as their hierarchical dependencies (see Figure \ref{fig:class_structure}). 
+The class diagram shown here describes the relationship between the scene and its contents, as well as their hierarchical dependencies (see Figure \ref{fig:class_structure}). 
 An instance of \emph{sdScene} class represents a SpatDIF scene and maintains instances of \emph{sdEntityCore}. The functionalities of \emph{sdEntityCore} may be extended by the descendants of \emph{sdEntityExtension}. 
 The activation and deactivation of the extension are global within a scene, thus \emph{sdScene} is also responsible for the extension handling.
 Each instance of \emph{sdEntityCore} maintains instances of \emph{sdEvent}, which represent all the events of the entity as they unfold withinthe scene over time.
