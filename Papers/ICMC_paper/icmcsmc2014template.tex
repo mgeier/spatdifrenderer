@@ -116,7 +116,7 @@ Finally, the article addresses the possible evolution of the syntax and further 
 \section{Background}\label{sec:background}
 
 The Spatial Sound Description Interchange Format SpatDIF presents a structured syntax for describing spatial audio information, addressing the different tasks involved in creating and performing spatial sound scenes.
-The goal of this approach is to simplify and enhance the methods of creating spatial sound content and to enable the exchange of between otherwise incompatible software. 
+The goal of this approach is to simplify and enhance the methods of creating spatial sound content and to enable the exchange of scene desriptions between otherwise incompatible software. 
 SpatDIF proposes a simple and extensible format as well as best-practice examples for storing and transmitting spatial sound scenes. 
 It encourages portability and the exchange of compositions between venues with different surround audio infrastructures. 
 SpatDIF also fosters collaboration between artists such as composers, musicians, sound installation artists as well as researchers in the fields of acoustics, musicology, and sound engineering.
@@ -126,7 +126,9 @@ The community pages as well as all the related information and publications can 
 
 % \subsection{Project History}\label{subsec:project_history}
 
-SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters posited the need for a format describing spatial sound scenes in a structured way, since at that time all of the available spatial rendering systems used self-contained, proprietary syntax- and data-formats.
+% COMMENT: Do we need to recap all of the history of SpatDIF? Isn't this already covered in the CMJ paper? If we save some space here, we could make figure 1 larger.
+
+SpatDIF was coined in \citeyear{peters_caa07} \cite{peters_caa07} when Peters~et.~al. posited the need for a format describing spatial sound scenes in a structured way, since at that time all of the available spatial rendering systems used self-contained, proprietary syntax- and data-formats.
 Through a panel discussion \cite{2008ICMCpanel, Peters:2008spatdif} and other meetings and workshops, the scope and concepts of SpatDIF were extended, refined, and consolidated.
 After an extended process the SpatDIF specification was informally presented to the spatial sound community at the ICMC in Huddersfield in August 2011 and at a workshop at the TU-Berlin in September 2011.
 The responses in these meetings suggested the urgent need for a lightweight and easy to implement spatial sound scene standard, which would contrast the complex MPEG-4 scene description specification \cite{scheirer1999audiobifs}.
@@ -140,6 +142,7 @@ A central principle for SpatDIF is the conceptual separation of authoring and re
 The exact modality should not have to be determined at the outset.
 
 In addition to the separation of the basic functionalities two principal use-cases can be distinguished.
+% TODO: Check grammar in the following line.
 The first scenario is focused on storing spatial audio pieces on a support for future playback. 
 The second scenario deals with streamed content and scene information in real- or near real-time.
 For these applications SpatDIF formulates a concise semantic structure that is capable of carrying all the information relevant for preserving a sound scene, without being tied to a specific implementation or technical method.
@@ -152,15 +155,17 @@ For example, the description of media-streams in the Media extension is necessar
 
 \section{Library Concepts}\label{sec:libspatdif_concepts}
 
+% COMMENT: The structure of the two paragraphs in this section could be improved. Would it be better to have a first paragraph on the lib, and a second on the implementations?
+
 In this article we present the development and implementation of software tools aimed at easy integration of SpatDIF into existing software and workflows.
 The concepts and guidelines laid down in the SpatDIF specifications are implemented in a software-library.
 In addition to the library to demonstrate the use of SpatDIF, example applications which utilise this library were created and will be discussed below.
 The use of this library is demonstrated in externals for MaxMSP\footnote{\href{http://www.cycling74.com}{www.cycling74.com}} and PureData \footnote{\href{http://puredata.info}{puredata.info}} as well as in an application written entirely in C++ in the creative coding environment OpenFrameworks.\footnote{\href{http://www.openframeworks.cc}{www.openframeworks.cc}}
 
 After establishing a coherent specification with example use-cases in textual form only, the next development step is the implementation of software, which embodies the specified concepts and should serve as a reference for future work.
-For this purpose a platform-independent software library written in C/C++ was designed and is now implemented. \cite{Miyama_2013}
-By providing a software library rather than just a finished software application, implementations in many different software environments are facilitated, which represents one of the goals of the project.
-The library is in charge of holding one or more spatial audio scenes and provides ways to read and write elements to and from these scenes, either directly from native code or via OSC-formatted messages, that may originate from within the application or come in from an external source via the network.
+For this purpose a platform-independent software library written in C/C++ was designed and is now implemented \cite{Miyama_2013}.
+By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the goals of the project.
+The library is in charge of holding one or more spatial audio scenes and provides ways to read and write elements to and from this scenes, either directly from native code or via OSC-formatted messages, that may originate from within the application or arrive from an external source via the network.
 
 \subsection{Scope of Library Tasks}\label{subsec:separation}
 
@@ -193,15 +198,19 @@ Each instance of \emph{sdEntityCore} maintains instances of \emph{sdEvent}, whic
 
 The following are brief descriptions of the most important classes.
 
+% COMMENT: I find the layout below somewhat messy. IMHO it would be better to use subsubsections. I'm also asking myself if the above paragraph should be shorter, so that we do not embark into a discussion of how classes and instances relate until we have presented them one by one.
+
 \begin{itemize}[leftmargin=-0.0mm]
 \item[] \emph{sdScene}\\
-An instance of \emph{sdScene} maintains all data associated to a SpatDIF scene. This class offers clients the following three main functionalities: Addition, deletion and modification of \textbf{entities} in the scene; Addition and modification of the \textbf{meta data} associated to the scene; Activation and deactivation of the \textbf{extensions} in the scene.
+An instance of \emph{sdScene} maintains all data associated to a SpatDIF scene. This class offers clients the following three main functionalities: Addition, deletion and modification of \textbf{entities} in the scene; Addition and modification of the \textbf{meta data} associated with the scene; Activation and deactivation of the \textbf{extensions} in the scene.
 
 Once the client activates an extension in a scene, \emph{sdScene} automatically adds extended functionalities and allocates extra buffers to all existing and newly created instances of \emph{sdEntityCore}. 
 Symmetrically, when deactivating an extension, \emph{sdScene} removes all extended functionalities and previously allocated buffers from all existing \emph{sdEntitieCores}, leading to the deletion of all data stored in the extension buffers.
+% COMMWENT: This reads as bulleted lists without the bullets, it would be better to make this sentences with proper grammar.
 
 \item[] \emph{sdEvent}\\
 This is a pure abstract class of event, that maintains the following three data items: \textbf{time} - absolute time of the event; \textbf{descriptor} - type of event; \textbf{value} - actual data.
+% COMMENT: And the same here
 
 \item[] \emph{sdEntity}\\
 This is a pure abstract class of entity in SpatDIF scenes. Basic functionalities, such as addition, deletion, and modification of events are implemented.
