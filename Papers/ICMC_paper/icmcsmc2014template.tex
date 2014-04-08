@@ -72,7 +72,11 @@
     linkcolor=black,%
     urlcolor=black
 }
-
+\hyphenation{SpatDIF} % prevents potential linebreaks within SpatDIF
+\usepackage{color}
+\definecolor{carrotorange}{rgb}{0.93, 0.57, 0.13}
+\newcommand{\np}[1]{\noindent\textcolor{carrotorange}{[\underline{NP:} #1]}}
+\newcommand{\todo}[1]{\noindent\textcolor{red}{[\underline{TODO:} #1]}}
 \title{\papertitle}
 
 % Authors
@@ -97,9 +101,9 @@
 \capstarttrue
 
 \begin{abstract}
-The development of the Spatial Sound Description Interchange Format SpatDIF continues with the implementation of concrete software tools.
+The development of SpatDIF, the Spatial Sound Description Interchange Format, continues with the implementation of concrete software tools.
 In order to make SpatDIF usable in audio workflows, two types of code implementations are developed.
-The first is a C/C++ software library called `libspatdif', whose purpose is to provide a reference implementation of SpatDIF.
+The first is the C/C++ software library `libspatdif', whose purpose is to provide a reference implementation of SpatDIF.
 We show the class structure of this library and discuss its main components and how they embody the principles derived from the concepts and specifications of SpatDIF.
 The second type of tool are specific implementations in audio programming environments, which demonstrate the methods and best-use practices for working with SpatDIF.
 Two practical scenarios are shown in functional examples, demonstrating the use of externals in MaxMSP and Pure Data as well as the implementation of the same example in C++.
@@ -150,7 +154,7 @@ For example, the description of media-streams in the Media extension is necessar
 
 In this article we present the development and implementation of software tools aimed at easy integration of SpatDIF into existing software and workflows.
 The concepts and guidelines laid down in the SpatDIF specifications are implemented in a software-library.
-In addition to the low-level library to demonstrate the utlisation of SpatDIF, example applications which utilise this library were created and will be discussed below.
+In addition to the low-level library to demonstrate the utlisation of SpatDIF, example applications which utilise this library were created and will be discussed below. \np{this is the first time 'low-level library' is mentioned. Do you mean that the software-library is the 'low-level library'?}
 The use of this library is demonstrated in externals for MaxMSP\footnote{\href{http://www.cycling74.com}{www.cycling74.com}} and PureData \footnote{\href{http://puredata.info}{puredata.info}} as well as in an application written entirely in C++ in the creative coding environment OpenFrameworks.\footnote{\href{http://www.openframeworks.cc}{www.openframeworks.cc}}
 
 After establishing a coherent specification with example use-cases in textual form only, the next development step is the implementation of software, which embodies the specified concepts and should serve as a reference for future work.
@@ -168,20 +172,21 @@ It provides an application programming interface (API) that hides most of the co
 The client application, on the other hand, is in charge of loading the file containing the SpatDIF-scene from the file system and handing it to the library in a text buffer.
 In addition, the client application open network sockets and forwards OSC-formatted data to the library.
 It queries the library for scene information at initialisation as well as at runtime, based on its own scheduler, thereby actively playing the scene.
-The client application also deals with all the audio related processes, such as loading audio files, playing them back, configuring the audio-system and spatialising the audio to generate a surround audio experience.
-Information necessary to achieve this is provided by the SpatDIF scene, but it is beyond the scope of SpatDIF to cover the specific details of all possible surround audio configurations.
+The client application also deals with all the audio related processes, such as loading audio files, playing them back, configuring the audio-system and rendering the audio to generate a surround \np{maybe 'immersive' rather than 'surround'?} audio experience.
+Information necessary to achieve this is provided by the SpatDIF scene, but it is beyond the scope of SpatDIF to cover the specific details of all possible surround audio configurations.\np{It is unclear to me what the last sentence wants to communicate.}
 More details are discussed below in the sections describing the specific software tools.
 
 
-\begin{figure}[h]
+\subsection{Library Class Structure}\label{subsec:class_structure}
+
+\begin{figure}[bh]
 	\centering
 	\includegraphics[width=0.95\columnwidth]{class_diagram.pdf}
-	\caption{Simplified class hierarchy of the SpatDIF software library.
+	\caption{Simplified class hierarchy of the SpatDIF software library. \np{this figure is hard to grasp, maybe a larger fontsize and some color coding of the boxes would me it easier to understand it.}
 	\label{fig:class_structure}
 }
 \end{figure}
 
-\subsection{Library Class Structure}\label{subsec:class_structure}
 
 The class hierarchy described here is intended to show the relationship between the scene and its contents, as well as their hierarchical dependencies (see Figure \ref{fig:class_structure}). 
 An instance of \emph{sdScene} class represents a SpatDIF scene and maintains instances of \emph{sdEntityCore}. The functionalities of \emph{sdEntityCore} may be extended by the descendants of \emph{sdEntityExtension}. 
@@ -247,9 +252,9 @@ The beginning of the SpatDIF file, including only the `insect' trajectory at sec
 
 \lstinputlisting[tabsize=3,columns=fullflexible,breaklines=true,numbers=none,language=XML,morekeywords={source,sink,time,meta},basicstyle=\scriptsize\ttfamily]{turenas_insect_example.xml} 
 
-The corresponding sound files have to be stored and transported alongside the SpatDFI file proper. 
+The corresponding sound files have to be stored and transported alongside to the SpatDIF file.
 It is therefore important to think in terms of ‘SpatDIF bundles’ or projects rather than single files. 
-However, it was a deliberate choice not to propose a format that combines sound-files and scene descriptors in a binary format, since human-readability without additional software tools would be lost.
+We deliberately choose not to propose a container that combines sound-files and scene descriptors in a binary format, since human-readability without additional software tools would have been lost. 
 
 \section{Introducing the SpatDIF Externals}\label{sec:Intro}
 
@@ -267,12 +272,12 @@ In addition, an example application with a limited feature-set was written in op
 There are a number of concepts that need to be taken into account when using the library, which inform the design of the implementations shown here.
 
 The library serves as a data-storage for audio scenes that needs to be queried for its information in specific ways.
-It doesn't provide a scheduling mechanism of its own, rather, the client application is responsible for executing all time-related functions.
-This design choice is explicitly geared towards temporal flexibility, i.e. slowing down or speeding up playback, jumping an cueing, which are features that can only properly be implemented by the end-user.
+It does not provide a scheduling mechanism of its own, rather, the client application is responsible for executing all time-related functions.
+This design choice is explicitly geared towards temporal flexibility, e.g., slowing down or speeding up playback, jumping an cueing, which are features that can only properly be implemented by the end-user \np{end-user? do you mean 'client application'?}.
 
-There are two main interfaces for the library, the native call and the OSC-command.
+There are two main interfaces for the library, the native command and the OSC-command.
 The native commands call functions of the library within C/C++ code whereas the OSC-commands get handed to the library as messages conforming to the OSC syntax.
-The library doesn't implement network socket handling functionalities, this is the client environment's task.
+The library does not implement network socket handling functionalities, this is the client environment's task.
 In order to input and output information directly to/from the scene, the name-space is described with hierarchical addresses that have to conform to the SpatDIF specification.
 In the implementation of the externals, the input of elements into the scene stays in the OSC-style with a slash delimited format, whereas in the output from the scene the addresses are converted to a space-delimited format to avoid a dependency on an additional OSC-parser.
 
