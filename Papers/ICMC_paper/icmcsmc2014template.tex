@@ -75,7 +75,7 @@
 \hyphenation{SpatDIF} % prevents potential linebreaks within SpatDIF
 \usepackage{color}
 \definecolor{carrotorange}{rgb}{0.93, 0.57, 0.13}
-\newcommand{\np}[1]{\noindent\textcolor{carrotorange}{[\underline{NP:} #1]}}
+% \newcommand{\np}[1]{\noindent\textcolor{carrotorange}{[\underline{NP:} #1]}}
 \newcommand{\todo}[1]{\noindent\textcolor{red}{[\underline{TODO:} #1]}}
 \title{\papertitle}
 
@@ -154,13 +154,13 @@ For example, the description of media-streams in the Media extension is necessar
 
 In this article we present the development and implementation of software tools aimed at easy integration of SpatDIF into existing software and workflows.
 The concepts and guidelines laid down in the SpatDIF specifications are implemented in a software-library.
-In addition to the low-level library to demonstrate the utlisation of SpatDIF, example applications which utilise this library were created and will be discussed below. \np{this is the first time 'low-level library' is mentioned. Do you mean that the software-library is the 'low-level library'?}
+In addition to the library to demonstrate the use of SpatDIF, example applications which utilise this library were created and will be discussed below.
 The use of this library is demonstrated in externals for MaxMSP\footnote{\href{http://www.cycling74.com}{www.cycling74.com}} and PureData \footnote{\href{http://puredata.info}{puredata.info}} as well as in an application written entirely in C++ in the creative coding environment OpenFrameworks.\footnote{\href{http://www.openframeworks.cc}{www.openframeworks.cc}}
 
 After establishing a coherent specification with example use-cases in textual form only, the next development step is the implementation of software, which embodies the specified concepts and should serve as a reference for future work.
 For this purpose a platform-independent software library written in C/C++ was designed and is now implemented. \cite{Miyama_2013}
-By providing a software library rather than just a complete software application, implementations in many different software environments are facilitated, which is one of the goals of the project.
-The library is in charge of holding one or more spatial audio scenes and provide ways to read and write elements to and from this scenes, either directly from native code or via OSC-formatted messages, that may originate from within the application or or come in from an external source via the network.
+By providing a software library rather than just a finished software application, implementations in many different software environments are facilitated, which represents one of the goals of the project.
+The library is in charge of holding one or more spatial audio scenes and provides ways to read and write elements to and from these scenes, either directly from native code or via OSC-formatted messages, that may originate from within the application or come in from an external source via the network.
 
 \subsection{Separation between Library and Client}\label{subsec:separation}
 
@@ -170,10 +170,9 @@ On the one hand, it is the library that builds and maintains in memory the SpatD
 It provides an application programming interface (API) that hides most of the complexity of handling the scene data.
 
 The client application, on the other hand, is in charge of loading the file containing the SpatDIF-scene from the file system and handing it to the library in a text buffer.
-In addition, the client application open network sockets and forwards OSC-formatted data to the library.
+In addition, the client application opens network sockets and forwards OSC-formatted data to the library.
 It queries the library for scene information at initialisation as well as at runtime, based on its own scheduler, thereby actively playing the scene.
-The client application also deals with all the audio related processes, such as loading audio files, playing them back, configuring the audio-system and rendering the audio to generate a surround \np{maybe 'immersive' rather than 'surround'?} audio experience.
-Information necessary to achieve this is provided by the SpatDIF scene, but it is beyond the scope of SpatDIF to cover the specific details of all possible surround audio configurations.\np{It is unclear to me what the last sentence wants to communicate.}
+The client application also deals with all the audio related processes, such as loading audio files, playing them back, configuring the audio-system and rendering the audio to generate an immersive audio experience.
 More details are discussed below in the sections describing the specific software tools.
 
 
@@ -181,17 +180,17 @@ More details are discussed below in the sections describing the specific softwar
 
 \begin{figure}[bh]
 	\centering
-	\includegraphics[width=0.95\columnwidth]{class_diagram.pdf}
-	\caption{Simplified class hierarchy of the SpatDIF software library. \np{this figure is hard to grasp, maybe a larger fontsize and some color coding of the boxes would me it easier to understand it.}
+	\includegraphics[width=\columnwidth]{class_diagram.pdf}
+	\caption{Simplified class hierarchy of the SpatDIF software library. The top row shows the three main classes, below are their derived subclasses. Interfacing and utility classes are placed on the left and future extensions on the right are marked in dashed grey.}
 	\label{fig:class_structure}
-}
+
 \end{figure}
 
 
-The class hierarchy described here is intended to show the relationship between the scene and its contents, as well as their hierarchical dependencies (see Figure \ref{fig:class_structure}). 
+The class hierarchy shown here describes the relationship between the scene and its contents, as well as their hierarchical dependencies (see Figure \ref{fig:class_structure}). 
 An instance of \emph{sdScene} class represents a SpatDIF scene and maintains instances of \emph{sdEntityCore}. The functionalities of \emph{sdEntityCore} may be extended by the descendants of \emph{sdEntityExtension}. 
-The activation and deactivation of the extension are global within a scene, therefore \emph{sdScene} is also responsible for the extension handling.
-Each instance of \emph{sdEntityCore} maintains instances of \emph{sdEvent}, which represent events of the entity they are attached to.
+The activation and deactivation of the extension are global within a scene, thus \emph{sdScene} is also responsible for the extension handling.
+Each instance of \emph{sdEntityCore} maintains instances of \emph{sdEvent}, which represent all the events of the entity as they unfold withinthe scene over time.
 
 The following are brief descriptions of the most important classes.
 
@@ -273,7 +272,7 @@ There are a number of concepts that need to be taken into account when using the
 
 The library serves as a data-storage for audio scenes that needs to be queried for its information in specific ways.
 It does not provide a scheduling mechanism of its own, rather, the client application is responsible for executing all time-related functions.
-This design choice is explicitly geared towards temporal flexibility, e.g., slowing down or speeding up playback, jumping an cueing, which are features that can only properly be implemented by the end-user \np{end-user? do you mean 'client application'?}.
+This design choice is explicitly geared towards temporal flexibility, e.g., slowing down or speeding up playback, jumping an cueing, which are features that can only properly be implemented by the client application.
 
 There are two main interfaces for the library, the native command and the OSC-command.
 The native commands call functions of the library within C/C++ code whereas the OSC-commands get handed to the library as messages conforming to the OSC syntax.
@@ -309,10 +308,10 @@ For this purpose queries are made to the library to obtain information about the
 This allows to determine the number of playback voices needed and then to set up the hierarchical message routing according to the names of entities.
 In this example this step is omitted and only one playback voice is implemented with a hard-coded message-routing set to the entity-type of \emph{source} and the entity-name called \emph{insect}.
 Subsequently, the messages are routed to obtain the \emph{position} core-descriptor required for the spatialisation process as well as the \emph{media} extension with the \emph{location} descriptor necessary to load files for playback.
-The sound-file player, visualisation \cite{Schacher_ICMC_2006} and spatialisation algorithms shown here represent the minimal case and of course would normally be more fully implemented. %\cite{schacher7Years}
+The sound-file player, visualisation and spatialisation algorithms \cite{Schacher_ICMC_2006} shown here represent the minimal case and would normally be more fully implemented. %\cite{schacher7Years}
 
-As mentioned earlier the library does not have its own scheduling mechanism. 
-In this example this becomes apparent and therefore the method for time-based playback is demonstrated.
+As mentioned earlier, the scheduling of events in time is a task of the client application. 
+In this example that functionality becomes necessary and therefore a method for time-based playback is demonstrated.
 In the right half of the example are shown the \emph{spatdifcmds} necessary to run iteratively through the scene.
 The basic action is to ask with \emph{getDeltaTimeToNextEvent} for the delta times between subsequent events.
 Since a scene can contain sparse data at no fixed intervals, it is crucial to have a dynamic timing mechanism for playback.
@@ -367,9 +366,6 @@ In a real-time case this is difficult, if not impossible, to guarantee, therefor
 In general, all interaction with `libspatdif' occurs through the \emph{spatdifcmds}-syntax.
 In a future version, input of pure SpatDIF-formatted OSC-messages will be implemented, eliminating the need to reformat the information to the \emph{spatdifcmd} syntax.
 
-
-
-
 \section{Implementation in C++}\label{subsec:code_application}
 
 The C++ example application implements the entire workflow for the playback of a SpatDIF scene. 
@@ -383,8 +379,6 @@ In order to provide a relevant example for the application of the `libspatdif', 
 The panning algorithm is a simple spatial windowing algorithms named ``ambipanning'' \cite{Neukom:2008ambipan} that is highly flexible, easy to implement, not tied to a specific number of speakers and usable without modification both in two and three dimensional spatialisation situations.
 The application provides a stand-alone implementation, with a basic 3D visualisation of the scene, and the possibility to play the scene in a stereo speaker setup.
 It allows to load a SpatDIF file with associated sound files and play it through a few predefined multichannel speaker layouts.
-
-
 
 This application is implemented in OpenFrameworks, which provides a powerful C++ toolset and a thriving community.
 It provides both a sonic and visual rendering of the scene.
@@ -402,14 +396,12 @@ The process is straightforward, even if its implementation is a bit delicate.
 After retrieving samples from the sound files via `libsndfile', panning and distance correction is applied to the signals, before the blocks of audio-samples are output.
 The signal processing chain is deliberately kept simple, to provide a clear example of the implementation of such a process.
 
-
 \begin{figure}[httb]
 	\centering
 	\includegraphics[width=\columnwidth]{of_screenshot.png}
 	\caption{OpenFrameworks implementation of SpatDIF, demonstrating again the playback of the `insect' trajectory from `Turenas'} 
 	\label{fig:screenshot3}
 \end{figure}
-
 
 \section{Conclusions and Future work}\label{sec:conclusions_future_work}
 
