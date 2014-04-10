@@ -117,13 +117,10 @@ In addition, several functions necessary to make this lightweight standard becom
 One of the guiding principles for SpatDIF is the idea that authoring and rendering of spatial sound may occur at completely separate times and places, and be executed with tools whose capabilities cannot be known in advance. 
 SpatDIF formulates a concise semantic structure that is capable of carrying all the relevant information, without being tied to a specific implementation, thought-model or technical method. 
 SpatDIF is a syntax rather than a programming interface or file-format and may be represented in any of the structured mark-up languages or message systems that are in use today or in the future. 
-It describes only those aspects required for the storage and transmission of \emph{spatial sound information}.
-Because a complete work typically contains aspects that are outside the realm of such spatial sound description, SpatDIF judiciously provides interfaces to link these aspects to the spatial dimensions.
-% These are judiciously addressed only to the extent necessary for linking these external sound elements to the descriptions of the spatial dimension. 
-%For example, the description of media-streams in SpatDIF is necessary to define the storage location of the audio objects in the scene.
-For example, to be able to render the audio objects with the correct audio content in the spatial scene, the storage location of the unrendered audio content needs to be defined via SpatDIF's media resources.
-%For example, the description of media-streams in the Media extension is necessary in order to describe from where the sounding content of the scene originates.
-\\
+It describes the aspects required for the storage and transmission of \emph{spatial sound information}.
+Because a complete work typically contains aspects that are outside the realm of such spatial sound description, SpatDIF judiciously provides means to link these aspects to the spatial sound dimension.
+For example, to be able to render the audio objects with the correct audio content in the spatial scene, the storage location of the unrendered audio content needs to be defined via SpatDIF's media location descriptor.
+
 After establishing a coherent specification with example use cases in textual form only, the next development step is the implementation of software that embodies the specified concepts.
 For this purpose a platform-independent software library was designed and is being implemented. 
 Additionally, to demonstrate the usage of SpatDIF, an example application which utilizes this library was created. This application features SpatDIF file-handling and  rendering of SpatDIF sound scenes into multichannel sound files.

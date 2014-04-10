@@ -135,8 +135,8 @@ The completion of a first usable version of the specification \cite{SpatDIF_03} 
 The community pages as well as all the related information can be found at: \url{http://www.spatdif.org}.\footnote{All URIs in this article were last accessed in April 2014.}
 
 Since SpatDIF is a syntax rather than a programming interface or file-format it may be represented in any of the current or future structured mark-up languages or messaging systems.
-It describes only those aspects required for the storage and transmission of \emph{spatial scene descriptions}.
-Because a complete work typically contains aspects that are outside the realm of spatial sound scenes, SpatDIF provides descriptors to link these aspects to the spatial dimensions, but only to the extent necessary.
+It describes the aspects required for the storage and transmission of \emph{spatial scene descriptions}.
+Because a complete work typically contains aspects that are outside the realm of spatial sound scenes, SpatDIF provides descriptors to link these aspects to the spatial dimensions.
 
 A central principle for SpatDIF is the separation of authoring and rendering of spatial sound scenes or pieces.
 They may occur at separate times using the same or differing infrastructure, at separate places either simultaneously or with a long time between the two, and through a mixture of these factors. 
@@ -382,7 +382,10 @@ The signal processing chain for this example is deliberately kept simple, to pro
 	\label{fig:screenshot3}
 \end{figure}
 
-\section{Conclusions and Future Work}\label{sec:conclusions_future_work}
+% \vfill
+% \break
+
+\section{Conclusions and Outlook}\label{sec:conclusions_future_work}
 
 % Concrete implementations of the Spatial Sound Description Interchange Format in software.
 Both the software library and the external and C++ application used to exemplify its implementation are work-in-progress and will be developed further.
@@ -397,7 +400,7 @@ In addition, the introduction of new entities should extend which aspect of spat
 A `room' type would for example enable the description of room acoustics in an \emph{reverb} extension.
 
 The next iteration of the specification will build on the experiences gathered while implementing SpatDIF in the tools shown here, and will be addressing mostly technical issues that have become apparent.
-This will take less effort to integrate into the library, external and `addon' thanks to the consistent and open design of the library.
+This will take less effort to integrate into the library, external and `addon' thanks to the consistent and open design of the library.\\
 
 The code for `libspatdif' is open-source and can be obtained via git from: \url{http://code.zhdk.ch/git/spatdiflib.git}.
  
@@ -405,9 +408,8 @@ The `spatdif' external's source code and the SpatDIFRenderer's C++ implementatio
 
 A preliminary version of the compiled external and help file for both Pure Data and MaxMSP may be downloaded from here: \url{http://www.icst.net/research/downloads/spatdif-external/}
 
-% \vfill
-\break
 
+\balance
 \begin{acknowledgments}
 These software developments for the SpatDIF project are funded by the Institute for Computer Music and Sound Technology of the Zurich University of the Arts.
 \end{acknowledgments} 
