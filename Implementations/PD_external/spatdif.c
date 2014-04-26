@@ -58,10 +58,11 @@ void spatdif_load(t_spatdif *x, t_symbol *s){
 	if(x->scene) {
 		free(x->scene); // free scene instance if a scene existed before
 	}
-	x->scene = new(sdScene); // dynmically instanciate scene
+    //	x->scene = new(sdScene); // dynmically instanciate scene
 			
     *x->scene = sdLoader::sceneFromXML(xmlString); // file closed automatically by the destructor of ofstream
-    x->responder.setScene(x->scene); // tie responder to scene
+    
+    // x->responder.setScene(x->scene); // tie responder to scene
 	
 }
 
@@ -174,6 +175,9 @@ void *spatdif_new(void)
     t_spatdif *x = (t_spatdif *)pd_new(spatdif_class);
     x->m_out = outlet_new(&x->x_obj, gensym("anything"));
     x->b_out = outlet_new(&x->x_obj, gensym("bang"));
+        
+    x->scene = new(sdScene); // dynmically instanciate scene
+    x->responder.setScene(x->scene); // tie responder to scene
     
     // x->responder.setScene(&x->scene); // moved to loading function
     return (void *)x;
