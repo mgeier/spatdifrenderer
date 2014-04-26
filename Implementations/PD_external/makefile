@@ -1,7 +1,7 @@
 current:
-	echo make pd_linux, pd_nt, pd_irix5, or pd_irix6
+	echo make pd_linux, pd_nt, pd_irix5, pd_irix6, or pd_darwin
 
-clean: ; rm -f *.pd_linux *.o
+clean: ; rm -f *.pd_linux *.pd_darwin *.o
 
 # ----------------------- NT -----------------------
 
@@ -70,15 +70,14 @@ pd_darwin: spatdif.pd_darwin
 .SUFFIXES: .pd_darwin
 
 DARWINCFLAGS = -arch i386 -arch x86_64 -x c++  -DPD -O0 -Wall -W -Wstrict-prototypes -Wno-unused
-
-#SPATDIFINCLUDE = -I ../../spatdiflib/src
-#LIBRARY_PATH = -L ../../spatdiflib/src
+SPATDIFSRC = ../../spatdiflib/src
 SPATDIFINCLUDE = -I ../../spatdiflib/src
 LIBRARY_PATH = -L ../../spatdiflib/src
 LIBS =  -lstdc++ -lspatdif
 
 .c.pd_darwin:
-	cc $(DARWINCFLAGS) $(LINUXINCLUDE) $(SPATDIFINCLUDE) -o $*.o -c $*.c
-	cc -arch i386 -arch x86_64 -bundle -flat_namespace -undefined suppress  $(LIBRARY_PATH) $(LIBS) -o $*.pd_darwin $*.o 
+	make -C $(SPATDIFSRC) libspatdif.a
+	cc $(DARWINCFLAGS) $(SPATDIFINCLUDE) -o $*.o -c $*.c
+	cc -arch i386 -arch x86_64 -bundle -flat_namespace -undefined suppress  $(LIBRARY_PATH) $(LIBS) -o $*.pd_darwin $*.o $(SPATDIFSRC)/*.o $(SPATDIFSRC)/libs/libjson/Objects_static/*.o
 	rm -f $*.o
 
