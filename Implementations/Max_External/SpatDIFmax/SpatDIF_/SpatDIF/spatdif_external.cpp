@@ -6,7 +6,7 @@
  *
  * @details
  *
- * @authors Jan Schacher Chikashi Miyama
+ * @authors Jan Schacher, Chikashi Miyama
  *
  * @copyright Copyright (C) 2014 Zurich University of the Arts, Institute for Computer Music and Sound Technology @n
  * This code is licensed under the terms of the "New BSD License" @n
