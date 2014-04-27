@@ -156,8 +156,8 @@
 				2FBBEAD808F335360078DB84 /* Resources */,
 				2FBBEADA08F335360078DB84 /* Sources */,
 				2FBBEADC08F335360078DB84 /* Frameworks */,
-				3039A32B18B26545006DAA28 /* CopyFiles */,
 				30F72F4A18D1C4D200E8D7BF /* ShellScript */,
+				3039A32B18B26545006DAA28 /* CopyFiles */,
 				2FBBEADF08F335360078DB84 /* Rez */,
 			);
 			buildRules = (
@@ -225,7 +225,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "install_name_tool -id @loader_path/../Resources/libspatdif.dylib build/spatdif.mxo/Contents/Resources/libspatdif.dylib";
+			shellScript = "install_name_tool -id @loader_path/../Resources/libspatdif.dylib ../../../../../spatdiflib/src/libspatdif.dylib";
 		};
 /* End PBXShellScriptBuildPhase section */
 
