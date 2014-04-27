@@ -76,7 +76,7 @@ LIBRARY_PATH = -L ../../spatdiflib/src
 LIBS =  -lstdc++ -lspatdif
 
 .c.pd_darwin:
-	make -C $(SPATDIFSRC) libspatdif.a
+	make -C $(SPATDIFSRC)
 	cc $(DARWINCFLAGS) $(SPATDIFINCLUDE) -o $*.o -c $*.c
 	cc -arch i386 -arch x86_64 -bundle -flat_namespace -undefined suppress  $(LIBRARY_PATH) $(LIBS) -o $*.pd_darwin $*.o $(SPATDIFSRC)/*.o $(SPATDIFSRC)/libs/libjson/Objects_static/*.o
 	rm -f $*.o
