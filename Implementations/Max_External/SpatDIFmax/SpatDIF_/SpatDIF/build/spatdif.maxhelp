@@ -6402,7 +6402,7 @@
 					"fontname" : "Verdana",
 					"fontsize" : 10.0,
 					"id" : "obj-174",
-					"items" : [ "20130927_221114.aif", ",", "AJH_eight-positions.wav", ",", "alexandra_voice_impro.aiff", ",", "bagatelle2.aiff", ",", "bali_bowed.aif", ",", "bali_gamelan_01.aif", ",", "bali_gamelan_02 copy.aif", ",", "bali_gamelan_02.aif", ",", "bali_women.aif", ",", "bathroom_sink_gurgles.wav", ",", "bats16.aiff", ",", "bats38.aiff", ",", "beating_loop.aiff", ",", "beating_loop_.aiff", ",", "bjorkGroove5.aiff", ",", "bjorkScream.aiff", ",", "darling_11.aif", ",", "darling_7.aif", ",", "darling_8.1.aif", ",", "darling_8.2.aif", ",", "darling_8.3.aif", ",", "darling_9.aif", ",", "delpuertoAttacaDissoLong.aiff", ",", "delpuertoAttacaFlutter.aiff", ",", "delPuertoAttacaLow.aiff", ",", "delpuertoChord1.aiff", ",", "delpuertoChord2long.aiff", ",", "delpuertoChord3.aiff", ",", "delpuertoMisteriosoStrings.aiff", ",", "delpuertoOboeCadenza.aiff", ",", "ernst_jandl_ottosmops.aiff", ",", "ernst_jandl_ottosmops.mp3", ",", "Icon\r", ",", "iowa_piano", ",", "iowa_piano_ff_treated", ",", "jaschBass", ",", "lisboa_02.aif", ",", "mary_boyne_01.aif", ",", "mary_boyne_02.aif", ",", "michiko_hirayama_01.aif", ",", "michiko_hirayama_02.aif", ",", "michiko_hirayama_03.aif", ",", "michiko_hirayama_04.aif", ",", "michiko_hirayama_05.aif", ",", "mm_mundry_01.aif", ",", "mm_mundry_02.aif", ",", "mm_mundry_03.aif", ",", "mm_mundry_04.aif", ",", "mm_mundry_05.aif", ",", "mm_mundry_06.aif", ",", "mm_mundry_07.aif", ",", "mm_mundry_08.aif", ",", "mm_mundry_09.aif", ",", "mm_mundry_10.aif", ",", "nono_di_09.aif", ",", "nono_di_10.aif", ",", "nono_di_11.aif", ",", "nono_di_12.aif", ",", "nono_di_13.aif", ",", "nono_di_14.aif", ",", "nono_di_15.aif", ",", "nono_di_16.aif", ",", "nono_di_17.aif", ",", "nono_di_18.aif", ",", "nono_diotima_01.aif", ",", "nono_diotima_02.aif", ",", "nono_diotima_03.aif", ",", "nono_diotima_04.aif", ",", "nono_diotima_05.aif", ",", "nono_diotima_06.aif", ",", "nono_diotima_07.aif", ",", "nono_diotima_08.aif", ",", "Notre_Dame_Ambience", ",", "oboe.aiff", ",", "oboe_loop.aiff", ",", "p_clicks_001.aif", ",", "p_eierschneider_001.aif", ",", "p_hit_reson_001.aif", ",", "p_knock_hits_001.aif", ",", "p_multi_hit_reson_001.aif", ",", "p_scratch_hits_001.aif", ",", "p_scratch_reson_001.aif", ",", "p_scratch_whip_hit_001.aif", ",", "p_whip_bighit_001.aif", ",", "p_whip_reson_001.aif", ",", "painful_attack.aiff", ",", "pana_01.aif", ",", "pana_02.aif", ",", "pana_03.aif", ",", "pana_04.aif", ",", "pana_05.aif", ",", "pana_06.aif", ",", "pana_07.aif", ",", "paris_02.aif", ",", "pedro_barboza_01.aif", ",", "piano_gran_norm18db_mono_detune", ",", "pianobow.aiff", ",", "rhizome_frag_01.aif", ",", "rhizome_frag_02.aif", ",", "rhizome_frag_03.aif", ",", "rhizome_frag_04_loop.aif", ",", "rhizome_frag_04_loop2.aif", ",", "rhizome_frag_04_loop3.aif", ",", "rsn_bounceAtmo.aiff", ",", "rsn_bounceGroove.aiff", ",", "rsn_bounceLong.aiff", ",", "rsn_bounceNoiseSaturate.aiff", ",", "rsn_bounceReverb.aiff", ",", "rsn_bounceRide.aiff", ",", "rsn_texture.aiff", ",", "sainkho1.aiff", ",", "scelsiKonx.aiff", ",", "scelsiOm.aiff", ",", "scelsiPax.aiff", ",", "SCHATTEN.aiff", ",", "technoid_001.aif", ",", "technoid_002.aif", ",", "technoid_003.aif", ",", "technoid_004.aif", ",", "technoid_005.aif", ",", "technoid_006.aif", ",", "virt_orch_st", ",", "VirtualOrchestra", ",", "webern_attack.aiff", ",", "webern_loop.aiff", ",", "webern_orch_hits.aiff" ],
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -6420,7 +6420,7 @@
 					"fontname" : "Verdana",
 					"fontsize" : 10.0,
 					"id" : "obj-173",
-					"items" : [ "20130927_221114.aif", ",", "AJH_eight-positions.wav", ",", "alexandra_voice_impro.aiff", ",", "bagatelle2.aiff", ",", "bali_bowed.aif", ",", "bali_gamelan_01.aif", ",", "bali_gamelan_02 copy.aif", ",", "bali_gamelan_02.aif", ",", "bali_women.aif", ",", "bathroom_sink_gurgles.wav", ",", "bats16.aiff", ",", "bats38.aiff", ",", "beating_loop.aiff", ",", "beating_loop_.aiff", ",", "bjorkGroove5.aiff", ",", "bjorkScream.aiff", ",", "darling_11.aif", ",", "darling_7.aif", ",", "darling_8.1.aif", ",", "darling_8.2.aif", ",", "darling_8.3.aif", ",", "darling_9.aif", ",", "delpuertoAttacaDissoLong.aiff", ",", "delpuertoAttacaFlutter.aiff", ",", "delPuertoAttacaLow.aiff", ",", "delpuertoChord1.aiff", ",", "delpuertoChord2long.aiff", ",", "delpuertoChord3.aiff", ",", "delpuertoMisteriosoStrings.aiff", ",", "delpuertoOboeCadenza.aiff", ",", "ernst_jandl_ottosmops.aiff", ",", "ernst_jandl_ottosmops.mp3", ",", "Icon\r", ",", "iowa_piano", ",", "iowa_piano_ff_treated", ",", "jaschBass", ",", "lisboa_02.aif", ",", "mary_boyne_01.aif", ",", "mary_boyne_02.aif", ",", "michiko_hirayama_01.aif", ",", "michiko_hirayama_02.aif", ",", "michiko_hirayama_03.aif", ",", "michiko_hirayama_04.aif", ",", "michiko_hirayama_05.aif", ",", "mm_mundry_01.aif", ",", "mm_mundry_02.aif", ",", "mm_mundry_03.aif", ",", "mm_mundry_04.aif", ",", "mm_mundry_05.aif", ",", "mm_mundry_06.aif", ",", "mm_mundry_07.aif", ",", "mm_mundry_08.aif", ",", "mm_mundry_09.aif", ",", "mm_mundry_10.aif", ",", "nono_di_09.aif", ",", "nono_di_10.aif", ",", "nono_di_11.aif", ",", "nono_di_12.aif", ",", "nono_di_13.aif", ",", "nono_di_14.aif", ",", "nono_di_15.aif", ",", "nono_di_16.aif", ",", "nono_di_17.aif", ",", "nono_di_18.aif", ",", "nono_diotima_01.aif", ",", "nono_diotima_02.aif", ",", "nono_diotima_03.aif", ",", "nono_diotima_04.aif", ",", "nono_diotima_05.aif", ",", "nono_diotima_06.aif", ",", "nono_diotima_07.aif", ",", "nono_diotima_08.aif", ",", "Notre_Dame_Ambience", ",", "oboe.aiff", ",", "oboe_loop.aiff", ",", "p_clicks_001.aif", ",", "p_eierschneider_001.aif", ",", "p_hit_reson_001.aif", ",", "p_knock_hits_001.aif", ",", "p_multi_hit_reson_001.aif", ",", "p_scratch_hits_001.aif", ",", "p_scratch_reson_001.aif", ",", "p_scratch_whip_hit_001.aif", ",", "p_whip_bighit_001.aif", ",", "p_whip_reson_001.aif", ",", "painful_attack.aiff", ",", "pana_01.aif", ",", "pana_02.aif", ",", "pana_03.aif", ",", "pana_04.aif", ",", "pana_05.aif", ",", "pana_06.aif", ",", "pana_07.aif", ",", "paris_02.aif", ",", "pedro_barboza_01.aif", ",", "piano_gran_norm18db_mono_detune", ",", "pianobow.aiff", ",", "rhizome_frag_01.aif", ",", "rhizome_frag_02.aif", ",", "rhizome_frag_03.aif", ",", "rhizome_frag_04_loop.aif", ",", "rhizome_frag_04_loop2.aif", ",", "rhizome_frag_04_loop3.aif", ",", "rsn_bounceAtmo.aiff", ",", "rsn_bounceGroove.aiff", ",", "rsn_bounceLong.aiff", ",", "rsn_bounceNoiseSaturate.aiff", ",", "rsn_bounceReverb.aiff", ",", "rsn_bounceRide.aiff", ",", "rsn_texture.aiff", ",", "sainkho1.aiff", ",", "scelsiKonx.aiff", ",", "scelsiOm.aiff", ",", "scelsiPax.aiff", ",", "SCHATTEN.aiff", ",", "technoid_001.aif", ",", "technoid_002.aif", ",", "technoid_003.aif", ",", "technoid_004.aif", ",", "technoid_005.aif", ",", "technoid_006.aif", ",", "virt_orch_st", ",", "VirtualOrchestra", ",", "webern_attack.aiff", ",", "webern_loop.aiff", ",", "webern_orch_hits.aiff" ],
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -6438,7 +6438,7 @@
 					"fontname" : "Verdana",
 					"fontsize" : 10.0,
 					"id" : "obj-172",
-					"items" : [ "20130927_221114.aif", ",", "AJH_eight-positions.wav", ",", "alexandra_voice_impro.aiff", ",", "bagatelle2.aiff", ",", "bali_bowed.aif", ",", "bali_gamelan_01.aif", ",", "bali_gamelan_02 copy.aif", ",", "bali_gamelan_02.aif", ",", "bali_women.aif", ",", "bathroom_sink_gurgles.wav", ",", "bats16.aiff", ",", "bats38.aiff", ",", "beating_loop.aiff", ",", "beating_loop_.aiff", ",", "bjorkGroove5.aiff", ",", "bjorkScream.aiff", ",", "darling_11.aif", ",", "darling_7.aif", ",", "darling_8.1.aif", ",", "darling_8.2.aif", ",", "darling_8.3.aif", ",", "darling_9.aif", ",", "delpuertoAttacaDissoLong.aiff", ",", "delpuertoAttacaFlutter.aiff", ",", "delPuertoAttacaLow.aiff", ",", "delpuertoChord1.aiff", ",", "delpuertoChord2long.aiff", ",", "delpuertoChord3.aiff", ",", "delpuertoMisteriosoStrings.aiff", ",", "delpuertoOboeCadenza.aiff", ",", "ernst_jandl_ottosmops.aiff", ",", "ernst_jandl_ottosmops.mp3", ",", "Icon\r", ",", "iowa_piano", ",", "iowa_piano_ff_treated", ",", "jaschBass", ",", "lisboa_02.aif", ",", "mary_boyne_01.aif", ",", "mary_boyne_02.aif", ",", "michiko_hirayama_01.aif", ",", "michiko_hirayama_02.aif", ",", "michiko_hirayama_03.aif", ",", "michiko_hirayama_04.aif", ",", "michiko_hirayama_05.aif", ",", "mm_mundry_01.aif", ",", "mm_mundry_02.aif", ",", "mm_mundry_03.aif", ",", "mm_mundry_04.aif", ",", "mm_mundry_05.aif", ",", "mm_mundry_06.aif", ",", "mm_mundry_07.aif", ",", "mm_mundry_08.aif", ",", "mm_mundry_09.aif", ",", "mm_mundry_10.aif", ",", "nono_di_09.aif", ",", "nono_di_10.aif", ",", "nono_di_11.aif", ",", "nono_di_12.aif", ",", "nono_di_13.aif", ",", "nono_di_14.aif", ",", "nono_di_15.aif", ",", "nono_di_16.aif", ",", "nono_di_17.aif", ",", "nono_di_18.aif", ",", "nono_diotima_01.aif", ",", "nono_diotima_02.aif", ",", "nono_diotima_03.aif", ",", "nono_diotima_04.aif", ",", "nono_diotima_05.aif", ",", "nono_diotima_06.aif", ",", "nono_diotima_07.aif", ",", "nono_diotima_08.aif", ",", "Notre_Dame_Ambience", ",", "oboe.aiff", ",", "oboe_loop.aiff", ",", "p_clicks_001.aif", ",", "p_eierschneider_001.aif", ",", "p_hit_reson_001.aif", ",", "p_knock_hits_001.aif", ",", "p_multi_hit_reson_001.aif", ",", "p_scratch_hits_001.aif", ",", "p_scratch_reson_001.aif", ",", "p_scratch_whip_hit_001.aif", ",", "p_whip_bighit_001.aif", ",", "p_whip_reson_001.aif", ",", "painful_attack.aiff", ",", "pana_01.aif", ",", "pana_02.aif", ",", "pana_03.aif", ",", "pana_04.aif", ",", "pana_05.aif", ",", "pana_06.aif", ",", "pana_07.aif", ",", "paris_02.aif", ",", "pedro_barboza_01.aif", ",", "piano_gran_norm18db_mono_detune", ",", "pianobow.aiff", ",", "rhizome_frag_01.aif", ",", "rhizome_frag_02.aif", ",", "rhizome_frag_03.aif", ",", "rhizome_frag_04_loop.aif", ",", "rhizome_frag_04_loop2.aif", ",", "rhizome_frag_04_loop3.aif", ",", "rsn_bounceAtmo.aiff", ",", "rsn_bounceGroove.aiff", ",", "rsn_bounceLong.aiff", ",", "rsn_bounceNoiseSaturate.aiff", ",", "rsn_bounceReverb.aiff", ",", "rsn_bounceRide.aiff", ",", "rsn_texture.aiff", ",", "sainkho1.aiff", ",", "scelsiKonx.aiff", ",", "scelsiOm.aiff", ",", "scelsiPax.aiff", ",", "SCHATTEN.aiff", ",", "technoid_001.aif", ",", "technoid_002.aif", ",", "technoid_003.aif", ",", "technoid_004.aif", ",", "technoid_005.aif", ",", "technoid_006.aif", ",", "virt_orch_st", ",", "VirtualOrchestra", ",", "webern_attack.aiff", ",", "webern_loop.aiff", ",", "webern_orch_hits.aiff" ],
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -6456,7 +6456,7 @@
 					"fontname" : "Verdana",
 					"fontsize" : 10.0,
 					"id" : "obj-171",
-					"items" : [ "20130927_221114.aif", ",", "AJH_eight-positions.wav", ",", "alexandra_voice_impro.aiff", ",", "bagatelle2.aiff", ",", "bali_bowed.aif", ",", "bali_gamelan_01.aif", ",", "bali_gamelan_02 copy.aif", ",", "bali_gamelan_02.aif", ",", "bali_women.aif", ",", "bathroom_sink_gurgles.wav", ",", "bats16.aiff", ",", "bats38.aiff", ",", "beating_loop.aiff", ",", "beating_loop_.aiff", ",", "bjorkGroove5.aiff", ",", "bjorkScream.aiff", ",", "darling_11.aif", ",", "darling_7.aif", ",", "darling_8.1.aif", ",", "darling_8.2.aif", ",", "darling_8.3.aif", ",", "darling_9.aif", ",", "delpuertoAttacaDissoLong.aiff", ",", "delpuertoAttacaFlutter.aiff", ",", "delPuertoAttacaLow.aiff", ",", "delpuertoChord1.aiff", ",", "delpuertoChord2long.aiff", ",", "delpuertoChord3.aiff", ",", "delpuertoMisteriosoStrings.aiff", ",", "delpuertoOboeCadenza.aiff", ",", "ernst_jandl_ottosmops.aiff", ",", "ernst_jandl_ottosmops.mp3", ",", "Icon\r", ",", "iowa_piano", ",", "iowa_piano_ff_treated", ",", "jaschBass", ",", "lisboa_02.aif", ",", "mary_boyne_01.aif", ",", "mary_boyne_02.aif", ",", "michiko_hirayama_01.aif", ",", "michiko_hirayama_02.aif", ",", "michiko_hirayama_03.aif", ",", "michiko_hirayama_04.aif", ",", "michiko_hirayama_05.aif", ",", "mm_mundry_01.aif", ",", "mm_mundry_02.aif", ",", "mm_mundry_03.aif", ",", "mm_mundry_04.aif", ",", "mm_mundry_05.aif", ",", "mm_mundry_06.aif", ",", "mm_mundry_07.aif", ",", "mm_mundry_08.aif", ",", "mm_mundry_09.aif", ",", "mm_mundry_10.aif", ",", "nono_di_09.aif", ",", "nono_di_10.aif", ",", "nono_di_11.aif", ",", "nono_di_12.aif", ",", "nono_di_13.aif", ",", "nono_di_14.aif", ",", "nono_di_15.aif", ",", "nono_di_16.aif", ",", "nono_di_17.aif", ",", "nono_di_18.aif", ",", "nono_diotima_01.aif", ",", "nono_diotima_02.aif", ",", "nono_diotima_03.aif", ",", "nono_diotima_04.aif", ",", "nono_diotima_05.aif", ",", "nono_diotima_06.aif", ",", "nono_diotima_07.aif", ",", "nono_diotima_08.aif", ",", "Notre_Dame_Ambience", ",", "oboe.aiff", ",", "oboe_loop.aiff", ",", "p_clicks_001.aif", ",", "p_eierschneider_001.aif", ",", "p_hit_reson_001.aif", ",", "p_knock_hits_001.aif", ",", "p_multi_hit_reson_001.aif", ",", "p_scratch_hits_001.aif", ",", "p_scratch_reson_001.aif", ",", "p_scratch_whip_hit_001.aif", ",", "p_whip_bighit_001.aif", ",", "p_whip_reson_001.aif", ",", "painful_attack.aiff", ",", "pana_01.aif", ",", "pana_02.aif", ",", "pana_03.aif", ",", "pana_04.aif", ",", "pana_05.aif", ",", "pana_06.aif", ",", "pana_07.aif", ",", "paris_02.aif", ",", "pedro_barboza_01.aif", ",", "piano_gran_norm18db_mono_detune", ",", "pianobow.aiff", ",", "rhizome_frag_01.aif", ",", "rhizome_frag_02.aif", ",", "rhizome_frag_03.aif", ",", "rhizome_frag_04_loop.aif", ",", "rhizome_frag_04_loop2.aif", ",", "rhizome_frag_04_loop3.aif", ",", "rsn_bounceAtmo.aiff", ",", "rsn_bounceGroove.aiff", ",", "rsn_bounceLong.aiff", ",", "rsn_bounceNoiseSaturate.aiff", ",", "rsn_bounceReverb.aiff", ",", "rsn_bounceRide.aiff", ",", "rsn_texture.aiff", ",", "sainkho1.aiff", ",", "scelsiKonx.aiff", ",", "scelsiOm.aiff", ",", "scelsiPax.aiff", ",", "SCHATTEN.aiff", ",", "technoid_001.aif", ",", "technoid_002.aif", ",", "technoid_003.aif", ",", "technoid_004.aif", ",", "technoid_005.aif", ",", "technoid_006.aif", ",", "virt_orch_st", ",", "VirtualOrchestra", ",", "webern_attack.aiff", ",", "webern_loop.aiff", ",", "webern_orch_hits.aiff" ],
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -6818,7 +6818,7 @@
 						"center_size" : 1.0,
 						"coord_angles" : 0,
 						"coord_system" : 0,
-						"db_unit" : 0.0,
+						"db_unit" : -0.0,
 						"dist_att" : 1.0,
 						"distance_mode" : 1,
 						"gain" : 1.0,
@@ -7623,7 +7623,7 @@
 						"center_size" : 1.0,
 						"coord_angles" : 0,
 						"coord_system" : 0,
-						"db_unit" : 0.0,
+						"db_unit" : -0.0,
 						"dist_att" : 1.0,
 						"distance_mode" : 1,
 						"gain" : 1.0,
@@ -7649,8 +7649,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 350.0, 532.0, 113.5, 17.0 ],
-					"text" : "1"
+					"patching_rect" : [ 350.0, 532.0, 113.5, 17.0 ]
 				}
 
 			}
@@ -7724,8 +7723,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 778.0, 170.0, 17.0 ],
-					"text" : "time"
+					"patching_rect" : [ 512.0, 778.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7741,8 +7739,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 760.0, 170.5, 17.0 ],
-					"text" : "ICMC_paper_001"
+					"patching_rect" : [ 512.0, 760.0, 170.5, 17.0 ]
 				}
 
 			}
@@ -7758,8 +7755,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 742.0, 170.0, 17.0 ],
-					"text" : "\"the turenas insect trajectory\""
+					"patching_rect" : [ 512.0, 742.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7775,8 +7771,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 724.0, 170.0, 17.0 ],
-					"text" : "ICST"
+					"patching_rect" : [ 512.0, 724.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7792,8 +7787,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 706.0, 170.0, 17.0 ],
-					"text" : "none"
+					"patching_rect" : [ 512.0, 706.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7809,8 +7803,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 688.0, 170.0, 17.0 ],
-					"text" : "2013-10-17"
+					"patching_rect" : [ 512.0, 688.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7826,8 +7819,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 670.0, 170.0, 17.0 ],
-					"text" : "jasch"
+					"patching_rect" : [ 512.0, 670.0, 170.0, 17.0 ]
 				}
 
 			}
@@ -7855,13 +7847,11 @@
 					"fontsize" : 10.0,
 					"gradient" : 1,
 					"id" : "obj-32",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 337.0, 423.0, 116.0, 29.0 ],
-					"text" : "turenas_insect_reconstructed.aiff"
+					"patching_rect" : [ 337.0, 423.0, 116.0, 17.0 ]
 				}
 
 			}
@@ -7877,8 +7867,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 350.0, 514.0, 114.5, 17.0 ],
-					"text" : "file"
+					"patching_rect" : [ 350.0, 514.0, 114.5, 17.0 ]
 				}
 
 			}
@@ -7894,8 +7883,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 349.0, 496.0, 115.0, 17.0 ],
-					"text" : "sound_0001"
+					"patching_rect" : [ 349.0, 496.0, 115.0, 17.0 ]
 				}
 
 			}
@@ -9429,8 +9417,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 512.0, 233.0, 204.0, 29.0 ],
-					"text" : "/spatdifcmd/setQueryTime -0.1, /spatdifcmd/getDeltaTimeToNextEvent"
+					"patching_rect" : [ 512.0, 233.0, 202.0, 29.0 ],
+					"text" : "/spatdifcmd/setQueryTime -0.001, /spatdifcmd/getDeltaTimeToNextEvent"
 				}
 
 			}
@@ -10460,7 +10448,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 355.0, 55.0, 84.0, 17.0 ],
-					"presentation_rect" : [ 429.0, 44.0, 0.0, 0.0 ],
 					"text" : "www.spatdif.org",
 					"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
 				}
@@ -10548,7 +10535,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 524.0, 44.0, 254.0, 39.0 ],
+					"patching_rect" : [ 524.0, 44.0, 256.0, 39.0 ],
 					"text" : "© 2013 - 2014 Zurich University of the Arts, Institute for Computer Music and Sound Technology, licensed under the terms of the \"New BSD License\"",
 					"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
 				}
